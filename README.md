@@ -1,5 +1,5 @@
 # BuildSettings
-Build settings variables and methods for tuist.
+Build settings variables and methods for [tuist](https://docs.tuist.io/plugins/using-plugins).
 
 Parsed from [Build Settings](https://xcodebuildsettings.com)
 
