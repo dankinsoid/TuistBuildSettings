@@ -9,7 +9,7 @@ import ProjectDescription
 import BuildSettings
 
 let settings: SettingsDictionary = [
-    .otherLinkerFlags(["-lz"]).sdk(.iOSSimulator),
+    .otherLinkerFlags("-lz").sdk(.iOSSimulator),
     .injection,
     .unusedFunctions(true),
     .enableTestability,
