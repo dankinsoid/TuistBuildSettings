@@ -1,3 +1,5 @@
+import ProjectDescription
+
 
 // MARK: Active Build Action
 extension BuildSetting {
@@ -204,7 +206,7 @@ extension BuildSetting {
     ///
     /// This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include &lt;header.h&gt;`-style and `#include "header.h "`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include &lt;header.h&gt;`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include "header.h "`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.
     public static func alwaysSearchUserPathsDeprecated(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .alwaysSearchUserPathsDeprecated, value: .string(value.asText))
+        BuildSetting(key: .alwaysSearchUserPathsDeprecated, value: SettingValue(value))
     }
 
     /// Always Search User Paths (Deprecated)
@@ -237,7 +239,7 @@ extension BuildSetting {
     ///
     /// When enabled, this causes the compiler and linker to disallow use of APIs that are not available to app extensions and to disallow linking to frameworks that have not been built with this setting enabled.
     public static func requireOnlyAppExtensionSafeApi(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .requireOnlyAppExtensionSafeApi, value: .string(value.asText))
+        BuildSetting(key: .requireOnlyAppExtensionSafeApi, value: SettingValue(value))
     }
 
     /// Require Only App-Extension-Safe API
@@ -270,7 +272,7 @@ extension BuildSetting {
     ///
     /// Enabling this setting will cause files in the target’s Copy Files build phases to be processed by build rules. For example, property list files (`.plist`) and strings files will be converted as specified by [Property List Output Encoding (PLIST_FILE_OUTPUT_FORMAT)](itcaec37c2a6.html# dev70f6976ed) and [Strings File Output Encoding (STRINGS_FILE_OUTPUT_ENCODING)](itcaec37c2a6.html# dev8d71dff90), respectively.
     public static func convertCopiedFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .convertCopiedFiles, value: .string(value.asText))
+        BuildSetting(key: .convertCopiedFiles, value: SettingValue(value))
     }
 
     /// Convert Copied Files
@@ -303,7 +305,7 @@ extension BuildSetting {
     ///
     /// Enabling this setting will cause all Public and Private headers in the target’s Copy Headers build phase to be processed by build rules. This allows custom build rules to be defined to process these headers. Custom script rules can define their outputs relative to `HEADER_OUTPUT_DIR`, which will be provided to that script, taking the header visibility into account. The scripts are also passed `SCRIPT_HEADER_VISIBILITY` (“public” or “private”). Files that should not be processed by build rules may need to be moved to a Copy Files build phase when this setting is enabled.
     public static func processHeaderFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .processHeaderFiles, value: .string(value.asText))
+        BuildSetting(key: .processHeaderFiles, value: SettingValue(value))
     }
 
     /// Process Header Files
@@ -414,8 +416,8 @@ extension BuildSettingsKey {
 }
 
 public enum BitcodeGenerationMode: String, Hashable, Codable, CustomStringConvertible {
-    case bitcode = "bitcode"
     case marker = "marker"
+    case bitcode = "bitcode"
 
     public var description: String {
         rawValue
@@ -432,7 +434,7 @@ extension BuildSetting {
 
     /// Build Active Resources Only
     public static func buildActiveResourcesOnly(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .buildActiveResourcesOnly, value: .string(value.asText))
+        BuildSetting(key: .buildActiveResourcesOnly, value: SettingValue(value))
     }
 
     /// Build Active Resources Only
@@ -519,7 +521,7 @@ extension BuildSetting {
     ///
     /// Ensures that your libraries are built for distribution. For Swift, this enables support for library evolution and generation of a module interface file.
     public static func buildLibrariesForDistribution(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .buildLibrariesForDistribution, value: .string(value.asText))
+        BuildSetting(key: .buildLibrariesForDistribution, value: SettingValue(value))
     }
 
     /// Build Libraries for Distribution
@@ -732,8 +734,8 @@ extension BuildSettingsKey {
 }
 
 public enum BundleFormat: String, Hashable, Codable, CustomStringConvertible {
-    case shallow = "shallow"
     case deep = "deep"
+    case shallow = "shallow"
 
     public var description: String {
         rawValue
@@ -921,7 +923,7 @@ extension BuildSetting {
 
     /// Clone Headers
     public static func cloneHeaders(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .cloneHeaders, value: .string(value.asText))
+        BuildSetting(key: .cloneHeaders, value: SettingValue(value))
     }
 
     /// Clone Headers
@@ -946,7 +948,7 @@ extension BuildSetting {
 
     /// Code Signing Allowed
     public static func codeSigningAllowed(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .codeSigningAllowed, value: .string(value.asText))
+        BuildSetting(key: .codeSigningAllowed, value: SettingValue(value))
     }
 
     /// Code Signing Allowed
@@ -1027,7 +1029,7 @@ extension BuildSetting {
     ///
     /// Automatically inject entitlements from the platform’s BaseEntitlements.plist into the code signatures of executables.
     public static func codeSigningInjectBaseEntitlements(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .codeSigningInjectBaseEntitlements, value: .string(value.asText))
+        BuildSetting(key: .codeSigningInjectBaseEntitlements, value: SettingValue(value))
     }
 
     /// Code Signing Inject Base Entitlements
@@ -1067,8 +1069,8 @@ extension BuildSettingsKey {
 }
 
 public enum CodeSignLocalExecutionIdentity: String, Hashable, Codable, CustomStringConvertible {
-    case adHoc = "Ad Hoc"
     case localCertificate = "Local Certificate"
+    case adHoc = "Ad Hoc"
 
     public var description: String {
         rawValue
@@ -1102,8 +1104,8 @@ extension BuildSettingsKey {
 }
 
 public enum CodeSignStyle: String, Hashable, Codable, CustomStringConvertible {
-    case automatic = "Automatic"
     case manual = "Manual"
+    case automatic = "Automatic"
 
     public var description: String {
         rawValue
@@ -1120,7 +1122,7 @@ extension BuildSetting {
 
     /// Color Diagnostics
     public static func colorDiagnostics(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .colorDiagnostics, value: .string(value.asText))
+        BuildSetting(key: .colorDiagnostics, value: SettingValue(value))
     }
 
     /// Color Diagnostics
@@ -1169,9 +1171,9 @@ extension BuildSettingsKey {
 }
 
 public enum EnableIndexWhileBuildingFunctionality: String, Hashable, Codable, CustomStringConvertible {
+    case `default` = "Default"
     case yes = "YES"
     case no = "NO"
-    case `default` = "Default"
 
     public var description: String {
         rawValue
@@ -1292,7 +1294,7 @@ extension BuildSetting {
     ///
     /// Causes the copying of resources to preserve resource forks and Finder info.
     public static func preserveHfsData(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .preserveHfsData, value: .string(value.asText))
+        BuildSetting(key: .preserveHfsData, value: SettingValue(value))
     }
 
     /// Preserve HFS Data
@@ -1325,7 +1327,7 @@ extension BuildSetting {
     ///
     /// If enabled, headers are run through the `unifdef(1)` tool when copied to the product.
     public static func runUnifdefOnProductHeaders(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .runUnifdefOnProductHeaders, value: .string(value.asText))
+        BuildSetting(key: .runUnifdefOnProductHeaders, value: SettingValue(value))
     }
 
     /// Run unifdef on Product Headers
@@ -1391,7 +1393,7 @@ extension BuildSetting {
     ///
     /// Specifies whether binary files that are copied during the build, such as in a Copy Bundle Resources or Copy Files build phase, should be stripped of debugging symbols. It does not cause the linked product of a target to be stripped—use [Strip Linked Product (STRIP_INSTALLED_PRODUCT)](itcaec37c2a6.html# dev5c0105d2a) for that.
     public static func stripDebugSymbolsDuringCopy(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .stripDebugSymbolsDuringCopy, value: .string(value.asText))
+        BuildSetting(key: .stripDebugSymbolsDuringCopy, value: SettingValue(value))
     }
 
     /// Strip Debug Symbols During Copy
@@ -1424,7 +1426,7 @@ extension BuildSetting {
     ///
     /// Enabling this setting will create a section in the product’s linked binary containing the processed `Info.plist` file for the target. This setting only applies to command-line tool targets.
     public static func createInfoPlistSectionInBinary(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .createInfoPlistSectionInBinary, value: .string(value.asText))
+        BuildSetting(key: .createInfoPlistSectionInBinary, value: SettingValue(value))
     }
 
     /// Create Info.plist Section in Binary
@@ -1503,7 +1505,7 @@ extension BuildSetting {
     ///
     /// Activating this setting causes the `-dead_strip` flag to be passed to `ld(1)` via `cc(1)` to turn on dead code stripping.
     public static func deadCodeStripping(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .deadCodeStripping, value: .string(value.asText))
+        BuildSetting(key: .deadCodeStripping, value: SettingValue(value))
     }
 
     /// Dead Code Stripping
@@ -1532,7 +1534,7 @@ extension BuildSetting {
 
     /// Debugging Symbols
     public static func debuggingSymbols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .debuggingSymbols, value: .string(value.asText))
+        BuildSetting(key: .debuggingSymbols, value: SettingValue(value))
     }
 
     /// Debugging Symbols
@@ -1673,7 +1675,7 @@ extension BuildSetting {
     ///
     /// If enabled, the product will be treated as defining its own module. This enables automatic production of LLVM module map files when appropriate, and allows the product to be imported as a module.
     public static func definesModule(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .definesModule, value: .string(value.asText))
+        BuildSetting(key: .definesModule, value: SettingValue(value))
     }
 
     /// Defines Module
@@ -1706,7 +1708,7 @@ extension BuildSetting {
     ///
     /// If enabled, built products are placed in their installed locations in addition to the built products folder.
     public static func deploymentLocation(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .deploymentLocation, value: .string(value.asText))
+        BuildSetting(key: .deploymentLocation, value: SettingValue(value))
     }
 
     /// Deployment Location
@@ -1739,7 +1741,7 @@ extension BuildSetting {
     ///
     /// If enabled, indicates that binaries should be stripped and file mode, owner, and group information should be set to standard values.
     public static func deploymentPostprocessing(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .deploymentPostprocessing, value: .string(value.asText))
+        BuildSetting(key: .deploymentPostprocessing, value: SettingValue(value))
     }
 
     /// Deployment Postprocessing
@@ -1881,7 +1883,7 @@ extension BuildSetting {
     ///
     /// If enabled, don’t automatically generate an Info.plist file for wrapped products when the [Info.plist File (INFOPLIST_FILE)](itcaec37c2a6.html# dev131d2e1c2) build setting is empty.
     public static func donTForceInfoPlistGeneration(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .donTForceInfoPlistGeneration, value: .string(value.asText))
+        BuildSetting(key: .donTForceInfoPlistGeneration, value: SettingValue(value))
     }
 
     /// Don't Force Info.plist Generation
@@ -1910,7 +1912,7 @@ extension BuildSetting {
 
     /// Do Header Scanning In Jam
     public static func doHeaderScanningInJam(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .doHeaderScanningInJam, value: .string(value.asText))
+        BuildSetting(key: .doHeaderScanningInJam, value: SettingValue(value))
     }
 
     /// Do Header Scanning In Jam
@@ -1993,7 +1995,7 @@ extension BuildSetting {
 
     /// Dwarf Dsym File Should Accompany Product
     public static func dwarfDsymFileShouldAccompanyProduct(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .dwarfDsymFileShouldAccompanyProduct, value: .string(value.asText))
+        BuildSetting(key: .dwarfDsymFileShouldAccompanyProduct, value: SettingValue(value))
     }
 
     /// Dwarf Dsym File Should Accompany Product
@@ -2145,7 +2147,7 @@ extension BuildSetting {
     ///
     /// Embed all the built asset packs inside the product bundle. Since this negates the performance benefits of the On Demand Resources feature, it is only useful for testing purposes when it isn’t practical to use an asset pack server.
     public static func embedAssetPacksInProductBundle(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .embedAssetPacksInProductBundle, value: .string(value.asText))
+        BuildSetting(key: .embedAssetPacksInProductBundle, value: SettingValue(value))
     }
 
     /// Embed Asset Packs In Product Bundle
@@ -2178,7 +2180,7 @@ extension BuildSetting {
     ///
     /// Activating this setting indicates that the target or project should generate bitcode during compilation for platforms and architectures that support it. For Archive builds, bitcode will be generated in the linked binary for submission to the App Store. For other builds, the compiler and linker will check whether the code complies with the requirements for bitcode generation, but will not generate actual bitcode.
     public static func enableBitcode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableBitcode, value: .string(value.asText))
+        BuildSetting(key: .enableBitcode, value: SettingValue(value))
     }
 
     /// Enable Bitcode
@@ -2207,7 +2209,7 @@ extension BuildSetting {
 
     /// Enable Default Header Search Paths
     public static func enableDefaultHeaderSearchPaths(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableDefaultHeaderSearchPaths, value: .string(value.asText))
+        BuildSetting(key: .enableDefaultHeaderSearchPaths, value: SettingValue(value))
     }
 
     /// Enable Default Header Search Paths
@@ -2236,7 +2238,7 @@ extension BuildSetting {
     ///
     /// Enable hardened runtime restrictions.
     public static func enableHardenedRuntime(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableHardenedRuntime, value: .string(value.asText))
+        BuildSetting(key: .enableHardenedRuntime, value: SettingValue(value))
     }
 
     /// Enable Hardened Runtime
@@ -2269,7 +2271,7 @@ extension BuildSetting {
     ///
     /// Specifies whether to automatically track dependencies on included header files.
     public static func enableHeaderDependencies(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableHeaderDependencies, value: .string(value.asText))
+        BuildSetting(key: .enableHeaderDependencies, value: SettingValue(value))
     }
 
     /// Enable Header Dependencies
@@ -2302,7 +2304,7 @@ extension BuildSetting {
     ///
     /// If enabled, tagged assets—files and asset catalog entries—are built into asset packs based on their combination of tags. Untagged resources are treated normally.
     public static func enableOnDemandResources(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableOnDemandResources, value: .string(value.asText))
+        BuildSetting(key: .enableOnDemandResources, value: SettingValue(value))
     }
 
     /// Enable On Demand Resources
@@ -2328,7 +2330,7 @@ extension BuildSetting {
     ///
     /// If enabled, the product will be built with options appropriate for supporting previews.
     public static func enablePreviews(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enablePreviews, value: .string(value.asText))
+        BuildSetting(key: .enablePreviews, value: SettingValue(value))
     }
 
     /// Enable Previews
@@ -2361,7 +2363,7 @@ extension BuildSetting {
     ///
     /// When this setting is activated, the product will be built with options appropriate for running automated tests, such as making private interfaces accessible to the tests. This may result in tests running slower than they would without testability enabled.
     public static func enableTestability(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableTestability, value: .string(value.asText))
+        BuildSetting(key: .enableTestability, value: SettingValue(value))
     }
 
     /// Enable Testability
@@ -2394,7 +2396,7 @@ extension BuildSetting {
     ///
     /// Specifies whether the build system should add the search paths necessary for compiling and linking against XCTest. This setting is enabled by default if the target is a unit test target or if the target explicitly links to the XCTest framework.
     public static func enableTestingSearchPaths(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableTestingSearchPaths, value: .string(value.asText))
+        BuildSetting(key: .enableTestingSearchPaths, value: SettingValue(value))
     }
 
     /// Enable Testing Search Paths
@@ -2434,8 +2436,8 @@ extension BuildSettingsKey {
 }
 
 public enum EntitlementsDestination: String, Hashable, Codable, CustomStringConvertible {
-    case signature = "Signature"
     case Entitlements = "__entitlements"
+    case signature = "Signature"
 
     public var description: String {
         rawValue
@@ -2824,7 +2826,7 @@ extension BuildSetting {
     ///
     /// Activating this setting will cause the object files built by a target to be prelinked using `ld -r` into a single object file, and that object file will then be linked into the final product. This is useful to force the linker to resolve symbols and link the object files into a single module before building a static library. Also, a separate set of link flags can be applied to the prelink allowing additional control over, for instance, exported symbols.
     public static func performSingleObjectPrelink(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .performSingleObjectPrelink, value: .string(value.asText))
+        BuildSetting(key: .performSingleObjectPrelink, value: SettingValue(value))
     }
 
     /// Perform Single-Object Prelink
@@ -2857,7 +2859,7 @@ extension BuildSetting {
     ///
     /// Forces the `PkgInfo` file to be written to wrapped products even if this file is not expected.
     public static func forcePackageInfoGeneration(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .forcePackageInfoGeneration, value: .string(value.asText))
+        BuildSetting(key: .forcePackageInfoGeneration, value: SettingValue(value))
     }
 
     /// Force Package Info Generation
@@ -2890,7 +2892,7 @@ extension BuildSetting {
     ///
     /// Activating this setting will cause the compiler and linker to generate profiling code. For example, GCC will generate code suitable for use with `gprof(1)`.
     public static func generateProfilingCode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .generateProfilingCode, value: .string(value.asText))
+        BuildSetting(key: .generateProfilingCode, value: SettingValue(value))
     }
 
     /// Generate Profiling Code
@@ -2923,7 +2925,7 @@ extension BuildSetting {
     ///
     /// Enables the generation of Text-Based stubs for dynamic libraries and frameworks.
     public static func enableTextBasedStubsGeneration(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableTextBasedStubsGeneration, value: .string(value.asText))
+        BuildSetting(key: .enableTextBasedStubsGeneration, value: SettingValue(value))
     }
 
     /// Enable Text-Based Stubs Generation
@@ -2956,7 +2958,7 @@ extension BuildSetting {
     ///
     /// Specifies whether the header map contains a name/path entry for every header in the target being built.
     public static func headermapIncludesFlatEntriesForTargetBeingBuilt(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .headermapIncludesFlatEntriesForTargetBeingBuilt, value: .string(value.asText))
+        BuildSetting(key: .headermapIncludesFlatEntriesForTargetBeingBuilt, value: SettingValue(value))
     }
 
     /// Headermap Includes Flat Entries For Target Being Built
@@ -2989,7 +2991,7 @@ extension BuildSetting {
     ///
     /// Specifies whether the header map contains a framework-name/path entry for every header in the target being built, including targets that do not build frameworks.
     public static func headermapIncludesFrameworkEntriesForAllProductTypes(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .headermapIncludesFrameworkEntriesForAllProductTypes, value: .string(value.asText))
+        BuildSetting(key: .headermapIncludesFrameworkEntriesForAllProductTypes, value: SettingValue(value))
     }
 
     /// Headermap Includes Framework Entries For All Product Types
@@ -3018,7 +3020,7 @@ extension BuildSetting {
 
     /// Headermap Includes Nonpublic Nonprivate Headers
     public static func headermapIncludesNonpublicNonprivateHeaders(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .headermapIncludesNonpublicNonprivateHeaders, value: .string(value.asText))
+        BuildSetting(key: .headermapIncludesNonpublicNonprivateHeaders, value: SettingValue(value))
     }
 
     /// Headermap Includes Nonpublic Nonprivate Headers
@@ -3047,7 +3049,7 @@ extension BuildSetting {
     ///
     /// Specifies whether the header map contains a name/path entry for every header in the project, regardless of the headers’ target membership.
     public static func headermapIncludesProjectHeaders(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .headermapIncludesProjectHeaders, value: .string(value.asText))
+        BuildSetting(key: .headermapIncludesProjectHeaders, value: SettingValue(value))
     }
 
     /// Headermap Includes Project Headers
@@ -3076,7 +3078,7 @@ extension BuildSetting {
 
     /// Headermap Uses Framework Prefix Entries
     public static func headermapUsesFrameworkPrefixEntries(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .headermapUsesFrameworkPrefixEntries, value: .string(value.asText))
+        BuildSetting(key: .headermapUsesFrameworkPrefixEntries, value: SettingValue(value))
     }
 
     /// Headermap Uses Framework Prefix Entries
@@ -3101,7 +3103,7 @@ extension BuildSetting {
 
     /// Headermap Uses Vfs
     public static func headermapUsesVfs(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .headermapUsesVfs, value: .string(value.asText))
+        BuildSetting(key: .headermapUsesVfs, value: SettingValue(value))
     }
 
     /// Headermap Uses Vfs
@@ -3159,7 +3161,7 @@ extension BuildSetting {
 
     /// Hide Bitcode Symbols
     public static func hideBitcodeSymbols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .hideBitcodeSymbols, value: .string(value.asText))
+        BuildSetting(key: .hideBitcodeSymbols, value: SettingValue(value))
     }
 
     /// Hide Bitcode Symbols
@@ -3274,7 +3276,7 @@ extension BuildSetting {
     ///
     /// Expand build settings in the `Info.plist` file.
     public static func expandBuildSettingsInInfoPlistFile(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .expandBuildSettingsInInfoPlistFile, value: .string(value.asText))
+        BuildSetting(key: .expandBuildSettingsInInfoPlistFile, value: SettingValue(value))
     }
 
     /// Expand Build Settings in Info.plist File
@@ -3386,9 +3388,9 @@ extension BuildSettingsKey {
 }
 
 public enum InfoPlistOutputEncoding: String, Hashable, Codable, CustomStringConvertible {
+    case binary = "binary"
     case sameAsInput = "same-as-input"
     case xml = "XML"
-    case binary = "binary"
 
     public var description: String {
         rawValue
@@ -3435,7 +3437,7 @@ extension BuildSetting {
     ///
     /// Preprocess the `Info.plist` file using the C Preprocessor.
     public static func preprocessInfoPlistFile(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .preprocessInfoPlistFile, value: .string(value.asText))
+        BuildSetting(key: .preprocessInfoPlistFile, value: SettingValue(value))
     }
 
     /// Preprocess Info.plist File
@@ -3527,7 +3529,7 @@ extension BuildSetting {
     ///
     /// Enables private framework inlining for Text-Based Stubs.
     public static func enableTextBasedStubsInlining(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableTextBasedStubsInlining, value: .string(value.asText))
+        BuildSetting(key: .enableTextBasedStubsInlining, value: SettingValue(value))
     }
 
     /// Enable Text-Based Stubs Inlining
@@ -3560,7 +3562,7 @@ extension BuildSetting {
     ///
     /// Specifies whether the target’s Copy Files build phases are executed in `installhdr` builds.
     public static func performCopyFilesPhasesDuringInstallhdrs(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .performCopyFilesPhasesDuringInstallhdrs, value: .string(value.asText))
+        BuildSetting(key: .performCopyFilesPhasesDuringInstallhdrs, value: SettingValue(value))
     }
 
     /// Perform Copy Files Phases During `installhdrs`
@@ -3593,7 +3595,7 @@ extension BuildSetting {
     ///
     /// Specifies whether the target’s Run Script build phases are executed in `installhdr` builds. See [Active Build Action (ACTION)](itcaec37c2a6.html# dev9697f81df) for details on `installhdr` builds.
     public static func performShellScriptPhasesDuringInstallhdrs(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .performShellScriptPhasesDuringInstallhdrs, value: .string(value.asText))
+        BuildSetting(key: .performShellScriptPhasesDuringInstallhdrs, value: SettingValue(value))
     }
 
     /// Perform Shell Script Phases During `installhdrs`
@@ -3830,7 +3832,7 @@ extension BuildSetting {
 
     /// Java Archive Classes
     public static func javaArchiveClasses(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .javaArchiveClasses, value: .string(value.asText))
+        BuildSetting(key: .javaArchiveClasses, value: SettingValue(value))
     }
 
     /// Java Archive Classes
@@ -4015,7 +4017,7 @@ extension BuildSetting {
 
     /// Java Use Dependencies
     public static func javaUseDependencies(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .javaUseDependencies, value: .string(value.asText))
+        BuildSetting(key: .javaUseDependencies, value: SettingValue(value))
     }
 
     /// Java Use Dependencies
@@ -4074,7 +4076,7 @@ extension BuildSetting {
     ///
     /// Activating this setting will preserve private external symbols, rather than turning them into static symbols. This setting is also respected when performing a single-object prelink.
     public static func preservePrivateExternalSymbols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .preservePrivateExternalSymbols, value: .string(value.asText))
+        BuildSetting(key: .preservePrivateExternalSymbols, value: SettingValue(value))
     }
 
     /// Preserve Private External Symbols
@@ -4254,7 +4256,7 @@ extension BuildSetting {
     ///
     /// Activating this setting will cause the linker to write a map file to disk, which details all symbols and their addresses in the output image. The path to the map file is defined by the [Path to Link Map File (LD_MAP_FILE_PATH)](itcaec37c2a6.html# dev0f5aa9fe1) setting.
     public static func writeLinkMapFile(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .writeLinkMapFile, value: .string(value.asText))
+        BuildSetting(key: .writeLinkMapFile, value: SettingValue(value))
     }
 
     /// Write Link Map File
@@ -4320,7 +4322,7 @@ extension BuildSetting {
     ///
     /// Activating this setting will prevent Xcode from building a main executable that is position independent (PIE). When targeting macOS 10.7 or later, PIE is the default for main executables, so activating this setting will change that behavior. When targeting OS X 10.6 or earlier, or when building for i386, PIE is not the default, so activating this setting does nothing. You cannot create a PIE from `.o` files compiled with `-mdynamic-no-pic`. Using PIE means the codegen is less optimal, but the address randomization adds some security.
     public static func generatePositionDependentExecutable(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .generatePositionDependentExecutable, value: .string(value.asText))
+        BuildSetting(key: .generatePositionDependentExecutable, value: SettingValue(value))
     }
 
     /// Generate Position-Dependent Executable
@@ -4353,7 +4355,7 @@ extension BuildSetting {
     ///
     /// This setting controls whether arguments to the linker should be quoted using `-Xlinker`. By default, Xcode invokes the linker by invoking the driver of the compiler used to build the source files in the target, and passing `-Xlinker` to quote arguments will cause the compiler driver to pass them through to the linker (rather than trying to evaluate them within the driver). By default, this setting is enabled. Disabling it will cause Xcode to not use `-Xlinker` to pass arguments to the linker. Disabling this setting is useful if the target has instructed Xcode to use an alternate linker (for example, by setting the `LD` setting to the path to another linker) and that alternate linker does not recognize `-Xlinker`.
     public static func quoteLinkerArguments(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .quoteLinkerArguments, value: .string(value.asText))
+        BuildSetting(key: .quoteLinkerArguments, value: SettingValue(value))
     }
 
     /// Quote Linker Arguments
@@ -4440,7 +4442,7 @@ extension BuildSetting {
 
     /// Library Flag Nospace
     public static func libraryFlagNospace(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .libraryFlagNospace, value: .string(value.asText))
+        BuildSetting(key: .libraryFlagNospace, value: SettingValue(value))
     }
 
     /// Library Flag Nospace
@@ -4547,7 +4549,7 @@ extension BuildSetting {
     ///
     /// Activating this setting causes the linker to display mangled names for C++ symbols. Normally, this is not recommended, but turning it on can help to diagnose and solve C++ link errors.
     public static func displayMangledNames(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .displayMangledNames, value: .string(value.asText))
+        BuildSetting(key: .displayMangledNames, value: SettingValue(value))
     }
 
     /// Display Mangled Names
@@ -4580,7 +4582,7 @@ extension BuildSetting {
     ///
     /// When this setting is enabled, the compiler driver will automatically pass its standard libraries to the linker to use during linking. If desired, this flag can be used to disable linking with the standard libraries, and then individual libraries can be passed as [Other Linker Flags (OTHER_LDFLAGS)](itcaec37c2a6.html# dev4fc8ef90a).
     public static func linkWithStandardLibraries(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .linkWithStandardLibraries, value: .string(value.asText))
+        BuildSetting(key: .linkWithStandardLibraries, value: SettingValue(value))
     }
 
     /// Link With Standard Libraries
@@ -4743,7 +4745,7 @@ extension BuildSetting {
     ///
     /// When enabled, literal strings passed to the Text() initializer from Swift UI will be extracted during localization export.
     public static func localizedStringSwiftUiSupport(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .localizedStringSwiftUiSupport, value: .string(value.asText))
+        BuildSetting(key: .localizedStringSwiftUiSupport, value: SettingValue(value))
     }
 
     /// Localized String Swift UI Support
@@ -4849,11 +4851,11 @@ extension BuildSettingsKey {
 }
 
 public enum MachOType: String, Hashable, Codable, CustomStringConvertible {
-    case mhBundle = "mh_bundle"
+    case staticlib = "staticlib"
     case mhDylib = "mh_dylib"
+    case mhBundle = "mh_bundle"
     case mhObject = "mh_object"
     case mhExecute = "mh_execute"
-    case staticlib = "staticlib"
 
     public var description: String {
         rawValue
@@ -5283,7 +5285,7 @@ extension BuildSetting {
     ///
     /// If enabled, only the active architecture is built. This setting will be ignored when building with a run destination which does not define a specific architecture, such as a ‘Generic Device’ run destination.
     public static func buildActiveArchitectureOnly(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .buildActiveArchitectureOnly, value: .string(value.asText))
+        BuildSetting(key: .buildActiveArchitectureOnly, value: SettingValue(value))
     }
 
     /// Build Active Architecture Only
@@ -5664,8 +5666,8 @@ extension BuildSettingsKey {
 
 public enum PropertyListOutputEncoding: String, Hashable, Codable, CustomStringConvertible {
     case binary = "binary"
-    case xml = "XML"
     case sameAsInput = "same-as-input"
+    case xml = "XML"
 
     public var description: String {
         rawValue
@@ -5686,7 +5688,7 @@ extension BuildSetting {
     ///
     /// This setting allows for better control of sharing precompiled prefix header files between projects. By default, Xcode assumes that the prefix header file may include header files from the build directory if the build directory is outside of the project directory. Xcode cannot determine this ahead of time since other projects may not have been built into the shared build directory at the time the information is needed. If your prefix file never includes files from the build directory you may set this to `NO` to improve sharing of precompiled headers. If the prefix does use files from a build directory that is inside your project directory, you may set this to `YES` to avoid unintended sharing that may result in build failures.
     public static func precompiledHeaderUsesFilesFromBuildDirectory(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .precompiledHeaderUsesFilesFromBuildDirectory, value: .string(value.asText))
+        BuildSetting(key: .precompiledHeaderUsesFilesFromBuildDirectory, value: SettingValue(value))
     }
 
     /// Precompiled Header Uses Files From Build Directory
@@ -5810,7 +5812,7 @@ extension BuildSetting {
     ///
     /// Activating this setting, in combination with the [Dead Code Stripping (DEAD_CODE_STRIPPING)](itcaec37c2a6.html# dev9ed8cb7ad) (`-dead_strip`) option, causes the `-no_dead_strip_inits_and_terms` flag to be passed to `ld(1)` via `cc(1)` to disable dead code stripping for initialization and termination routines. This option should not be used without the aforementioned [Dead Code Stripping (DEAD_CODE_STRIPPING)](itcaec37c2a6.html# dev9ed8cb7ad) option.
     public static func donTDeadStripInitsAndTerms(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .donTDeadStripInitsAndTerms, value: .string(value.asText))
+        BuildSetting(key: .donTDeadStripInitsAndTerms, value: SettingValue(value))
     }
 
     /// Don't Dead-Strip Inits and Terms
@@ -5950,7 +5952,7 @@ extension BuildSetting {
 
     /// Profiling Code
     public static func profilingCode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .profilingCode, value: .string(value.asText))
+        BuildSetting(key: .profilingCode, value: SettingValue(value))
     }
 
     /// Profiling Code
@@ -6334,7 +6336,7 @@ extension BuildSetting {
     ///
     /// Specifies whether to remove `CVS` directories from bundle resources when they are copied.
     public static func removeCvsFromResources(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .removeCvsFromResources, value: .string(value.asText))
+        BuildSetting(key: .removeCvsFromResources, value: SettingValue(value))
     }
 
     /// Remove Cvs From Resources
@@ -6367,7 +6369,7 @@ extension BuildSetting {
     ///
     /// Specifies whether to remove `.git` directories from bundle resources when they are copied.
     public static func removeGitFromResources(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .removeGitFromResources, value: .string(value.asText))
+        BuildSetting(key: .removeGitFromResources, value: SettingValue(value))
     }
 
     /// Remove Git From Resources
@@ -6396,7 +6398,7 @@ extension BuildSetting {
 
     /// Remove Headers From Embedded Bundles
     public static func removeHeadersFromEmbeddedBundles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .removeHeadersFromEmbeddedBundles, value: .string(value.asText))
+        BuildSetting(key: .removeHeadersFromEmbeddedBundles, value: SettingValue(value))
     }
 
     /// Remove Headers From Embedded Bundles
@@ -6425,7 +6427,7 @@ extension BuildSetting {
     ///
     /// Specifies whether to remove `.hg` directories from bundle resources when they are copied.
     public static func removeHgFromResources(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .removeHgFromResources, value: .string(value.asText))
+        BuildSetting(key: .removeHgFromResources, value: SettingValue(value))
     }
 
     /// Remove Hg From Resources
@@ -6458,7 +6460,7 @@ extension BuildSetting {
     ///
     /// Specifies whether to remove `SVN` directories from bundle resources when they are copied.
     public static func removeSvnFromResources(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .removeSvnFromResources, value: .string(value.asText))
+        BuildSetting(key: .removeSvnFromResources, value: SettingValue(value))
     }
 
     /// Remove Svn From Resources
@@ -6577,7 +6579,7 @@ extension BuildSetting {
     ///
     /// Activating this setting will cause all source files to be scanned for includes (for example, of header files) when computing the dependency graph, in which case if an included file is changed then the including file will be rebuilt next time a target containing it is built. Normally only certain types of files, such as C-language source files, are scanned. This setting is useful if your project contains files of unusual types, which are compiled using a custom build rule.
     public static func scanAllSourceFilesForIncludes(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .scanAllSourceFilesForIncludes, value: .string(value.asText))
+        BuildSetting(key: .scanAllSourceFilesForIncludes, value: SettingValue(value))
     }
 
     /// Scan All Source Files for Includes
@@ -6665,7 +6667,7 @@ extension BuildSetting {
 
     /// Separate Strip
     public static func separateStrip(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .separateStrip, value: .string(value.asText))
+        BuildSetting(key: .separateStrip, value: SettingValue(value))
     }
 
     /// Separate Strip
@@ -6694,7 +6696,7 @@ extension BuildSetting {
     ///
     /// Activating this setting when the linked product’s symbols are to be edited will cause editing to occur via a separate invocation of `nmedit(1)`. Otherwise editing will occur during linking, if possible.
     public static func separatelyEditSymbols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .separatelyEditSymbols, value: .string(value.asText))
+        BuildSetting(key: .separatelyEditSymbols, value: SettingValue(value))
     }
 
     /// Separately Edit Symbols
@@ -6805,7 +6807,7 @@ extension BuildSetting {
     ///
     /// If enabled, don’t install built products even if deployment locations are active.
     public static func skipInstall(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .skipInstall, value: .string(value.asText))
+        BuildSetting(key: .skipInstall, value: SettingValue(value))
     }
 
     /// Skip Install
@@ -6916,9 +6918,9 @@ extension BuildSettingsKey {
 }
 
 public enum StringsFileOutputEncoding: String, Hashable, Codable, CustomStringConvertible {
-    case utf16 = "UTF-16"
-    case utf8 = "UTF-8"
     case binary = "binary"
+    case utf8 = "UTF-8"
+    case utf16 = "UTF-16"
 
     public var description: String {
         rawValue
@@ -6968,7 +6970,7 @@ extension BuildSetting {
 
     /// Strip Bitcode From Copied Files
     public static func stripBitcodeFromCopiedFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .stripBitcodeFromCopiedFiles, value: .string(value.asText))
+        BuildSetting(key: .stripBitcodeFromCopiedFiles, value: SettingValue(value))
     }
 
     /// Strip Bitcode From Copied Files
@@ -6990,7 +6992,7 @@ extension BuildSetting {
     ///
     /// If enabled, the linked product of the build will be stripped of symbols when performing deployment postprocessing.
     public static func stripLinkedProduct(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .stripLinkedProduct, value: .string(value.asText))
+        BuildSetting(key: .stripLinkedProduct, value: SettingValue(value))
     }
 
     /// Strip Linked Product
@@ -7066,7 +7068,7 @@ extension BuildSetting {
     ///
     /// Adjust the level of symbol stripping specified by the STRIP_STYLE setting so that when the linked product of the build is stripped, all Swift symbols will be removed.
     public static func stripSwiftSymbols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .stripSwiftSymbols, value: .string(value.asText))
+        BuildSetting(key: .stripSwiftSymbols, value: SettingValue(value))
     }
 
     /// Strip Swift Symbols
@@ -7132,7 +7134,7 @@ extension BuildSetting {
     ///
     /// Enable to indicate that the target supports `Text-Based InstallAPI`, which will enable its generation during `install` builds.
     public static func supportsTextBasedInstallapi(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .supportsTextBasedInstallapi, value: .string(value.asText))
+        BuildSetting(key: .supportsTextBasedInstallapi, value: SettingValue(value))
     }
 
     /// Supports Text-Based InstallAPI
@@ -7354,9 +7356,9 @@ extension BuildSettingsKey {
 }
 
 public enum TextBasedInstallapiVerificationMode: String, Hashable, Codable, CustomStringConvertible {
-    case errorsonly = "ErrorsOnly"
     case errorsandwarnings = "ErrorsAndWarnings"
     case pedantic = "Pedantic"
+    case errorsonly = "ErrorsOnly"
 
     public var description: String {
         rawValue
@@ -7640,7 +7642,7 @@ extension BuildSetting {
     ///
     /// When running tests that measure performance via `XCTestCase`, report missing baselines as test failures.
     public static func treatMissingBaselinesAsTestFailures(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .treatMissingBaselinesAsTestFailures, value: .string(value.asText))
+        BuildSetting(key: .treatMissingBaselinesAsTestFailures, value: SettingValue(value))
     }
 
     /// Treat missing baselines as test failures
@@ -7752,7 +7754,7 @@ extension BuildSetting {
     ///
     /// Enable the use of **Header Maps**, which provide the compiler with a mapping from textual header names to their locations, bypassing the normal compiler header search path mechanisms. This allows source code to include headers from various locations in the file system without needing to update the header search path build settings.
     public static func useHeaderMaps(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useHeaderMaps, value: .string(value.asText))
+        BuildSetting(key: .useHeaderMaps, value: SettingValue(value))
     }
 
     /// Use Header Maps
@@ -7781,7 +7783,7 @@ extension BuildSetting {
 
     /// Use Header Symlinks
     public static func useHeaderSymlinks(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useHeaderSymlinks, value: .string(value.asText))
+        BuildSetting(key: .useHeaderSymlinks, value: SettingValue(value))
     }
 
     /// Use Header Symlinks
@@ -7806,7 +7808,7 @@ extension BuildSetting {
 
     /// Use Llvm Target Triples
     public static func useLlvmTargetTriples(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useLlvmTargetTriples, value: .string(value.asText))
+        BuildSetting(key: .useLlvmTargetTriples, value: SettingValue(value))
     }
 
     /// Use Llvm Target Triples
@@ -7831,7 +7833,7 @@ extension BuildSetting {
 
     /// Use Llvm Target Triples For Clang
     public static func useLlvmTargetTriplesForClang(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useLlvmTargetTriplesForClang, value: .string(value.asText))
+        BuildSetting(key: .useLlvmTargetTriplesForClang, value: SettingValue(value))
     }
 
     /// Use Llvm Target Triples For Clang
@@ -7856,7 +7858,7 @@ extension BuildSetting {
 
     /// Use Llvm Target Triples For Ld
     public static func useLlvmTargetTriplesForLd(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useLlvmTargetTriplesForLd, value: .string(value.asText))
+        BuildSetting(key: .useLlvmTargetTriplesForLd, value: SettingValue(value))
     }
 
     /// Use Llvm Target Triples For Ld
@@ -7881,7 +7883,7 @@ extension BuildSetting {
 
     /// Use Llvm Target Triples For Tapi
     public static func useLlvmTargetTriplesForTapi(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useLlvmTargetTriplesForTapi, value: .string(value.asText))
+        BuildSetting(key: .useLlvmTargetTriplesForTapi, value: SettingValue(value))
     }
 
     /// Use Llvm Target Triples For Tapi
@@ -7930,8 +7932,8 @@ extension BuildSettingsKey {
 }
 
 public enum ValidateWorkspace: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
     case yes = "YES"
+    case yesError = "YES_ERROR"
     case no = "NO"
 
     public var description: String {
@@ -8280,7 +8282,7 @@ extension BuildSetting {
 
     /// Wrap Asset Packs In Separate Directories
     public static func wrapAssetPacksInSeparateDirectories(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .wrapAssetPacksInSeparateDirectories, value: .string(value.asText))
+        BuildSetting(key: .wrapAssetPacksInSeparateDirectories, value: SettingValue(value))
     }
 
     /// Wrap Asset Packs In Separate Directories
@@ -8325,7 +8327,7 @@ extension BuildSetting {
 
     /// Always Use Separate Headermaps
     public static func alwaysUseSeparateHeadermaps(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .alwaysUseSeparateHeadermaps, value: .string(value.asText))
+        BuildSetting(key: .alwaysUseSeparateHeadermaps, value: SettingValue(value))
     }
 
     /// Always Use Separate Headermaps
@@ -8425,7 +8427,7 @@ extension BuildSetting {
 
     /// Clean Precomps
     public static func cleanPrecomps(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .cleanPrecomps, value: .string(value.asText))
+        BuildSetting(key: .cleanPrecomps, value: SettingValue(value))
     }
 
     /// Clean Precomps
@@ -8475,7 +8477,7 @@ extension BuildSetting {
 
     /// Combine Hidpi Images
     public static func combineHidpiImages(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .combineHidpiImages, value: .string(value.asText))
+        BuildSetting(key: .combineHidpiImages, value: SettingValue(value))
     }
 
     /// Combine Hidpi Images
@@ -8556,7 +8558,7 @@ extension BuildSetting {
 
     /// Copy Resources From Static Frameworks
     public static func copyResourcesFromStaticFrameworks(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .copyResourcesFromStaticFrameworks, value: .string(value.asText))
+        BuildSetting(key: .copyResourcesFromStaticFrameworks, value: SettingValue(value))
     }
 
     /// Copy Resources From Static Frameworks
@@ -8983,7 +8985,7 @@ extension BuildSetting {
     ///
     /// Generates a precompiled header for the prefix header, which should reduce overall build times. Precompiling the prefix header will be most effective if the contents of the prefix header or any file it includes change rarely. If the contents of the prefix header or any file it includes change frequently, there may be a negative impact to overall build time.
     public static func gccPrecompilePrefixHeader(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .gccPrecompilePrefixHeader, value: .string(value.asText))
+        BuildSetting(key: .gccPrecompilePrefixHeader, value: SettingValue(value))
     }
 
     /// GCC Precompile Prefix Header
@@ -9049,7 +9051,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes all warnings to be treated as errors.
     public static func treatWarningsAsErrors(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .treatWarningsAsErrors, value: .string(value.asText))
+        BuildSetting(key: .treatWarningsAsErrors, value: SettingValue(value))
     }
 
     /// Treat Warnings as Errors
@@ -9519,7 +9521,7 @@ extension BuildSetting {
 
     /// No Common
     public static func noCommon(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .noCommon, value: .string(value.asText))
+        BuildSetting(key: .noCommon, value: SettingValue(value))
     }
 
     /// No Common
@@ -9761,7 +9763,7 @@ extension BuildSetting {
 
     /// Pascal Strings
     public static func pascalStrings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .pascalStrings, value: .string(value.asText))
+        BuildSetting(key: .pascalStrings, value: SettingValue(value))
     }
 
     /// Pascal Strings
@@ -9872,7 +9874,7 @@ extension BuildSetting {
 
     /// Precompile Prefix Header
     public static func precompilePrefixHeader(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .precompilePrefixHeader, value: .string(value.asText))
+        BuildSetting(key: .precompilePrefixHeader, value: SettingValue(value))
     }
 
     /// Precompile Prefix Header
@@ -10002,7 +10004,7 @@ extension BuildSetting {
 
     /// Recursive Search Paths Follow Symlinks
     public static func recursiveSearchPathsFollowSymlinks(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .recursiveSearchPathsFollowSymlinks, value: .string(value.asText))
+        BuildSetting(key: .recursiveSearchPathsFollowSymlinks, value: SettingValue(value))
     }
 
     /// Recursive Search Paths Follow Symlinks
@@ -10051,7 +10053,7 @@ extension BuildSetting {
     ///
     /// Specifies whether to keep copies of unstripped binaries available.
     public static func retainRawBinaries(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .retainRawBinaries, value: .string(value.asText))
+        BuildSetting(key: .retainRawBinaries, value: SettingValue(value))
     }
 
     /// Retain Raw Binaries
@@ -10197,7 +10199,7 @@ extension BuildSetting {
 
     /// Set Dir Mode Owner Group
     public static func setDirModeOwnerGroup(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .setDirModeOwnerGroup, value: .string(value.asText))
+        BuildSetting(key: .setDirModeOwnerGroup, value: SettingValue(value))
     }
 
     /// Set Dir Mode Owner Group
@@ -10222,7 +10224,7 @@ extension BuildSetting {
 
     /// Set File Mode Owner Group
     public static func setFileModeOwnerGroup(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .setFileModeOwnerGroup, value: .string(value.asText))
+        BuildSetting(key: .setFileModeOwnerGroup, value: SettingValue(value))
     }
 
     /// Set File Mode Owner Group
@@ -10247,7 +10249,7 @@ extension BuildSetting {
 
     /// Shallow Bundle
     public static func shallowBundle(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .shallowBundle, value: .string(value.asText))
+        BuildSetting(key: .shallowBundle, value: SettingValue(value))
     }
 
     /// Shallow Bundle
@@ -10364,7 +10366,7 @@ extension BuildSetting {
 
     /// Unstripped Product
     public static func unstrippedProduct(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .unstrippedProduct, value: .string(value.asText))
+        BuildSetting(key: .unstrippedProduct, value: SettingValue(value))
     }
 
     /// Unstripped Product
@@ -10389,7 +10391,7 @@ extension BuildSetting {
 
     /// Use Dynamic No Pic
     public static func useDynamicNoPic(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useDynamicNoPic, value: .string(value.asText))
+        BuildSetting(key: .useDynamicNoPic, value: SettingValue(value))
     }
 
     /// Use Dynamic No Pic
@@ -10418,7 +10420,7 @@ extension BuildSetting {
     ///
     /// If enabled, perform validation checks on the product as part of the build process.
     public static func validateBuiltProduct(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .validateBuiltProduct, value: .string(value.asText))
+        BuildSetting(key: .validateBuiltProduct, value: SettingValue(value))
     }
 
     /// Validate Built Product
@@ -10451,7 +10453,7 @@ extension BuildSetting {
     ///
     /// Specifies whether the target’s Copy Files build phases generate additional information when copying files.
     public static func verbosePbxcp(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .verbosePbxcp, value: .string(value.asText))
+        BuildSetting(key: .verbosePbxcp, value: SettingValue(value))
     }
 
     /// Verbose Pbxcp
@@ -10863,7 +10865,7 @@ extension BuildSetting {
 
     /// Ld Debug Variant
     public static func ldDebugVariant(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ldDebugVariant, value: .string(value.asText))
+        BuildSetting(key: .ldDebugVariant, value: SettingValue(value))
     }
 
     /// Ld Debug Variant
@@ -10913,7 +10915,7 @@ extension BuildSetting {
 
     /// Ld Dont Run Deduplication
     public static func ldDontRunDeduplication(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ldDontRunDeduplication, value: .string(value.asText))
+        BuildSetting(key: .ldDontRunDeduplication, value: SettingValue(value))
     }
 
     /// Ld Dont Run Deduplication
@@ -10938,7 +10940,7 @@ extension BuildSetting {
 
     /// Ld Export Global Symbols
     public static func ldExportGlobalSymbols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ldExportGlobalSymbols, value: .string(value.asText))
+        BuildSetting(key: .ldExportGlobalSymbols, value: SettingValue(value))
     }
 
     /// Ld Export Global Symbols
@@ -10988,7 +10990,7 @@ extension BuildSetting {
 
     /// Ld Generate Bitcode Symbol Map
     public static func ldGenerateBitcodeSymbolMap(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ldGenerateBitcodeSymbolMap, value: .string(value.asText))
+        BuildSetting(key: .ldGenerateBitcodeSymbolMap, value: SettingValue(value))
     }
 
     /// Ld Generate Bitcode Symbol Map
@@ -11013,7 +11015,7 @@ extension BuildSetting {
 
     /// Ld Hide Bitcode Symbols
     public static func ldHideBitcodeSymbols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ldHideBitcodeSymbols, value: .string(value.asText))
+        BuildSetting(key: .ldHideBitcodeSymbols, value: SettingValue(value))
     }
 
     /// Ld Hide Bitcode Symbols
@@ -11152,7 +11154,7 @@ extension BuildSetting {
 
     /// Ld Thread Sanitizer
     public static func ldThreadSanitizer(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ldThreadSanitizer, value: .string(value.asText))
+        BuildSetting(key: .ldThreadSanitizer, value: SettingValue(value))
     }
 
     /// Ld Thread Sanitizer
@@ -11177,7 +11179,7 @@ extension BuildSetting {
 
     /// Ld Verify Bitcode
     public static func ldVerifyBitcode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ldVerifyBitcode, value: .string(value.asText))
+        BuildSetting(key: .ldVerifyBitcode, value: SettingValue(value))
     }
 
     /// Ld Verify Bitcode
@@ -11387,7 +11389,7 @@ extension BuildSetting {
 
     /// Libtool Deterministic Mode
     public static func libtoolDeterministicMode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .libtoolDeterministicMode, value: .string(value.asText))
+        BuildSetting(key: .libtoolDeterministicMode, value: SettingValue(value))
     }
 
     /// Libtool Deterministic Mode
@@ -11488,9 +11490,9 @@ extension BuildSettingsKey {
 }
 
 public enum PbxcpBitcodeStripMode: String, Hashable, Codable, CustomStringConvertible {
-    case all = "all"
     case replaceWithMarker = "replace-with-marker"
     case none = "none"
+    case all = "all"
 
     public var description: String {
         rawValue
@@ -11527,7 +11529,7 @@ extension BuildSetting {
 
     /// Pbxcp Ignore Missing Inputs
     public static func pbxcpIgnoreMissingInputs(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .pbxcpIgnoreMissingInputs, value: .string(value.asText))
+        BuildSetting(key: .pbxcpIgnoreMissingInputs, value: SettingValue(value))
     }
 
     /// Pbxcp Ignore Missing Inputs
@@ -11552,7 +11554,7 @@ extension BuildSetting {
 
     /// Pbxcp Strip Bitcode
     public static func pbxcpStripBitcode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .pbxcpStripBitcode, value: .string(value.asText))
+        BuildSetting(key: .pbxcpStripBitcode, value: SettingValue(value))
     }
 
     /// Pbxcp Strip Bitcode
@@ -11597,7 +11599,7 @@ extension BuildSetting {
 
     /// Remove Header Directories
     public static func removeHeaderDirectories(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .removeHeaderDirectories, value: .string(value.asText))
+        BuildSetting(key: .removeHeaderDirectories, value: SettingValue(value))
     }
 
     /// Remove Header Directories
@@ -11622,7 +11624,7 @@ extension BuildSetting {
 
     /// Per Style Build Directories
     public static func perStyleBuildDirectories(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .perStyleBuildDirectories, value: .string(value.asText))
+        BuildSetting(key: .perStyleBuildDirectories, value: SettingValue(value))
     }
 
     /// Per Style Build Directories
@@ -11647,7 +11649,7 @@ extension BuildSetting {
 
     /// Tapi Application Extension Api Only
     public static func tapiApplicationExtensionApiOnly(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .tapiApplicationExtensionApiOnly, value: .string(value.asText))
+        BuildSetting(key: .tapiApplicationExtensionApiOnly, value: SettingValue(value))
     }
 
     /// Tapi Application Extension Api Only
@@ -11832,7 +11834,7 @@ extension BuildSetting {
 
     /// Tapi Emit Profiling Symbols
     public static func tapiEmitProfilingSymbols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .tapiEmitProfilingSymbols, value: .string(value.asText))
+        BuildSetting(key: .tapiEmitProfilingSymbols, value: SettingValue(value))
     }
 
     /// Tapi Emit Profiling Symbols
@@ -11857,7 +11859,7 @@ extension BuildSetting {
 
     /// Tapi Enable Modules
     public static func tapiEnableModules(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .tapiEnableModules, value: .string(value.asText))
+        BuildSetting(key: .tapiEnableModules, value: SettingValue(value))
     }
 
     /// Tapi Enable Modules
@@ -11882,7 +11884,7 @@ extension BuildSetting {
 
     /// Tapi Enable Verification Mode
     public static func tapiEnableVerificationMode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .tapiEnableVerificationMode, value: .string(value.asText))
+        BuildSetting(key: .tapiEnableVerificationMode, value: SettingValue(value))
     }
 
     /// Tapi Enable Verification Mode
@@ -12022,7 +12024,7 @@ extension BuildSetting {
 
     /// Tapi Modules Validate System Headers
     public static func tapiModulesValidateSystemHeaders(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .tapiModulesValidateSystemHeaders, value: .string(value.asText))
+        BuildSetting(key: .tapiModulesValidateSystemHeaders, value: SettingValue(value))
     }
 
     /// Tapi Modules Validate System Headers
@@ -12421,7 +12423,7 @@ extension BuildSetting {
     ///
     /// Always embed the Swift standard libraries in the target’s products, even if the target does not contain any Swift code. For example, this should be enabled if the target is embedding other products which contain Swift, or if it is a test target which does not contain Swift but which is testing a product which does. This setting only applies to wrapped products, not to standalone binary products.
     public static func alwaysEmbedSwiftStandardLibraries(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .alwaysEmbedSwiftStandardLibraries, value: .string(value.asText))
+        BuildSetting(key: .alwaysEmbedSwiftStandardLibraries, value: SettingValue(value))
     }
 
     /// Always Embed Swift Standard Libraries
@@ -12450,7 +12452,7 @@ extension BuildSetting {
 
     /// Embedded Content Contains Swift
     public static func embeddedContentContainsSwift(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .embeddedContentContainsSwift, value: .string(value.asText))
+        BuildSetting(key: .embeddedContentContainsSwift, value: SettingValue(value))
     }
 
     /// Embedded Content Contains Swift
@@ -12745,7 +12747,7 @@ extension BuildSetting {
 
     /// Swift Stdlib Tool Strip Bitcode
     public static func swiftStdlibToolStripBitcode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .swiftStdlibToolStripBitcode, value: .string(value.asText))
+        BuildSetting(key: .swiftStdlibToolStripBitcode, value: SettingValue(value))
     }
 
     /// Swift Stdlib Tool Strip Bitcode
@@ -12836,9 +12838,9 @@ extension BuildSettingsKey {
 }
 
 public enum SwiftStdlibToolVerbosity: String, Hashable, Codable, CustomStringConvertible {
+    case extraVerbose = "extra-verbose"
     case none = "none"
     case verbose = "verbose"
-    case extraVerbose = "extra-verbose"
 
     public var description: String {
         rawValue
@@ -12967,7 +12969,7 @@ extension BuildSetting {
 
     /// Clang Address Sanitizer
     public static func clangAddressSanitizer(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangAddressSanitizer, value: .string(value.asText))
+        BuildSetting(key: .clangAddressSanitizer, value: SettingValue(value))
     }
 
     /// Clang Address Sanitizer
@@ -12992,7 +12994,7 @@ extension BuildSetting {
 
     /// Clang Address Sanitizer Allow Error Recovery
     public static func clangAddressSanitizerAllowErrorRecovery(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangAddressSanitizerAllowErrorRecovery, value: .string(value.asText))
+        BuildSetting(key: .clangAddressSanitizerAllowErrorRecovery, value: SettingValue(value))
     }
 
     /// Clang Address Sanitizer Allow Error Recovery
@@ -13021,7 +13023,7 @@ extension BuildSetting {
     ///
     /// Check for C++ container overflow when Address Sanitizer is enabled. This check requires the entire application to be built with Address Sanitizer. If not, it may report false positives.
     public static func enableCppContainerOverflowChecks(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableCppContainerOverflowChecks, value: .string(value.asText))
+        BuildSetting(key: .enableCppContainerOverflowChecks, value: SettingValue(value))
     }
 
     /// Enable C++ Container Overflow Checks
@@ -13050,7 +13052,7 @@ extension BuildSetting {
 
     /// Clang Address Sanitizer Use After Scope
     public static func clangAddressSanitizerUseAfterScope(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangAddressSanitizerUseAfterScope, value: .string(value.asText))
+        BuildSetting(key: .clangAddressSanitizerUseAfterScope, value: SettingValue(value))
     }
 
     /// Clang Address Sanitizer Use After Scope
@@ -13079,7 +13081,7 @@ extension BuildSetting {
     ///
     /// Enabling this setting allows non-modular includes to be used from within framework modules. This is inherently unsafe, as such headers might cause duplicate definitions when used by any client that imports both the framework and the non-modular includes.
     public static func allowNonModularIncludesInFrameworkModules(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .allowNonModularIncludesInFrameworkModules, value: .string(value.asText))
+        BuildSetting(key: .allowNonModularIncludesInFrameworkModules, value: SettingValue(value))
     }
 
     /// Allow Non-modular Includes In Framework Modules
@@ -13108,7 +13110,7 @@ extension BuildSetting {
 
     /// Clang Analyzer Alternate Edges
     public static func clangAnalyzerAlternateEdges(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangAnalyzerAlternateEdges, value: .string(value.asText))
+        BuildSetting(key: .clangAnalyzerAlternateEdges, value: SettingValue(value))
     }
 
     /// Clang Analyzer Alternate Edges
@@ -13137,7 +13139,7 @@ extension BuildSetting {
     ///
     /// Check for values stored to variables and never read again.
     public static func deadStores(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .deadStores, value: .string(value.asText))
+        BuildSetting(key: .deadStores, value: SettingValue(value))
     }
 
     /// Dead Stores
@@ -13191,7 +13193,7 @@ extension BuildSetting {
 
     /// Clang Analyzer Divide By Zero
     public static func clangAnalyzerDivideByZero(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangAnalyzerDivideByZero, value: .string(value.asText))
+        BuildSetting(key: .clangAnalyzerDivideByZero, value: SettingValue(value))
     }
 
     /// Clang Analyzer Divide By Zero
@@ -13245,7 +13247,7 @@ extension BuildSetting {
     ///
     /// Check for misuses of the Grand Central Dispatch API.
     public static func misuseOfGrandCentralDispatch(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .misuseOfGrandCentralDispatch, value: .string(value.asText))
+        BuildSetting(key: .misuseOfGrandCentralDispatch, value: SettingValue(value))
     }
 
     /// Misuse of Grand Central Dispatch
@@ -13278,7 +13280,7 @@ extension BuildSetting {
     ///
     /// Check for Grand Central Dispatch idioms that may lead to poor performance.
     public static func performanceAntiPatternsWithGrandCentralDispatch(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .performanceAntiPatternsWithGrandCentralDispatch, value: .string(value.asText))
+        BuildSetting(key: .performanceAntiPatternsWithGrandCentralDispatch, value: SettingValue(value))
     }
 
     /// Performance Anti-Patterns with Grand Central Dispatch
@@ -13311,7 +13313,7 @@ extension BuildSetting {
     ///
     /// Finds leaks and overreleases associated with objects inheriting from OSObject
     public static func violationOfIokitAndLibkernReferenceCountingRules(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .violationOfIokitAndLibkernReferenceCountingRules, value: .string(value.asText))
+        BuildSetting(key: .violationOfIokitAndLibkernReferenceCountingRules, value: SettingValue(value))
     }
 
     /// Violation of IOKit and libkern Reference Counting Rules
@@ -13344,7 +13346,7 @@ extension BuildSetting {
     ///
     /// Warn when a call to an `NSLocalizedString()` macro is missing a context comment for the localizer.
     public static func missingLocalizationContextComment(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .missingLocalizationContextComment, value: .string(value.asText))
+        BuildSetting(key: .missingLocalizationContextComment, value: SettingValue(value))
     }
 
     /// Missing Localization Context Comment
@@ -13377,7 +13379,7 @@ extension BuildSetting {
     ///
     /// Warn when a nonlocalized string is passed to a user interface method expecting a localized string.
     public static func missingLocalizability(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .missingLocalizability, value: .string(value.asText))
+        BuildSetting(key: .missingLocalizability, value: SettingValue(value))
     }
 
     /// Missing Localizability
@@ -13406,7 +13408,7 @@ extension BuildSetting {
 
     /// Clang Analyzer Malloc
     public static func clangAnalyzerMalloc(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangAnalyzerMalloc, value: .string(value.asText))
+        BuildSetting(key: .clangAnalyzerMalloc, value: SettingValue(value))
     }
 
     /// Clang Analyzer Malloc
@@ -13435,7 +13437,7 @@ extension BuildSetting {
     ///
     /// Warn about memory leaks, use-after-free, and other API misuses.
     public static func improperMemoryManagement(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .improperMemoryManagement, value: .string(value.asText))
+        BuildSetting(key: .improperMemoryManagement, value: SettingValue(value))
     }
 
     /// Improper Memory Management
@@ -13468,7 +13470,7 @@ extension BuildSetting {
     ///
     /// Warn when a MIG routine violates memory management conventions.
     public static func violationOfMachInterfaceGeneratorConventions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .violationOfMachInterfaceGeneratorConventions, value: .string(value.asText))
+        BuildSetting(key: .violationOfMachInterfaceGeneratorConventions, value: SettingValue(value))
     }
 
     /// Violation of Mach Interface Generator Conventions
@@ -13521,9 +13523,9 @@ extension BuildSettingsKey {
 }
 
 public enum MisuseOfNonnull: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yes = "YES"
     case yesNonaggressive = "YES_NONAGGRESSIVE"
+    case no = "NO"
 
     public var description: String {
         rawValue
@@ -13548,7 +13550,7 @@ extension BuildSetting {
 
     /// Clang Analyzer Null Dereference
     public static func clangAnalyzerNullDereference(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangAnalyzerNullDereference, value: .string(value.asText))
+        BuildSetting(key: .clangAnalyzerNullDereference, value: SettingValue(value))
     }
 
     /// Clang Analyzer Null Dereference
@@ -13597,8 +13599,8 @@ extension BuildSettingsKey {
 }
 
 public enum SuspiciousConversionsOfNsnumberAndCfnumberref: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
     case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
@@ -13628,7 +13630,7 @@ extension BuildSetting {
     ///
     /// Warn on `nil` pointers used as mutexes for `@synchronized`.
     public static func SynchronizedWithNilMutex(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .SynchronizedWithNilMutex, value: .string(value.asText))
+        BuildSetting(key: .SynchronizedWithNilMutex, value: SettingValue(value))
     }
 
     /// @synchronized with nil mutex
@@ -13661,7 +13663,7 @@ extension BuildSetting {
     ///
     /// Warn if `CF` collections are created with non-pointer-size values. Check if `NS` collections are initialized with non-Objective-C type elements.
     public static func misuseOfCollectionsApi(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .misuseOfCollectionsApi, value: .string(value.asText))
+        BuildSetting(key: .misuseOfCollectionsApi, value: SettingValue(value))
     }
 
     /// Misuse of Collections API
@@ -13694,7 +13696,7 @@ extension BuildSetting {
     ///
     /// Warn when an instance is improperly cleaned up in `-dealloc`.
     public static func improperInstanceCleanupInDealloc(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .improperInstanceCleanupInDealloc, value: .string(value.asText))
+        BuildSetting(key: .improperInstanceCleanupInDealloc, value: SettingValue(value))
     }
 
     /// Improper Instance Cleanup in '-dealloc'
@@ -13727,7 +13729,7 @@ extension BuildSetting {
     ///
     /// Warn if a specialized generic type is converted to an incompatible type.
     public static func misuseOfObjectiveCGenerics(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .misuseOfObjectiveCGenerics, value: .string(value.asText))
+        BuildSetting(key: .misuseOfObjectiveCGenerics, value: SettingValue(value))
     }
 
     /// Misuse of Objective-C generics
@@ -13760,7 +13762,7 @@ extension BuildSetting {
     ///
     /// Warn about Objective-C method signatures with type incompatibilities.
     public static func methodSignaturesMismatch(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .methodSignaturesMismatch, value: .string(value.asText))
+        BuildSetting(key: .methodSignaturesMismatch, value: SettingValue(value))
     }
 
     /// Method Signatures Mismatch
@@ -13793,7 +13795,7 @@ extension BuildSetting {
     ///
     /// Warn if functions accepting `CFErrorRef` or `NSError` cannot indicate that an error occurred.
     public static func improperHandlingOfCferrorAndNserror(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .improperHandlingOfCferrorAndNserror, value: .string(value.asText))
+        BuildSetting(key: .improperHandlingOfCferrorAndNserror, value: SettingValue(value))
     }
 
     /// Improper Handling of CFError and NSError
@@ -13826,7 +13828,7 @@ extension BuildSetting {
     ///
     /// Warn on leaks and improper reference count management.
     public static func violationOfReferenceCountingRules(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .violationOfReferenceCountingRules, value: .string(value.asText))
+        BuildSetting(key: .violationOfReferenceCountingRules, value: SettingValue(value))
     }
 
     /// Violation of Reference Counting Rules
@@ -13859,7 +13861,7 @@ extension BuildSetting {
     ///
     /// Check that `super init` is properly called within an Objective-C initialization method.
     public static func violationOfSelfSuperInitRule(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .violationOfSelfSuperInitRule, value: .string(value.asText))
+        BuildSetting(key: .violationOfSelfSuperInitRule, value: SettingValue(value))
     }
 
     /// Violation of 'self = `super init`' Rule
@@ -13892,7 +13894,7 @@ extension BuildSetting {
     ///
     /// Warn about private ivars that are never used.
     public static func unusedIvars(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .unusedIvars, value: .string(value.asText))
+        BuildSetting(key: .unusedIvars, value: SettingValue(value))
     }
 
     /// Unused Ivars
@@ -13987,8 +13989,8 @@ extension BuildSettingsKey {
 }
 
 public enum ClangAnalyzerOutput: String, Hashable, Codable, CustomStringConvertible {
-    case plistMultiFile = "plist-multi-file"
     case `default` = "default"
+    case plistMultiFile = "plist-multi-file"
 
     public var description: String {
         rawValue
@@ -14030,7 +14032,7 @@ extension BuildSetting {
 
     /// Clang Analyzer Report Main Source File
     public static func clangAnalyzerReportMainSourceFile(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangAnalyzerReportMainSourceFile, value: .string(value.asText))
+        BuildSetting(key: .clangAnalyzerReportMainSourceFile, value: SettingValue(value))
     }
 
     /// Clang Analyzer Report Main Source File
@@ -14059,7 +14061,7 @@ extension BuildSetting {
     ///
     /// Check for potential buffer overflows.
     public static func ExperimentalBufferOverflows(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ExperimentalBufferOverflows, value: .string(value.asText))
+        BuildSetting(key: .ExperimentalBufferOverflows, value: SettingValue(value))
     }
 
     /// *EXPERIMENTAL* Buffer overflows
@@ -14092,7 +14094,7 @@ extension BuildSetting {
     ///
     /// Warn on using a floating point value as a loop counter (CERT: FLP30-C, FLP30-CPP).
     public static func floatingPointValueUsedAsLoopCounter(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .floatingPointValueUsedAsLoopCounter, value: .string(value.asText))
+        BuildSetting(key: .floatingPointValueUsedAsLoopCounter, value: SettingValue(value))
     }
 
     /// Floating Point Value Used as Loop Counter
@@ -14125,7 +14127,7 @@ extension BuildSetting {
     ///
     /// Warn on uses of `getpw` and `gets`. The functions are dangerous as they may trigger a buffer overflow.
     public static func useOfGetpwGetsBufferOverflow(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useOfGetpwGetsBufferOverflow, value: .string(value.asText))
+        BuildSetting(key: .useOfGetpwGetsBufferOverflow, value: SettingValue(value))
     }
 
     /// Use of 'getpw', 'gets' (Buffer Overflow)
@@ -14158,7 +14160,7 @@ extension BuildSetting {
     ///
     /// Warn on uses of `mktemp`, which produces predictable temporary files. It is obsoleted by `mktemps`. Warn when `mkstemp` is passed fewer than 6 `X`’s in the format string.
     public static func useOfMktempOrPredictableMktemps(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useOfMktempOrPredictableMktemps, value: .string(value.asText))
+        BuildSetting(key: .useOfMktempOrPredictableMktemps, value: SettingValue(value))
     }
 
     /// Use of 'mktemp' or Predictable 'mktemps'
@@ -14191,7 +14193,7 @@ extension BuildSetting {
     ///
     /// Warn on uses of `rand`, `random`, and related functions, which produce predictable random number sequences. Use `arc4random` instead.
     public static func useOfRandFunctions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useOfRandFunctions, value: .string(value.asText))
+        BuildSetting(key: .useOfRandFunctions, value: SettingValue(value))
     }
 
     /// Use of 'rand' Functions
@@ -14224,7 +14226,7 @@ extension BuildSetting {
     ///
     /// Warn on uses of the `strcpy` and `strcat` functions, which can result in buffer overflows. Use `strlcpy` or `strlcat` instead.
     public static func useOfStrcpyAndStrcat(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useOfStrcpyAndStrcat, value: .string(value.asText))
+        BuildSetting(key: .useOfStrcpyAndStrcat, value: SettingValue(value))
     }
 
     /// Use of 'strcpy' and 'strcat'
@@ -14257,7 +14259,7 @@ extension BuildSetting {
     ///
     /// Warn on uses of sensitive functions whose return values must be always checked.
     public static func uncheckedReturnValues(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .uncheckedReturnValues, value: .string(value.asText))
+        BuildSetting(key: .uncheckedReturnValues, value: SettingValue(value))
     }
 
     /// Unchecked Return Values
@@ -14290,7 +14292,7 @@ extension BuildSetting {
     ///
     /// Warn on uses of the `vfork` function, which is inherently insecure. Use the safer `posix_spawn` function instead.
     public static func useOfVfork(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useOfVfork, value: .string(value.asText))
+        BuildSetting(key: .useOfVfork, value: SettingValue(value))
     }
 
     /// Use of 'vfork'
@@ -14323,7 +14325,7 @@ extension BuildSetting {
     ///
     /// Check for leaks of keychain attribute lists and data buffers returned by the Keychain Services API.
     public static func misuseOfKeychainServicesApi(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .misuseOfKeychainServicesApi, value: .string(value.asText))
+        BuildSetting(key: .misuseOfKeychainServicesApi, value: SettingValue(value))
     }
 
     /// Misuse of Keychain Services API
@@ -14376,9 +14378,9 @@ extension BuildSettingsKey {
 }
 
 public enum UseAfterMoveErrorsInCpp: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case no = "NO"
     case yesAggressive = "YES_AGGRESSIVE"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -14403,7 +14405,7 @@ extension BuildSetting {
 
     /// Clang Arc Migrate Emit Error
     public static func clangArcMigrateEmitError(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangArcMigrateEmitError, value: .string(value.asText))
+        BuildSetting(key: .clangArcMigrateEmitError, value: SettingValue(value))
     }
 
     /// Clang Arc Migrate Emit Error
@@ -14464,9 +14466,9 @@ extension BuildSettingsKey {
 }
 
 public enum ClangBitcodeGenerationMode: String, Hashable, Codable, CustomStringConvertible {
-    case marker = "marker"
-    case bitcode = "bitcode"
     case none = "none"
+    case bitcode = "bitcode"
+    case marker = "marker"
 
     public var description: String {
         rawValue
@@ -14483,7 +14485,7 @@ extension BuildSetting {
 
     /// Clang Color Diagnostics
     public static func clangColorDiagnostics(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangColorDiagnostics, value: .string(value.asText))
+        BuildSetting(key: .clangColorDiagnostics, value: SettingValue(value))
     }
 
     /// Clang Color Diagnostics
@@ -14508,7 +14510,7 @@ extension BuildSetting {
 
     /// Clang Coverage Mapping
     public static func clangCoverageMapping(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangCoverageMapping, value: .string(value.asText))
+        BuildSetting(key: .clangCoverageMapping, value: SettingValue(value))
     }
 
     /// Clang Coverage Mapping
@@ -14533,7 +14535,7 @@ extension BuildSetting {
 
     /// Clang Coverage Mapping Linker Args
     public static func clangCoverageMappingLinkerArgs(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangCoverageMappingLinkerArgs, value: .string(value.asText))
+        BuildSetting(key: .clangCoverageMappingLinkerArgs, value: SettingValue(value))
     }
 
     /// Clang Coverage Mapping Linker Args
@@ -14582,15 +14584,15 @@ extension BuildSettingsKey {
 }
 
 public enum CppLanguageDialect: String, Hashable, Codable, CustomStringConvertible {
-    case cpp17 = "c++17"
-    case gnupp17 = "gnu++17"
-    case compilerDefault = "compiler-default"
-    case cpp98 = "c++98"
-    case gnupp98 = "gnu++98"
+    case gnupp0x = "gnu++0x"
     case cpp0x = "c++0x"
     case cpp14 = "c++14"
+    case gnupp98 = "gnu++98"
+    case gnupp17 = "gnu++17"
+    case cpp98 = "c++98"
     case gnupp14 = "gnu++14"
-    case gnupp0x = "gnu++0x"
+    case cpp17 = "c++17"
+    case compilerDefault = "compiler-default"
 
     public var description: String {
         rawValue
@@ -14623,8 +14625,8 @@ extension BuildSettingsKey {
 }
 
 public enum CppStandardLibrary: String, Hashable, Codable, CustomStringConvertible {
-    case libstdcpp = "libstdc++"
     case libcpp = "libc++"
+    case libstdcpp = "libstdc++"
     case compilerDefault = "compiler-default"
 
     public var description: String {
@@ -14684,7 +14686,7 @@ extension BuildSetting {
 
     /// Clang Debug Modules
     public static func clangDebugModules(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangDebugModules, value: .string(value.asText))
+        BuildSetting(key: .clangDebugModules, value: SettingValue(value))
     }
 
     /// Clang Debug Modules
@@ -14709,7 +14711,7 @@ extension BuildSetting {
 
     /// Clang Enable App Extension
     public static func clangEnableAppExtension(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangEnableAppExtension, value: .string(value.asText))
+        BuildSetting(key: .clangEnableAppExtension, value: SettingValue(value))
     }
 
     /// Clang Enable App Extension
@@ -14738,7 +14740,7 @@ extension BuildSetting {
     ///
     /// Enables building with code coverage instrumentation. This is only used when the build has code coverage enabled, which is typically done via the Xcode scheme settings.
     public static func enableCodeCoverageSupport(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableCodeCoverageSupport, value: .string(value.asText))
+        BuildSetting(key: .enableCodeCoverageSupport, value: SettingValue(value))
     }
 
     /// Enable Code Coverage Support
@@ -14771,7 +14773,7 @@ extension BuildSetting {
     ///
     /// Controls whether variables with static or thread storage duration should have their exit-time destructors run.
     public static func destroyStaticObjects(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .destroyStaticObjects, value: .string(value.asText))
+        BuildSetting(key: .destroyStaticObjects, value: SettingValue(value))
     }
 
     /// Destroy Static Objects
@@ -14804,7 +14806,7 @@ extension BuildSetting {
     ///
     /// Enables the use of modules for system APIs. System headers are imported as semantic modules instead of raw headers. This can result in faster builds and project indexing.
     public static func enableModulesCAndObjectiveC(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableModulesCAndObjectiveC, value: .string(value.asText))
+        BuildSetting(key: .enableModulesCAndObjectiveC, value: SettingValue(value))
     }
 
     /// Enable Modules (C and Objective-C)
@@ -14837,7 +14839,7 @@ extension BuildSetting {
     ///
     /// When this setting is enabled, `clang` will use the shared debug info available in `clang` modules and precompiled headers. This results in smaller build artifacts, faster compile times, and more complete debug info. This setting should only be disabled when building static libraries with debug info for distribution.
     public static func enableClangModuleDebugging(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableClangModuleDebugging, value: .string(value.asText))
+        BuildSetting(key: .enableClangModuleDebugging, value: SettingValue(value))
     }
 
     /// Enable Clang Module Debugging
@@ -14866,7 +14868,7 @@ extension BuildSetting {
 
     /// Clang Enable Module Implementation Of
     public static func clangEnableModuleImplementationOf(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangEnableModuleImplementationOf, value: .string(value.asText))
+        BuildSetting(key: .clangEnableModuleImplementationOf, value: SettingValue(value))
     }
 
     /// Clang Enable Module Implementation Of
@@ -14895,7 +14897,7 @@ extension BuildSetting {
     ///
     /// Compiles reference-counted Objective-C code (when garbage collection is not enabled) to use Automatic Reference Counting. Code compiled using automated reference counting is compatible with other code (such as frameworks) compiled using either manual reference counting (for example, traditional `retain` and `release` messages) or automated reference counting. Using this mode is currently incompatible with compiling code to use Objective-C Garbage Collection.
     public static func objectiveCAutomaticReferenceCounting(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .objectiveCAutomaticReferenceCounting, value: .string(value.asText))
+        BuildSetting(key: .objectiveCAutomaticReferenceCounting, value: SettingValue(value))
     }
 
     /// Objective-C Automatic Reference Counting
@@ -14928,7 +14930,7 @@ extension BuildSetting {
     ///
     /// Compiles Objective-C code to enable weak references for code compiled with manual retain release (MRR) semantics.
     public static func weakReferencesInManualRetainRelease(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .weakReferencesInManualRetainRelease, value: .string(value.asText))
+        BuildSetting(key: .weakReferencesInManualRetainRelease, value: SettingValue(value))
     }
 
     /// Weak References in Manual Retain Release
@@ -14952,7 +14954,7 @@ extension BuildSetting {
 
     /// Clang Index Store Enable
     public static func clangIndexStoreEnable(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangIndexStoreEnable, value: .string(value.asText))
+        BuildSetting(key: .clangIndexStoreEnable, value: SettingValue(value))
     }
 
     /// Clang Index Store Enable
@@ -15002,7 +15004,7 @@ extension BuildSetting {
 
     /// Clang Instrument For Optimization Profiling
     public static func clangInstrumentForOptimizationProfiling(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangInstrumentForOptimizationProfiling, value: .string(value.asText))
+        BuildSetting(key: .clangInstrumentForOptimizationProfiling, value: SettingValue(value))
     }
 
     /// Clang Instrument For Optimization Profiling
@@ -15031,7 +15033,7 @@ extension BuildSetting {
     ///
     /// When linking a target using Objective-C code, implicitly link in Foundation (and if deploying back to an older OS) a backwards compatibility library to allow newer language features to run on an OS where the runtime support is not natively available. Most targets that use Objective-C should use this, although there are rare cases where a target should opt out of this behavior.
     public static func implicitlyLinkObjectiveCRuntimeSupport(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .implicitlyLinkObjectiveCRuntimeSupport, value: .string(value.asText))
+        BuildSetting(key: .implicitlyLinkObjectiveCRuntimeSupport, value: SettingValue(value))
     }
 
     /// Implicitly Link Objective-C Runtime Support
@@ -15089,7 +15091,7 @@ extension BuildSetting {
     ///
     /// Add attribute annotations to properties and methods.
     public static func addAttributeAnnotations(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .addAttributeAnnotations, value: .string(value.asText))
+        BuildSetting(key: .addAttributeAnnotations, value: SettingValue(value))
     }
 
     /// Add attribute annotations
@@ -15122,7 +15124,7 @@ extension BuildSetting {
     ///
     /// Infer `instancetype` for method result type instead of `id`.
     public static func inferInstancetypeForMethodResultType(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .inferInstancetypeForMethodResultType, value: .string(value.asText))
+        BuildSetting(key: .inferInstancetypeForMethodResultType, value: SettingValue(value))
     }
 
     /// Infer instancetype for method result type
@@ -15155,7 +15157,7 @@ extension BuildSetting {
     ///
     /// Use `NS_ENUM`/`NS_OPTIONS` macros for enumerators.
     public static func useNsEnumNsOptionsMacros(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useNsEnumNsOptionsMacros, value: .string(value.asText))
+        BuildSetting(key: .useNsEnumNsOptionsMacros, value: SettingValue(value))
     }
 
     /// Use NS_ENUM/NS_OPTIONS macros
@@ -15188,7 +15190,7 @@ extension BuildSetting {
     ///
     /// Infer `NS_DESIGNATED_INITIALIZER` for designated initializer methods.
     public static func inferDesignatedInitializerMethods(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .inferDesignatedInitializerMethods, value: .string(value.asText))
+        BuildSetting(key: .inferDesignatedInitializerMethods, value: SettingValue(value))
     }
 
     /// Infer designated initializer methods
@@ -15221,7 +15223,7 @@ extension BuildSetting {
     ///
     /// Enable migration to modern ObjC literals syntax.
     public static func objcLiterals(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .objcLiterals, value: .string(value.asText))
+        BuildSetting(key: .objcLiterals, value: SettingValue(value))
     }
 
     /// ObjC literals
@@ -15254,7 +15256,7 @@ extension BuildSetting {
     ///
     /// Enable migration to modern ObjC subscripting syntax.
     public static func objcSubscripting(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .objcSubscripting, value: .string(value.asText))
+        BuildSetting(key: .objcSubscripting, value: SettingValue(value))
     }
 
     /// ObjC subscripting
@@ -15307,9 +15309,9 @@ extension BuildSettingsKey {
 }
 
 public enum AtomicityOfInferredProperties: String, Hashable, Codable, CustomStringConvertible {
+    case nsNonatomicIosonly = "NS_NONATOMIC_IOSONLY"
     case atomic = "atomic"
     case nonatomic = "nonatomic"
-    case nsNonatomicIosonly = "NS_NONATOMIC_IOSONLY"
 
     public var description: String {
         rawValue
@@ -15330,7 +15332,7 @@ extension BuildSetting {
     ///
     /// Enable migration of setter/getter messages to property-dot syntax.
     public static func objcPropertyDotSyntax(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .objcPropertyDotSyntax, value: .string(value.asText))
+        BuildSetting(key: .objcPropertyDotSyntax, value: SettingValue(value))
     }
 
     /// ObjC property-dot syntax
@@ -15363,7 +15365,7 @@ extension BuildSetting {
     ///
     /// Infer protocol conformance from the interface methods.
     public static func inferProtocolConformance(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .inferProtocolConformance, value: .string(value.asText))
+        BuildSetting(key: .inferProtocolConformance, value: SettingValue(value))
     }
 
     /// Infer protocol conformance
@@ -15396,7 +15398,7 @@ extension BuildSetting {
     ///
     /// Only modify public headers of a target.
     public static func onlyModifyPublicHeaders(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .onlyModifyPublicHeaders, value: .string(value.asText))
+        BuildSetting(key: .onlyModifyPublicHeaders, value: SettingValue(value))
     }
 
     /// Only modify public headers
@@ -15429,7 +15431,7 @@ extension BuildSetting {
     ///
     /// Infer readonly properties from getter methods.
     public static func inferReadonlyProperties(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .inferReadonlyProperties, value: .string(value.asText))
+        BuildSetting(key: .inferReadonlyProperties, value: SettingValue(value))
     }
 
     /// Infer readonly properties
@@ -15462,7 +15464,7 @@ extension BuildSetting {
     ///
     /// Infer readwrite properties from a getter and setter method.
     public static func inferReadwriteProperties(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .inferReadwriteProperties, value: .string(value.asText))
+        BuildSetting(key: .inferReadwriteProperties, value: SettingValue(value))
     }
 
     /// Infer readwrite properties
@@ -15495,7 +15497,7 @@ extension BuildSetting {
     ///
     /// Automatically link SDK frameworks that are referenced using `#import` or `#include`. This feature requires also enabling support for modules. This build setting only applies to C-family languages.
     public static func linkFrameworksAutomatically(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .linkFrameworksAutomatically, value: .string(value.asText))
+        BuildSetting(key: .linkFrameworksAutomatically, value: SettingValue(value))
     }
 
     /// Link Frameworks Automatically
@@ -15548,7 +15550,7 @@ extension BuildSetting {
     ///
     /// Disable warnings related to the recommended use of private module naming. This only makes sense when support for modules is enabled.
     public static func disablePrivateModulesWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .disablePrivateModulesWarnings, value: .string(value.asText))
+        BuildSetting(key: .disablePrivateModulesWarnings, value: SettingValue(value))
     }
 
     /// Disable Private Modules Warnings
@@ -15657,7 +15659,7 @@ extension BuildSetting {
 
     /// Clang Modules Validate System Headers
     public static func clangModulesValidateSystemHeaders(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangModulesValidateSystemHeaders, value: .string(value.asText))
+        BuildSetting(key: .clangModulesValidateSystemHeaders, value: SettingValue(value))
     }
 
     /// Clang Modules Validate System Headers
@@ -15702,7 +15704,7 @@ extension BuildSetting {
 
     /// Clang Module Lsv
     public static func clangModuleLsv(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangModuleLsv, value: .string(value.asText))
+        BuildSetting(key: .clangModuleLsv, value: SettingValue(value))
     }
 
     /// Clang Module Lsv
@@ -15780,7 +15782,7 @@ extension BuildSetting {
 
     /// Clang Retain Comments From System Headers
     public static func clangRetainCommentsFromSystemHeaders(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangRetainCommentsFromSystemHeaders, value: .string(value.asText))
+        BuildSetting(key: .clangRetainCommentsFromSystemHeaders, value: SettingValue(value))
     }
 
     /// Clang Retain Comments From System Headers
@@ -15871,8 +15873,8 @@ extension BuildSettingsKey {
 }
 
 public enum ModeOfAnalysisForAnalyze: String, Hashable, Codable, CustomStringConvertible {
-    case shallow = "shallow"
     case deep = "deep"
+    case shallow = "shallow"
 
     public var description: String {
         rawValue
@@ -15939,7 +15941,7 @@ extension BuildSetting {
 
     /// Clang Thread Sanitizer
     public static func clangThreadSanitizer(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangThreadSanitizer, value: .string(value.asText))
+        BuildSetting(key: .clangThreadSanitizer, value: SettingValue(value))
     }
 
     /// Clang Thread Sanitizer
@@ -16013,8 +16015,8 @@ extension BuildSettingsKey {
 }
 
 public enum TrivialAutomaticVariableInitialization: String, Hashable, Codable, CustomStringConvertible {
-    case pattern = "pattern"
     case uninitialized = "uninitialized"
+    case pattern = "pattern"
 
     public var description: String {
         rawValue
@@ -16026,7 +16028,7 @@ extension BuildSetting {
 
     /// Clang Undefined Behavior Sanitizer
     public static func clangUndefinedBehaviorSanitizer(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangUndefinedBehaviorSanitizer, value: .string(value.asText))
+        BuildSetting(key: .clangUndefinedBehaviorSanitizer, value: SettingValue(value))
     }
 
     /// Clang Undefined Behavior Sanitizer
@@ -16055,7 +16057,7 @@ extension BuildSetting {
     ///
     /// Check for unsigned integer overflow, in addition to checks for signed integer overflow.
     public static func enableExtraIntegerChecks(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableExtraIntegerChecks, value: .string(value.asText))
+        BuildSetting(key: .enableExtraIntegerChecks, value: SettingValue(value))
     }
 
     /// Enable Extra Integer Checks
@@ -16088,7 +16090,7 @@ extension BuildSetting {
     ///
     /// Check for violations of nullability annotations in function calls, return statements, and assignments.
     public static func enableNullabilityAnnotationChecks(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableNullabilityAnnotationChecks, value: .string(value.asText))
+        BuildSetting(key: .enableNullabilityAnnotationChecks, value: SettingValue(value))
     }
 
     /// Enable Nullability Annotation Checks
@@ -16121,7 +16123,7 @@ extension BuildSetting {
     ///
     /// When this setting is enabled, `clang` will use the optimization profile collected for a target when building it.
     public static func useOptimizationProfile(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useOptimizationProfile, value: .string(value.asText))
+        BuildSetting(key: .useOptimizationProfile, value: SettingValue(value))
     }
 
     /// Use Optimization Profile
@@ -16154,7 +16156,7 @@ extension BuildSetting {
     ///
     /// Warn about assigning integer constants to enum values that are out of the range of the enumerated type.
     public static func outOfRangeEnumAssignments(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .outOfRangeEnumAssignments, value: .string(value.asText))
+        BuildSetting(key: .outOfRangeEnumAssignments, value: SettingValue(value))
     }
 
     /// Out-of-Range Enum Assignments
@@ -16187,7 +16189,7 @@ extension BuildSetting {
     ///
     /// Warns when an atomic is used with an implicitly sequentially-consistent memory order, instead of explicitly specifying memory order.
     public static func usageOfImplicitSequentiallyConsistentAtomics(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .usageOfImplicitSequentiallyConsistentAtomics, value: .string(value.asText))
+        BuildSetting(key: .usageOfImplicitSequentiallyConsistentAtomics, value: SettingValue(value))
     }
 
     /// Usage of implicit sequentially-consistent atomics
@@ -16241,8 +16243,8 @@ extension BuildSettingsKey {
 
 public enum BlockCaptureOfAutoreleasing: String, Hashable, Codable, CustomStringConvertible {
     case no = "NO"
-    case yes = "YES"
     case yesError = "YES_ERROR"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -16291,9 +16293,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitBooleanConversions: String, Hashable, Codable, CustomStringConvertible {
+    case yes = "YES"
     case no = "NO"
     case yesError = "YES_ERROR"
-    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -16342,8 +16344,8 @@ extension BuildSettingsKey {
 }
 
 public enum SuspiciousCommas: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
     case yesError = "YES_ERROR"
 
     public var description: String {
@@ -16444,9 +16446,9 @@ extension BuildSettingsKey {
 }
 
 public enum DeletingInstanceOfPolymorphicClassWithNoVirtualDestructor: String, Hashable, Codable, CustomStringConvertible {
+    case no = "NO"
     case yes = "YES"
     case yesError = "YES_ERROR"
-    case no = "NO"
 
     public var description: String {
         rawValue
@@ -16475,7 +16477,7 @@ extension BuildSetting {
     ///
     /// Warn if an Objective-C class either subclasses a deprecated class or overrides a method that has been marked deprecated or unavailable.
     public static func overridingDeprecatedObjectiveCMethods(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .overridingDeprecatedObjectiveCMethods, value: .string(value.asText))
+        BuildSetting(key: .overridingDeprecatedObjectiveCMethods, value: SettingValue(value))
     }
 
     /// Overriding Deprecated Objective-C Methods
@@ -16528,9 +16530,9 @@ extension BuildSettingsKey {
 }
 
 public enum DirectUsageOfIsa: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
     case no = "NO"
     case yes = "YES"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -16559,7 +16561,7 @@ extension BuildSetting {
     ///
     /// Warns about issues in documentation comments (`doxygen`-style) such as missing or incorrect documentation tags.
     public static func documentationComments(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .documentationComments, value: .string(value.asText))
+        BuildSetting(key: .documentationComments, value: SettingValue(value))
     }
 
     /// Documentation Comments
@@ -16592,7 +16594,7 @@ extension BuildSetting {
     ///
     /// Warn about loop bodies that are suspiciously empty.
     public static func emptyLoopBodies(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .emptyLoopBodies, value: .string(value.asText))
+        BuildSetting(key: .emptyLoopBodies, value: SettingValue(value))
     }
 
     /// Empty Loop Bodies
@@ -16696,9 +16698,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitFloatConversions: String, Hashable, Codable, CustomStringConvertible {
+    case yes = "YES"
     case yesError = "YES_ERROR"
     case no = "NO"
-    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -16723,7 +16725,7 @@ extension BuildSetting {
 
     /// Clang Warn Framework Include Private From Public
     public static func clangWarnFrameworkIncludePrivateFromPublic(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .clangWarnFrameworkIncludePrivateFromPublic, value: .string(value.asText))
+        BuildSetting(key: .clangWarnFrameworkIncludePrivateFromPublic, value: SettingValue(value))
     }
 
     /// Clang Warn Framework Include Private From Public
@@ -16773,8 +16775,8 @@ extension BuildSettingsKey {
 
 public enum ImplicitSignednessConversions: String, Hashable, Codable, CustomStringConvertible {
     case no = "NO"
-    case yes = "YES"
     case yesError = "YES_ERROR"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -16803,7 +16805,7 @@ extension BuildSetting {
     ///
     /// Warn if all paths through a function call itself.
     public static func infiniteRecursion(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .infiniteRecursion, value: .string(value.asText))
+        BuildSetting(key: .infiniteRecursion, value: SettingValue(value))
     }
 
     /// Infinite Recursion
@@ -16856,9 +16858,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitIntegerToPointerConversions: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
     case yes = "YES"
     case no = "NO"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -16907,9 +16909,9 @@ extension BuildSettingsKey {
 }
 
 public enum MissingNoescapeAnnotation: String, Hashable, Codable, CustomStringConvertible {
+    case yesError = "YES_ERROR"
     case yes = "YES"
     case no = "NO"
-    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -16958,9 +16960,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitNonLiteralNullConversions: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yes = "YES"
     case yesError = "YES_ERROR"
+    case no = "NO"
 
     public var description: String {
         rawValue
@@ -16989,7 +16991,7 @@ extension BuildSetting {
     ///
     /// Warns when a nullable expression is used somewhere it’s not allowed, such as when passed as a `_Nonnull` parameter.
     public static func incorrectUsesOfNullableValues(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .incorrectUsesOfNullableValues, value: .string(value.asText))
+        BuildSetting(key: .incorrectUsesOfNullableValues, value: SettingValue(value))
     }
 
     /// Incorrect Uses of Nullable Values
@@ -17022,7 +17024,7 @@ extension BuildSetting {
     ///
     /// Warn about implicit ownership types on Objective-C object references as out parameters. For example, declaring a parameter with type `NSObject**` will produce a warning because the compiler will assume that the out parameter’s ownership type is `__autoreleasing`.
     public static func implicitOwnershipTypesOnOutParameters(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .implicitOwnershipTypesOnOutParameters, value: .string(value.asText))
+        BuildSetting(key: .implicitOwnershipTypesOnOutParameters, value: SettingValue(value))
     }
 
     /// Implicit ownership types on out parameters
@@ -17055,7 +17057,7 @@ extension BuildSetting {
     ///
     /// Warn about `@property` declarations that are implicitly atomic.
     public static func implicitAtomicObjectiveCProperties(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .implicitAtomicObjectiveCProperties, value: .string(value.asText))
+        BuildSetting(key: .implicitAtomicObjectiveCProperties, value: SettingValue(value))
     }
 
     /// Implicit Atomic Objective-C Properties
@@ -17088,7 +17090,7 @@ extension BuildSetting {
     ///
     /// Warn about implicit retains of `self` within blocks, which can create a retain-cycle.
     public static func implicitRetainOfSelfWithinBlocks(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .implicitRetainOfSelfWithinBlocks, value: .string(value.asText))
+        BuildSetting(key: .implicitRetainOfSelfWithinBlocks, value: SettingValue(value))
     }
 
     /// Implicit retain of 'self' within blocks
@@ -17141,9 +17143,9 @@ extension BuildSettingsKey {
 }
 
 public enum InterfaceDeclarationsOfInstanceVariables: String, Hashable, Codable, CustomStringConvertible {
+    case yes = "YES"
     case yesError = "YES_ERROR"
     case no = "NO"
-    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -17223,7 +17225,7 @@ extension BuildSetting {
     ///
     /// Starting in Xcode 4.4, Apple Clang will implicitly synthesize properties that are not explicitly synthesized using `@synthesize`. This setting warns about such implicit behavior, even though the property is still synthesized. This is essentially a backwards compatibility warning, or for those who wish to continue to explicitly use `@synthesize`.
     public static func implicitSynthesizedProperties(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .implicitSynthesizedProperties, value: .string(value.asText))
+        BuildSetting(key: .implicitSynthesizedProperties, value: SettingValue(value))
     }
 
     /// Implicit Synthesized Properties
@@ -17327,9 +17329,9 @@ extension BuildSettingsKey {
 }
 
 public enum UnintentionalRootClass: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -17378,9 +17380,9 @@ extension BuildSettingsKey {
 }
 
 public enum SuspiciousPragmaPack: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -17409,7 +17411,7 @@ extension BuildSetting {
     ///
     /// Warn about private modules that do not use the recommended private module layout.
     public static func outdatedPrivateModuleMap(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .outdatedPrivateModuleMap, value: .string(value.asText))
+        BuildSetting(key: .outdatedPrivateModuleMap, value: SettingValue(value))
     }
 
     /// Outdated Private Module Map
@@ -17493,7 +17495,7 @@ extension BuildSetting {
     ///
     /// Warn about ranged-based for loops.
     public static func rangeBasedForLoops(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .rangeBasedForLoops, value: .string(value.asText))
+        BuildSetting(key: .rangeBasedForLoops, value: SettingValue(value))
     }
 
     /// Range-based For Loops
@@ -17526,7 +17528,7 @@ extension BuildSetting {
     ///
     /// Warn about ignored semicolon between a method implementation’s signature and body.
     public static func semicolonBeforeMethodBody(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .semicolonBeforeMethodBody, value: .string(value.asText))
+        BuildSetting(key: .semicolonBeforeMethodBody, value: SettingValue(value))
     }
 
     /// Semicolon Before Method Body
@@ -17579,9 +17581,9 @@ extension BuildSettingsKey {
 }
 
 public enum StrictPrototypes: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
-    case no = "NO"
     case yesError = "YES_ERROR"
+    case no = "NO"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -17631,8 +17633,8 @@ extension BuildSettingsKey {
 
 public enum SuspiciousImplicitConversions: String, Hashable, Codable, CustomStringConvertible {
     case no = "NO"
-    case yes = "YES"
     case yesError = "YES_ERROR"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -17661,7 +17663,7 @@ extension BuildSetting {
     ///
     /// Warn about suspicious uses of `std::move`.
     public static func suspiciousMoves(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suspiciousMoves, value: .string(value.asText))
+        BuildSetting(key: .suspiciousMoves, value: SettingValue(value))
     }
 
     /// Suspicious Moves
@@ -17714,9 +17716,9 @@ extension BuildSettingsKey {
 }
 
 public enum UnguardedAvailability: String, Hashable, Codable, CustomStringConvertible {
-    case yesAggressive = "YES_AGGRESSIVE"
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
+    case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
         rawValue
@@ -17766,8 +17768,8 @@ extension BuildSettingsKey {
 
 public enum UnreachableCode: String, Hashable, Codable, CustomStringConvertible {
     case no = "NO"
-    case yesAggressive = "YES_AGGRESSIVE"
     case yes = "YES"
+    case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
         rawValue
@@ -17847,7 +17849,7 @@ extension BuildSetting {
     ///
     /// Warn about using `__bridge` casts when not using ARC, where they have no effect.
     public static func usingBridgeCastsOutsideOfArc(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .usingBridgeCastsOutsideOfArc, value: .string(value.asText))
+        BuildSetting(key: .usingBridgeCastsOutsideOfArc, value: SettingValue(value))
     }
 
     /// Using __bridge Casts Outside of ARC
@@ -17880,7 +17882,7 @@ extension BuildSetting {
     ///
     /// Warn about declaring the same method more than once within the same `@interface`.
     public static func duplicateMethodDefinitions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .duplicateMethodDefinitions, value: .string(value.asText))
+        BuildSetting(key: .duplicateMethodDefinitions, value: SettingValue(value))
     }
 
     /// Duplicate Method Definitions
@@ -17913,7 +17915,7 @@ extension BuildSetting {
     ///
     /// Warn about destructors for C++ objects that are called when an application is terminating.
     public static func exitTimeCppDestructors(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .exitTimeCppDestructors, value: .string(value.asText))
+        BuildSetting(key: .exitTimeCppDestructors, value: SettingValue(value))
     }
 
     /// Exit-Time C++ Destructors
@@ -18142,7 +18144,7 @@ extension BuildSetting {
 
     /// Enable Apple Kext Code Generation
     public static func enableAppleKextCodeGeneration(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableAppleKextCodeGeneration, value: .string(value.asText))
+        BuildSetting(key: .enableAppleKextCodeGeneration, value: SettingValue(value))
     }
 
     /// Enable Apple Kext Code Generation
@@ -18171,7 +18173,7 @@ extension BuildSetting {
     ///
     /// Controls whether assertion logic provided by `NSAssert` is included in the preprocessed source code or is elided during preprocessing. Disabling assertions can improve code performance.
     public static func enableFoundationAssertions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableFoundationAssertions, value: .string(value.asText))
+        BuildSetting(key: .enableFoundationAssertions, value: SettingValue(value))
     }
 
     /// Enable Foundation Assertions
@@ -18204,7 +18206,7 @@ extension BuildSetting {
     ///
     /// Controls whether `objc_msgSend` calls must be cast to the appropriate function pointer type before being called.
     public static func enableStrictCheckingOfObjcMsgsendCalls(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableStrictCheckingOfObjcMsgsendCalls, value: .string(value.asText))
+        BuildSetting(key: .enableStrictCheckingOfObjcMsgsendCalls, value: SettingValue(value))
     }
 
     /// Enable Strict Checking of objc_msgSend Calls
@@ -18237,7 +18239,7 @@ extension BuildSetting {
     ///
     /// Enabling this setting causes `char` to be unsigned by default, disabling it causes `char` to be signed by default.
     public static func CharTypeIsUnsigned(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .CharTypeIsUnsigned, value: .string(value.asText))
+        BuildSetting(key: .CharTypeIsUnsigned, value: SettingValue(value))
     }
 
     /// 'char' Type Is Unsigned
@@ -18270,7 +18272,7 @@ extension BuildSetting {
     ///
     /// Enable the CodeWarrior/Microsoft syntax for inline assembly code in addition to the standard GCC syntax.
     public static func codewarriorMsStyleInlineAssembly(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .codewarriorMsStyleInlineAssembly, value: .string(value.asText))
+        BuildSetting(key: .codewarriorMsStyleInlineAssembly, value: SettingValue(value))
     }
 
     /// CodeWarrior/MS-Style Inline Assembly
@@ -18323,14 +18325,14 @@ extension BuildSettingsKey {
 }
 
 public enum GccCLanguageDialect: String, Hashable, Codable, CustomStringConvertible {
-    case gnu89 = "gnu89"
+    case gnu11 = "gnu11"
+    case gnu99 = "gnu99"
     case ansi = "ansi"
     case compilerDefault = "compiler-default"
-    case gnu99 = "gnu99"
+    case c11 = "c11"
+    case gnu89 = "gnu89"
     case c99 = "c99"
     case c89 = "c89"
-    case c11 = "c11"
-    case gnu11 = "gnu11"
 
     public var description: String {
         rawValue
@@ -18363,8 +18365,8 @@ extension BuildSettingsKey {
 }
 
 public enum GccDebugInformationFormat: String, Hashable, Codable, CustomStringConvertible {
-    case dwarfWithDsym = "dwarf-with-dsym"
     case dwarf = "dwarf"
+    case dwarfWithDsym = "dwarf-with-dsym"
 
     public var description: String {
         rawValue
@@ -18385,7 +18387,7 @@ extension BuildSetting {
     ///
     /// Faster function calls for applications. Not appropriate for shared libraries, which need to be position-independent.
     public static func generatePositionDependentCode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .generatePositionDependentCode, value: .string(value.asText))
+        BuildSetting(key: .generatePositionDependentCode, value: SettingValue(value))
     }
 
     /// Generate Position-Dependent Code
@@ -18418,7 +18420,7 @@ extension BuildSetting {
     ///
     /// Controls whether `asm`, `inline`, and `typeof` are treated as keywords or whether they can be used as identifiers.
     public static func allowAsmInlineTypeof(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .allowAsmInlineTypeof, value: .string(value.asText))
+        BuildSetting(key: .allowAsmInlineTypeof, value: SettingValue(value))
     }
 
     /// Allow 'asm', 'inline', 'typeof'
@@ -18451,7 +18453,7 @@ extension BuildSetting {
     ///
     /// Controls whether builtin functions that do not begin with `__builtin_` as prefix are recognized. GCC normally generates special code to handle certain builtin functions more efficiently; for instance, calls to `alloca` may become single instructions that adjust the stack directly, and calls to `memcpy` may become inline copy loops. The resulting code is often both smaller and faster, but since the function calls no longer appear as such, you cannot set a breakpoint on those calls, nor can you change the behavior of the functions by linking with a different library. In addition, when a function is recognized as a builtin function, GCC may use information about that function to warn about problems with calls to that function, or to generate more efficient code, even if the resulting code still contains calls to that function. For example, warnings are given with `-Wformat` for bad calls to `printf`, when `printf` is built in, and `strlen` is known not to modify global memory.
     public static func recognizeBuiltinFunctions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .recognizeBuiltinFunctions, value: .string(value.asText))
+        BuildSetting(key: .recognizeBuiltinFunctions, value: SettingValue(value))
     }
 
     /// Recognize Builtin Functions
@@ -18484,7 +18486,7 @@ extension BuildSetting {
     ///
     /// Enable C++ exception handling. Generates extra code needed to propagate exceptions. For some targets, this implies GCC will generate frame unwind information for all functions, which can produce significant data size overhead, although it does not affect execution. If you do not specify this option, GCC will enable it by default for languages like C++ that normally require exception handling, and disable it for languages like C that do not normally require it. However, you may need to enable this option when compiling C code that needs to interoperate properly with exception handlers written in C++.
     public static func enableCppExceptions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableCppExceptions, value: .string(value.asText))
+        BuildSetting(key: .enableCppExceptions, value: SettingValue(value))
     }
 
     /// Enable C++ Exceptions
@@ -18517,7 +18519,7 @@ extension BuildSetting {
     ///
     /// Enable generation of information about every class with virtual functions for use by the C++ runtime type identification features (`dynamic_cast` and `typeid`). If you don’t use those parts of the language, you can save some space by using this flag. Note that exception handling uses the same information, but it will generate it as needed.
     public static func enableCppRuntimeTypes(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableCppRuntimeTypes, value: .string(value.asText))
+        BuildSetting(key: .enableCppRuntimeTypes, value: SettingValue(value))
     }
 
     /// Enable C++ Runtime Types
@@ -18550,7 +18552,7 @@ extension BuildSetting {
     ///
     /// Enable exception handling. Generates extra code needed to propagate exceptions. For some targets, this implies GCC will generate frame unwind information for all functions, which can produce significant data size overhead, although it does not affect execution. If you do not specify this option, GCC will enable it by default for languages like C++ and Objective-C that normally require exception handling, and disable it for languages like C that do not normally require it. However, you may need to enable this option when compiling C code that needs to interoperate properly with exception handlers written in other languages. You may also wish to disable this option if you are compiling older programs that don’t use exception handling.
     public static func enableExceptions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableExceptions, value: .string(value.asText))
+        BuildSetting(key: .enableExceptions, value: SettingValue(value))
     }
 
     /// Enable Exceptions
@@ -18583,7 +18585,7 @@ extension BuildSetting {
     ///
     /// Generate output containing library calls for floating point.
     public static func generateFloatingPointLibraryCalls(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .generateFloatingPointLibraryCalls, value: .string(value.asText))
+        BuildSetting(key: .generateFloatingPointLibraryCalls, value: SettingValue(value))
     }
 
     /// Generate Floating Point Library Calls
@@ -18616,7 +18618,7 @@ extension BuildSetting {
     ///
     /// Activating this setting enables kernel development mode.
     public static func kernelDevelopmentMode(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .kernelDevelopmentMode, value: .string(value.asText))
+        BuildSetting(key: .kernelDevelopmentMode, value: SettingValue(value))
     }
 
     /// Kernel Development Mode
@@ -18649,7 +18651,7 @@ extension BuildSetting {
     ///
     /// This setting enables `@try`/`@catch`/`@throw` syntax for handling exceptions in Objective-C code. Only applies to Objective-C.
     public static func enableObjectiveCExceptions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableObjectiveCExceptions, value: .string(value.asText))
+        BuildSetting(key: .enableObjectiveCExceptions, value: SettingValue(value))
     }
 
     /// Enable Objective-C Exceptions
@@ -18682,7 +18684,7 @@ extension BuildSetting {
     ///
     /// Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `"pstring"` . The special escape sequence `\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.
     public static func recognizePascalStrings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .recognizePascalStrings, value: .string(value.asText))
+        BuildSetting(key: .recognizePascalStrings, value: SettingValue(value))
     }
 
     /// Recognize Pascal Strings
@@ -18715,7 +18717,7 @@ extension BuildSetting {
     ///
     /// Controls whether or not trigraphs are permitted in the source code.
     public static func enableTrigraphs(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableTrigraphs, value: .string(value.asText))
+        BuildSetting(key: .enableTrigraphs, value: SettingValue(value))
     }
 
     /// Enable Trigraphs
@@ -18748,7 +18750,7 @@ extension BuildSetting {
     ///
     /// Enables some floating point optimizations that are not IEEE754-compliant, but which usually work. Programs that require strict IEEE compliance may not work with this option.
     public static func relaxIeeeCompliance(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .relaxIeeeCompliance, value: .string(value.asText))
+        BuildSetting(key: .relaxIeeeCompliance, value: SettingValue(value))
     }
 
     /// Relax IEEE Compliance
@@ -18774,7 +18776,7 @@ extension BuildSetting {
     ///
     /// Enables or disables generation of debug symbols. When debug symbols are enabled, the level of detail can be controlled by the [Debug Information Format (DEBUG_INFORMATION_FORMAT)](itcaec37c2a6.html# dev881878d77) setting.
     public static func generateDebugSymbols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .generateDebugSymbols, value: .string(value.asText))
+        BuildSetting(key: .generateDebugSymbols, value: SettingValue(value))
     }
 
     /// Generate Debug Symbols
@@ -18807,7 +18809,7 @@ extension BuildSetting {
     ///
     /// Activating this setting causes a `notes` file to be produced that the `gcov` code-coverage utility can use to show program coverage.
     public static func generateLegacyTestCoverageFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .generateLegacyTestCoverageFiles, value: .string(value.asText))
+        BuildSetting(key: .generateLegacyTestCoverageFiles, value: SettingValue(value))
     }
 
     /// Generate Legacy Test Coverage Files
@@ -18840,7 +18842,7 @@ extension BuildSetting {
     ///
     /// Enabling this option will enable increased sharing of precompiled headers among targets that share the same prefix header and precompiled header directory. Xcode distinguishes between precompiled header (PCH) files by generating a hash value based on the command-line options to the compiler used to create the PCH. Enabling this option will exclude certain compiler options from that hash. Presently this option will exclude search path options (`-I`, `-iquote`, `-isystem`, `-F`, `-L`) from the hash. Enabling increased sharing of PCH files carries some risk—if two targets use the same prefix header but have different include paths that cause the prefix header to include different files when they are precompiled, then subtle problems may result because one target will use a PCH that was built using files included by the other target. In this case, this option must be turned off in order to enforce correctness.
     public static func increaseSharingOfPrecompiledHeaders(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .increaseSharingOfPrecompiledHeaders, value: .string(value.asText))
+        BuildSetting(key: .increaseSharingOfPrecompiledHeaders, value: SettingValue(value))
     }
 
     /// Increase Sharing of Precompiled Headers
@@ -18873,7 +18875,7 @@ extension BuildSetting {
     ///
     /// When enabled, out-of-line copies of inline methods are declared `private extern`.
     public static func inlineMethodsHidden(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .inlineMethodsHidden, value: .string(value.asText))
+        BuildSetting(key: .inlineMethodsHidden, value: SettingValue(value))
     }
 
     /// Inline Methods Hidden
@@ -18926,10 +18928,10 @@ extension BuildSettingsKey {
 }
 
 public enum CompileSourcesAs: String, Hashable, Codable, CustomStringConvertible {
+    case sourcecodeCppObjcpp = "sourcecode.cpp.objcpp"
+    case sourcecodeCC = "sourcecode.c.c"
     case sourcecodeCppCpp = "sourcecode.cpp.cpp"
     case sourcecodeCObjc = "sourcecode.c.objc"
-    case sourcecodeCC = "sourcecode.c.c"
-    case sourcecodeCppObjcpp = "sourcecode.cpp.objcpp"
     case automatic = "automatic"
 
     public var description: String {
@@ -18951,7 +18953,7 @@ extension BuildSetting {
     ///
     /// Activating this setting indicates that code should be added so program flow arcs are instrumented.
     public static func instrumentProgramFlow(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .instrumentProgramFlow, value: .string(value.asText))
+        BuildSetting(key: .instrumentProgramFlow, value: SettingValue(value))
     }
 
     /// Instrument Program Flow
@@ -18984,7 +18986,7 @@ extension BuildSetting {
     ///
     /// Enabling this option allows linking with the shared libraries. This is the default for most product types.
     public static func enableLinkingWithSharedLibraries(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableLinkingWithSharedLibraries, value: .string(value.asText))
+        BuildSetting(key: .enableLinkingWithSharedLibraries, value: SettingValue(value))
     }
 
     /// Enable Linking With Shared Libraries
@@ -19042,7 +19044,7 @@ extension BuildSetting {
     ///
     /// In C, allocate even uninitialized global variables in the data section of the object file, rather than generating them as common blocks. This has the effect that if the same variable is declared (without `extern`) in two different compilations, you will get an error when you link them.
     public static func noCommonBlocks(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .noCommonBlocks, value: .string(value.asText))
+        BuildSetting(key: .noCommonBlocks, value: SettingValue(value))
     }
 
     /// No Common Blocks
@@ -19105,7 +19107,7 @@ extension BuildSetting {
 
     /// Gcc Objc Legacy Dispatch
     public static func gccObjcLegacyDispatch(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .gccObjcLegacyDispatch, value: .string(value.asText))
+        BuildSetting(key: .gccObjcLegacyDispatch, value: SettingValue(value))
     }
 
     /// Gcc Objc Legacy Dispatch
@@ -19146,10 +19148,10 @@ extension BuildSettingsKey {
 }
 
 public enum GccOperation: String, Hashable, Codable, CustomStringConvertible {
-    case generatePreprocessed = "generate-preprocessed"
     case generateAssembler = "generate-assembler"
-    case compile = "compile"
     case separateSymbols = "separate-symbols"
+    case generatePreprocessed = "generate-preprocessed"
+    case compile = "compile"
     case precompile = "precompile"
 
     public var description: String {
@@ -19191,13 +19193,13 @@ extension BuildSettingsKey {
 }
 
 public enum OptimizationLevel: String, Hashable, Codable, CustomStringConvertible {
-    case _1 = "1"
-    case fast = "fast"
     case _3 = "3"
+    case z = "z"
+    case fast = "fast"
     case _0 = "0"
     case s = "s"
+    case _1 = "1"
     case _2 = "2"
-    case z = "z"
 
     public var description: String {
         rawValue
@@ -19309,7 +19311,7 @@ extension BuildSetting {
     ///
     /// Reuse string literals.
     public static func makeStringsReadOnly(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .makeStringsReadOnly, value: .string(value.asText))
+        BuildSetting(key: .makeStringsReadOnly, value: SettingValue(value))
     }
 
     /// Make Strings Read-Only
@@ -19342,7 +19344,7 @@ extension BuildSetting {
     ///
     /// Make enums only as large as needed for the range of possible values. This setting generates code that may not binary compatible with code generated without this setting or with macOS frameworks.
     public static func shortEnumerationConstants(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .shortEnumerationConstants, value: .string(value.asText))
+        BuildSetting(key: .shortEnumerationConstants, value: SettingValue(value))
     }
 
     /// Short Enumeration Constants
@@ -19375,7 +19377,7 @@ extension BuildSetting {
     ///
     /// Optimize code by making more aggressive assumptions about whether pointers can point to the same objects as other pointers. Programs that use pointers a lot may benefit from this, but programs that don’t strictly follow the ISO C rules about the type with which an object may be accessed may behave unexpectedly.
     public static func enforceStrictAliasing(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enforceStrictAliasing, value: .string(value.asText))
+        BuildSetting(key: .enforceStrictAliasing, value: SettingValue(value))
     }
 
     /// Enforce Strict Aliasing
@@ -19408,7 +19410,7 @@ extension BuildSetting {
     ///
     /// When enabled, all symbols are declared `private extern` unless explicitly marked to be exported using ` **attribute** ((visibility(“default”)))` in code. If not enabled, all symbols are exported unless explicitly marked as `private extern`. See [Controlling Symbol Visibility](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/CppRuntimeEnv/Articles/SymbolVisibility.html#//apple_ref/doc/uid/TP40001670-CJBGBHEJ) in [C++ Runtime Environment Programming Guide](https://developer.apple.com/library/content/documentation/DeveloperTools/Conceptual/CppRuntimeEnv/CPPRuntimeEnv.html).
     public static func symbolsHiddenByDefault(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .symbolsHiddenByDefault, value: .string(value.asText))
+        BuildSetting(key: .symbolsHiddenByDefault, value: SettingValue(value))
     }
 
     /// Symbols Hidden by Default
@@ -19441,7 +19443,7 @@ extension BuildSetting {
     ///
     /// Emits extra code to use the routines specified in the C++ ABI for thread-safe initialization of local statics. You can disable this option to reduce code size slightly in code that doesn’t need to be thread-safe.
     public static func staticsAreThreadSafe(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .staticsAreThreadSafe, value: .string(value.asText))
+        BuildSetting(key: .staticsAreThreadSafe, value: SettingValue(value))
     }
 
     /// Statics are Thread-Safe
@@ -19474,7 +19476,7 @@ extension BuildSetting {
     ///
     /// Causes warnings about missing function prototypes to be treated as errors. Only applies to C and Objective-C.
     public static func treatMissingFunctionPrototypesAsErrors(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .treatMissingFunctionPrototypesAsErrors, value: .string(value.asText))
+        BuildSetting(key: .treatMissingFunctionPrototypesAsErrors, value: SettingValue(value))
     }
 
     /// Treat Missing Function Prototypes as Errors
@@ -19507,7 +19509,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes warnings about incompatible pointer types to be treated as errors.
     public static func treatIncompatiblePointerTypeWarningsAsErrors(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .treatIncompatiblePointerTypeWarningsAsErrors, value: .string(value.asText))
+        BuildSetting(key: .treatIncompatiblePointerTypeWarningsAsErrors, value: SettingValue(value))
     }
 
     /// Treat Incompatible Pointer Type Warnings as Errors
@@ -19540,7 +19542,7 @@ extension BuildSetting {
     ///
     /// Unrolls loops. Unrolling makes the code larger, but may make it faster by reducing the number of branches executed.
     public static func unrollLoops(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .unrollLoops, value: .string(value.asText))
+        BuildSetting(key: .unrollLoops, value: SettingValue(value))
     }
 
     /// Unroll Loops
@@ -19573,7 +19575,7 @@ extension BuildSetting {
     ///
     /// Controls whether the standard system directories are searched for header files. When disabled, only the directories you have specified with `-I` options (and the directory of the current file, if appropriate) are searched.
     public static func useStandardSystemHeaderDirectorySearching(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useStandardSystemHeaderDirectorySearching, value: .string(value.asText))
+        BuildSetting(key: .useStandardSystemHeaderDirectorySearching, value: SettingValue(value))
     }
 
     /// Use Standard System Header Directory Searching
@@ -19606,7 +19608,7 @@ extension BuildSetting {
     ///
     /// Warn about the use of deprecated functions, variables, and types (as indicated by the `deprecated` attribute).
     public static func deprecatedFunctions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .deprecatedFunctions, value: .string(value.asText))
+        BuildSetting(key: .deprecatedFunctions, value: SettingValue(value))
     }
 
     /// Deprecated Functions
@@ -19639,7 +19641,7 @@ extension BuildSetting {
     ///
     /// Unchecking this setting will suppress warnings from applying the `offsetof` macro to a non-POD type. According to the 1998 ISO C++ standard, applying `offsetof` to a non-POD type is undefined. In existing C++ implementations, however, `offsetof` typically gives meaningful results even when applied to certain kinds of non-POD types, such as a simple struct that fails to be a POD type only by virtue of having a constructor. This flag is for users who are aware that they are writing nonportable code and who have deliberately chosen to ignore the warning about it. The restrictions on `offsetof` may be relaxed in a future version of the C++ standard.
     public static func undefinedUseOfOffsetofMacro(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .undefinedUseOfOffsetofMacro, value: .string(value.asText))
+        BuildSetting(key: .undefinedUseOfOffsetofMacro, value: SettingValue(value))
     }
 
     /// Undefined Use of offsetof Macro
@@ -19672,7 +19674,7 @@ extension BuildSetting {
     ///
     /// Warn if a structure’s initializer has some fields missing. For example, the following code would cause such a warning because `x.h` is implicitly zero: `struct s { int f, g, h; };``struct s x = { 3, 4 };` This option does not warn about designated initializers, so the following modification would not trigger a warning: `struct s { int f, g, h; };``struct s x = { .f = 3, .g = 4 };`
     public static func missingFieldsInStructureInitializers(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .missingFieldsInStructureInitializers, value: .string(value.asText))
+        BuildSetting(key: .missingFieldsInStructureInitializers, value: SettingValue(value))
     }
 
     /// Missing Fields in Structure Initializers
@@ -19705,7 +19707,7 @@ extension BuildSetting {
     ///
     /// Warn when a source file does not end with a newline.
     public static func missingNewlineAtEndOfFile(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .missingNewlineAtEndOfFile, value: .string(value.asText))
+        BuildSetting(key: .missingNewlineAtEndOfFile, value: SettingValue(value))
     }
 
     /// Missing Newline At End Of File
@@ -19738,7 +19740,7 @@ extension BuildSetting {
     ///
     /// Causes warnings to be emitted about missing prototypes.
     public static func missingFunctionPrototypes(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .missingFunctionPrototypes, value: .string(value.asText))
+        BuildSetting(key: .missingFunctionPrototypes, value: SettingValue(value))
     }
 
     /// Missing Function Prototypes
@@ -19771,7 +19773,7 @@ extension BuildSetting {
     ///
     /// Warn when pointers passed via arguments or assigned to a variable differ in sign.
     public static func pointerSignComparison(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .pointerSignComparison, value: .string(value.asText))
+        BuildSetting(key: .pointerSignComparison, value: SettingValue(value))
     }
 
     /// Pointer Sign Comparison
@@ -19824,8 +19826,8 @@ extension BuildSettingsKey {
 }
 
 public enum MismatchedReturnType: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
     case yesError = "YES_ERROR"
 
     public var description: String {
@@ -19855,7 +19857,7 @@ extension BuildSetting {
     ///
     /// Warn if methods required by a protocol are not implemented in the class adopting it. Only applies to Objective-C.
     public static func incompleteObjectiveCProtocols(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .incompleteObjectiveCProtocols, value: .string(value.asText))
+        BuildSetting(key: .incompleteObjectiveCProtocols, value: SettingValue(value))
     }
 
     /// Incomplete Objective-C Protocols
@@ -19888,7 +19890,7 @@ extension BuildSetting {
     ///
     /// Warn whenever a switch statement has an index of enumeral type and lacks a case for one or more of the named codes of that enumeration. The presence of a default label prevents this warning. Case labels outside the enumeration range also provoke warnings when this option is used.
     public static func checkSwitchStatements(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .checkSwitchStatements, value: .string(value.asText))
+        BuildSetting(key: .checkSwitchStatements, value: SettingValue(value))
     }
 
     /// Check Switch Statements
@@ -19921,7 +19923,7 @@ extension BuildSetting {
     ///
     /// Warn about four-char literals (for example, macOS-style `OSTypes`: `'APPL'`).
     public static func fourCharacterLiterals(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .fourCharacterLiterals, value: .string(value.asText))
+        BuildSetting(key: .fourCharacterLiterals, value: SettingValue(value))
     }
 
     /// Four Character Literals
@@ -19954,7 +19956,7 @@ extension BuildSetting {
     ///
     /// Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b-&gt;f();` This setting only applies to C++ and Objective-C++ sources.
     public static func overloadedVirtualFunctions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .overloadedVirtualFunctions, value: .string(value.asText))
+        BuildSetting(key: .overloadedVirtualFunctions, value: SettingValue(value))
     }
 
     /// Overloaded Virtual Functions
@@ -19987,7 +19989,7 @@ extension BuildSetting {
     ///
     /// Inhibit all warning messages.
     public static func inhibitAllWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .inhibitAllWarnings, value: .string(value.asText))
+        BuildSetting(key: .inhibitAllWarnings, value: SettingValue(value))
     }
 
     /// Inhibit All Warnings
@@ -20020,7 +20022,7 @@ extension BuildSetting {
     ///
     /// Warn if an aggregate or union initializer is not fully bracketed. In the following example, the initializer for `a` is not fully bracketed, but the initializer for `b` is fully bracketed. `int a`2`2` = { 0, 1, 2, 3 };`int b`2``2` = { { 0, 1 }, { 2, 3 } };`
     public static func initializerNotFullyBracketed(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .initializerNotFullyBracketed, value: .string(value.asText))
+        BuildSetting(key: .initializerNotFullyBracketed, value: SettingValue(value))
     }
 
     /// Initializer Not Fully Bracketed
@@ -20053,7 +20055,7 @@ extension BuildSetting {
     ///
     /// Warn if parentheses are omitted in certain contexts, such as when there is an assignment in a context where a truth value is expected, or when operators are nested whose precedence causes confusion. Also, warn about constructions where there may be confusion as to which `if` statement an `else` branch belongs. For example: `{`` if (a)`` if (b)`` foo ();`` else`` bar ();``}` In C, every `else` branch belongs to the innermost possible `if` statement, which in the example above is `if (b)`. This is often not what the programmer expects, as illustrated by indentation used in the example above. This build setting causes GCC to issue a warning when there is the potential for this confusion. To eliminate the warning, add explicit braces around the innermost `if` statement so there is no way the `else` could belong to the enclosing `if`. For example: `{`` if (a)`` {`` if (b)`` foo ();`` else`` bar ();`` }``}`
     public static func missingBracesAndParentheses(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .missingBracesAndParentheses, value: .string(value.asText))
+        BuildSetting(key: .missingBracesAndParentheses, value: SettingValue(value))
     }
 
     /// Missing Braces and Parentheses
@@ -20082,7 +20084,7 @@ extension BuildSetting {
 
     /// Gcc Warn Multiple Definition Types For Selector
     public static func gccWarnMultipleDefinitionTypesForSelector(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .gccWarnMultipleDefinitionTypesForSelector, value: .string(value.asText))
+        BuildSetting(key: .gccWarnMultipleDefinitionTypesForSelector, value: SettingValue(value))
     }
 
     /// Gcc Warn Multiple Definition Types For Selector
@@ -20111,7 +20113,7 @@ extension BuildSetting {
     ///
     /// Warn when a class declares an nonvirtual destructor that should probably be virtual, because it looks like the class will be used polymorphically. This is only active for C++ or Objective-C++ sources.
     public static func nonvirtualDestructor(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .nonvirtualDestructor, value: .string(value.asText))
+        BuildSetting(key: .nonvirtualDestructor, value: SettingValue(value))
     }
 
     /// Nonvirtual Destructor
@@ -20144,7 +20146,7 @@ extension BuildSetting {
     ///
     /// Issue all the warnings demanded by strict ISO C and ISO C++; reject all programs that use forbidden extensions, and some other programs that do not follow ISO C and ISO C++. For ISO C, follows the version of the ISO C standard specified by any `-std` option used.
     public static func pedanticWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .pedanticWarnings, value: .string(value.asText))
+        BuildSetting(key: .pedanticWarnings, value: SettingValue(value))
     }
 
     /// Pedantic Warnings
@@ -20177,7 +20179,7 @@ extension BuildSetting {
     ///
     /// Warn whenever a local variable shadows another local variable, parameter or global variable or whenever a builtin function is shadowed.
     public static func hiddenLocalVariables(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .hiddenLocalVariables, value: .string(value.asText))
+        BuildSetting(key: .hiddenLocalVariables, value: SettingValue(value))
     }
 
     /// Hidden Local Variables
@@ -20210,7 +20212,7 @@ extension BuildSetting {
     ///
     /// Warn when a comparison between signed and unsigned values could produce an incorrect result when the signed value is converted to unsigned.
     public static func signComparison(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .signComparison, value: .string(value.asText))
+        BuildSetting(key: .signComparison, value: SettingValue(value))
     }
 
     /// Sign Comparison
@@ -20243,7 +20245,7 @@ extension BuildSetting {
     ///
     /// Warn if multiple methods with differing argument and/or return types are found for a given selector when attempting to send a message using this selector to a receiver of type `id` or `Class`. When this setting is disabled, the compiler will omit such warnings if any differences found are confined to types that share the same size and alignment.
     public static func strictSelectorMatching(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .strictSelectorMatching, value: .string(value.asText))
+        BuildSetting(key: .strictSelectorMatching, value: SettingValue(value))
     }
 
     /// Strict Selector Matching
@@ -20276,7 +20278,7 @@ extension BuildSetting {
     ///
     /// Check calls to `printf` and `scanf` to make sure that the arguments supplied have types appropriate to the format string specified, and that the conversions specified in the format string make sense.
     public static func typecheckCallsToPrintfScanf(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .typecheckCallsToPrintfScanf, value: .string(value.asText))
+        BuildSetting(key: .typecheckCallsToPrintfScanf, value: SettingValue(value))
     }
 
     /// Typecheck Calls to printf/scanf
@@ -20309,7 +20311,7 @@ extension BuildSetting {
     ///
     /// Warn if a `@selector(...)` expression referring to an undeclared selector is found. A selector is considered undeclared if no method with that name has been declared before the `@selector(...)` expression, either explicitly in an `@interface` or `@protocol` declaration, or implicitly in an `@implementation` section. This option always performs its checks as soon as a `@selector(...)` expression is found, while `-Wselector` only performs its checks in the final stage of compilation. This also enforces the coding style convention that methods and selectors must be declared before being used.
     public static func undeclaredSelector(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .undeclaredSelector, value: .string(value.asText))
+        BuildSetting(key: .undeclaredSelector, value: SettingValue(value))
     }
 
     /// Undeclared Selector
@@ -20362,9 +20364,9 @@ extension BuildSettingsKey {
 }
 
 public enum UninitializedVariables: String, Hashable, Codable, CustomStringConvertible {
-    case yesAggressive = "YES_AGGRESSIVE"
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
+    case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
         rawValue
@@ -20393,7 +20395,7 @@ extension BuildSetting {
     ///
     /// Warn when a `#pragma` directive is encountered that is not understood by GCC. If this command line option is used, warnings will even be issued for unknown pragmas in system header files. This is not the case if the warnings were only enabled by the `-Wall` command-line option.
     public static func unknownPragma(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .unknownPragma, value: .string(value.asText))
+        BuildSetting(key: .unknownPragma, value: SettingValue(value))
     }
 
     /// Unknown Pragma
@@ -20426,7 +20428,7 @@ extension BuildSetting {
     ///
     /// Warn whenever a static function is declared but not defined or a noninline static function is unused.
     public static func unusedFunctions(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .unusedFunctions, value: .string(value.asText))
+        BuildSetting(key: .unusedFunctions, value: SettingValue(value))
     }
 
     /// Unused Functions
@@ -20459,7 +20461,7 @@ extension BuildSetting {
     ///
     /// Warn whenever a label is declared but not used.
     public static func unusedLabels(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .unusedLabels, value: .string(value.asText))
+        BuildSetting(key: .unusedLabels, value: SettingValue(value))
     }
 
     /// Unused Labels
@@ -20492,7 +20494,7 @@ extension BuildSetting {
     ///
     /// Warn whenever a function parameter is unused aside from its declaration.
     public static func unusedParameters(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .unusedParameters, value: .string(value.asText))
+        BuildSetting(key: .unusedParameters, value: SettingValue(value))
     }
 
     /// Unused Parameters
@@ -20525,7 +20527,7 @@ extension BuildSetting {
     ///
     /// Warn whenever a statement computes a result that is explicitly not used.
     public static func unusedValues(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .unusedValues, value: .string(value.asText))
+        BuildSetting(key: .unusedValues, value: SettingValue(value))
     }
 
     /// Unused Values
@@ -20558,7 +20560,7 @@ extension BuildSetting {
     ///
     /// Warn whenever a local variable or nonconstant static variable is unused aside from its declaration.
     public static func unusedVariables(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .unusedVariables, value: .string(value.asText))
+        BuildSetting(key: .unusedVariables, value: SettingValue(value))
     }
 
     /// Unused Variables
@@ -20620,7 +20622,7 @@ extension BuildSetting {
 
     /// Llvm Implicit Aggressive Optimizations
     public static func llvmImplicitAggressiveOptimizations(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .llvmImplicitAggressiveOptimizations, value: .string(value.asText))
+        BuildSetting(key: .llvmImplicitAggressiveOptimizations, value: SettingValue(value))
     }
 
     /// Llvm Implicit Aggressive Optimizations
@@ -20669,8 +20671,8 @@ extension BuildSettingsKey {
 }
 
 public enum LinkTimeOptimization: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yesThin = "YES_THIN"
+    case no = "NO"
     case yes = "YES"
 
     public var description: String {
@@ -20700,7 +20702,7 @@ extension BuildSetting {
     ///
     /// Activating this setting will cause Xcode to run the `Clang` static analysis tool on qualifying source files during every build.
     public static func analyzeDuringBuild(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .analyzeDuringBuild, value: .string(value.asText))
+        BuildSetting(key: .analyzeDuringBuild, value: SettingValue(value))
     }
 
     /// Analyze During 'Build'
@@ -20933,7 +20935,7 @@ extension BuildSetting {
     ///
     /// Control whether the compiler should emit index data while building.
     public static func enableIndexWhileBuildingFunctionalityMetal(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableIndexWhileBuildingFunctionalityMetal, value: .string(value.asText))
+        BuildSetting(key: .enableIndexWhileBuildingFunctionalityMetal, value: SettingValue(value))
     }
 
     /// Enable Index-While-Building Functionality (Metal)
@@ -20966,7 +20968,7 @@ extension BuildSetting {
     ///
     /// Enables the use of modules. System headers are imported as semantic modules instead of raw headers. This can result in faster builds and project indexing.
     public static func enableModulesMetal(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableModulesMetal, value: .string(value.asText))
+        BuildSetting(key: .enableModulesMetal, value: SettingValue(value))
     }
 
     /// Enable Modules (Metal)
@@ -20999,7 +21001,7 @@ extension BuildSetting {
     ///
     /// Enable optimizations for floating-point arithmetic that may violate the IEEE 754 standard and disable the high precision variant of math functions for single and half precision floating-point.
     public static func enableFastMath(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableFastMath, value: .string(value.asText))
+        BuildSetting(key: .enableFastMath, value: SettingValue(value))
     }
 
     /// Enable Fast Math
@@ -21105,7 +21107,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes all warnings to be ignored. `MTL_IGNORE_WARNINGS, -W`
     public static func ignoreWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ignoreWarnings, value: .string(value.asText))
+        BuildSetting(key: .ignoreWarnings, value: SettingValue(value))
     }
 
     /// Ignore Warnings
@@ -21254,7 +21256,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes all warnings to be treated as errors. `MTL_TREAT_WARNINGS_AS_ERRORS, -Werror`
     public static func mtlTreatWarningsAsErrors(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .mtlTreatWarningsAsErrors, value: .string(value.asText))
+        BuildSetting(key: .mtlTreatWarningsAsErrors, value: SettingValue(value))
     }
 
     /// MTL Treat Warnings as Errors
@@ -21468,7 +21470,7 @@ extension BuildSetting {
     ///
     /// Auto-vectorizes the `OpenCL` kernels for the CPU. This setting takes effect only for the CPU. This makes it possible to write a single kernel that is portable and performant across CPUs and GPUs.
     public static func autoVectorizer(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .autoVectorizer, value: .string(value.asText))
+        BuildSetting(key: .autoVectorizer, value: SettingValue(value))
     }
 
     /// Auto-vectorizer
@@ -21521,8 +21523,8 @@ extension BuildSettingsKey {
 }
 
 public enum OpenclCompilerVersion: String, Hashable, Codable, CustomStringConvertible {
-    case cl11 = "CL1.1"
     case cl12 = "CL1.2"
+    case cl11 = "CL1.1"
 
     public var description: String {
         rawValue
@@ -21543,7 +21545,7 @@ extension BuildSetting {
     ///
     /// This option controls how single precision and double precision denormalized numbers are handled. If specified as a build option, the single precision denormalized numbers may be flushed to zero; double precision denormalized numbers may also be flushed to zero if the optional extension for double precision is supported. This is intended to be a performance hint and the `OpenCL` compiler can choose not to flush denorms to zero if the device supports single precision (or double precision) denormalized numbers. This option is ignored for single precision numbers if the device does not support single precision denormalized numbers, for example, `CL_FP_DENORM` bit is not set in `CL_DEVICE_SINGLE_FP_CONFIG`. This option is ignored for double precision numbers if the device does not support double precision or if it does support double precision but not double precision denormalized numbers, for example, `CL_FP_DENORM` bit is not set in `CL_DEVICE_DOUBLE_FP_CONFIG`. This flag only applies for scalar and vector single precision floating-point variables and computations on these floating-point variables inside a program. It does not apply to reading from or writing to image objects.
     public static func flushDenormsToZero(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .flushDenormsToZero, value: .string(value.asText))
+        BuildSetting(key: .flushDenormsToZero, value: SettingValue(value))
     }
 
     /// Flush denorms to zero
@@ -21576,7 +21578,7 @@ extension BuildSetting {
     ///
     /// Treat double precision floating-point expression as a single precision floating-point expression. This option is available for GPUs only.
     public static func doubleAsSingle(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .doubleAsSingle, value: .string(value.asText))
+        BuildSetting(key: .doubleAsSingle, value: SettingValue(value))
     }
 
     /// Double as single
@@ -21609,7 +21611,7 @@ extension BuildSetting {
     ///
     /// This allows optimizations for floating-point arithmetic that may violate the IEEE 754 standard and the `OpenCL` numerical compliance requirements defined in in section 7.4 for single-precision floating-point, section 9.3.9 for double-precision floating-point, and edge case behavior in section 7.5 of the `OpenCL` 1.1 specification. This is intended to be a performance optimization. This option causes the preprocessor macro ` **FAST_RELAXED_MATH** ` to be defined in the `OpenCL` program.
     public static func openclRelaxIeeeCompliance(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .openclRelaxIeeeCompliance, value: .string(value.asText))
+        BuildSetting(key: .openclRelaxIeeeCompliance, value: SettingValue(value))
     }
 
     /// OpenCL Relax IEEE Compliance
@@ -21642,7 +21644,7 @@ extension BuildSetting {
     ///
     /// Allow `a * b + c` to be replaced by a `mad` instruction. The `mad` computes `a * b + c` with reduced accuracy. For example, some `OpenCL` devices implement `mad` as truncate the result of `a * b` before adding it to `c`. This is intended to be a performance optimization.
     public static func useMad(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .useMad, value: .string(value.asText))
+        BuildSetting(key: .useMad, value: SettingValue(value))
     }
 
     /// Use MAD
@@ -21687,11 +21689,11 @@ extension BuildSettingsKey {
 }
 
 public enum OpenclOptimizationLevel: String, Hashable, Codable, CustomStringConvertible {
+    case _2 = "2"
+    case _0 = "0"
     case _3 = "3"
     case s = "s"
     case _1 = "1"
-    case _2 = "2"
-    case _0 = "0"
 
     public var description: String {
         rawValue
@@ -21778,7 +21780,7 @@ extension BuildSetting {
     ///
     /// Instructs the XIB compiler to add custom fonts to the application’s `Info.plist`, which will cause the fonts to activate upon application launch.
     public static func autoActivateCustomFonts(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .autoActivateCustomFonts, value: .string(value.asText))
+        BuildSetting(key: .autoActivateCustomFonts, value: SettingValue(value))
     }
 
     /// Auto-Activate Custom Fonts
@@ -21831,7 +21833,7 @@ extension BuildSetting {
     ///
     /// Show errors encountered during the compilation of XIB files.
     public static func showErrors(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .showErrors, value: .string(value.asText))
+        BuildSetting(key: .showErrors, value: SettingValue(value))
     }
 
     /// Show Errors
@@ -21864,7 +21866,7 @@ extension BuildSetting {
     ///
     /// If enabled, compile XIB files into flattened (non-wrapper) NIB files. After flattening, the resulting NIB is more compact but no longer editable by Interface Builder. When this option is disabled, the resulting NIB file remains editable in Interface Builder.
     public static func flattenCompiledXibFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .flattenCompiledXibFiles, value: .string(value.asText))
+        BuildSetting(key: .flattenCompiledXibFiles, value: SettingValue(value))
     }
 
     /// Flatten Compiled XIB Files
@@ -21930,7 +21932,7 @@ extension BuildSetting {
     ///
     /// Show notices encountered during the compilation of XIB files.
     public static func showNotices(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .showNotices, value: .string(value.asText))
+        BuildSetting(key: .showNotices, value: SettingValue(value))
     }
 
     /// Show Notices
@@ -22113,7 +22115,7 @@ extension BuildSetting {
     ///
     /// Show warnings encountered during the compilation of XIB files.
     public static func showWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .showWarnings, value: .string(value.asText))
+        BuildSetting(key: .showWarnings, value: SettingValue(value))
     }
 
     /// Show Warnings
@@ -22191,7 +22193,7 @@ extension BuildSetting {
     ///
     /// Strips an Interface Builder NIB to reduce its size for deployment. The resulting NIB is more compact but no longer editable by Interface Builder. When this option is disabled, the resulting NIB file remains editable by Interface Builder.
     public static func stripNibFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .stripNibFiles, value: .string(value.asText))
+        BuildSetting(key: .stripNibFiles, value: SettingValue(value))
     }
 
     /// Strip NIB Files
@@ -22224,7 +22226,7 @@ extension BuildSetting {
     ///
     /// Instructs the Storyboard compiler to add custom fonts to the application’s `Info.plist` that will cause the fonts to activate upon application launch.
     public static func ibscAutoActivateCustomFonts(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ibscAutoActivateCustomFonts, value: .string(value.asText))
+        BuildSetting(key: .ibscAutoActivateCustomFonts, value: SettingValue(value))
     }
 
     /// IBSC Auto-Activate Custom Fonts
@@ -22277,7 +22279,7 @@ extension BuildSetting {
     ///
     /// Show errors encountered during the compilation of Storyboard files.
     public static func ibscShowErrors(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ibscShowErrors, value: .string(value.asText))
+        BuildSetting(key: .ibscShowErrors, value: SettingValue(value))
     }
 
     /// IBSC Show Errors
@@ -22310,7 +22312,7 @@ extension BuildSetting {
     ///
     /// Compiles a Storyboard file into flattened (non-wrapper) Storyboard file. After flattening, the resulting Storyboard is more compact but no longer editable by Interface Builder. When this option is disabled, the resulting Storyboard file remains editable in Interface Builder.
     public static func flattenCompiledStoryboardFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .flattenCompiledStoryboardFiles, value: .string(value.asText))
+        BuildSetting(key: .flattenCompiledStoryboardFiles, value: SettingValue(value))
     }
 
     /// Flatten Compiled Storyboard Files
@@ -22376,7 +22378,7 @@ extension BuildSetting {
     ///
     /// Show notices encountered during the compilation of Storyboard files.
     public static func ibscShowNotices(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ibscShowNotices, value: .string(value.asText))
+        BuildSetting(key: .ibscShowNotices, value: SettingValue(value))
     }
 
     /// IBSC Show Notices
@@ -22472,7 +22474,7 @@ extension BuildSetting {
     ///
     /// Show warnings encountered during the compilation of Storyboard files.
     public static func ibscShowWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .ibscShowWarnings, value: .string(value.asText))
+        BuildSetting(key: .ibscShowWarnings, value: SettingValue(value))
     }
 
     /// IBSC Show Warnings
@@ -22530,7 +22532,7 @@ extension BuildSetting {
     ///
     /// Strips an editable Interface Builder storyboardc file to reduce its size for deployment. The resulting storyboardc is more compact but no longer editable by Interface Builder. When this option is disabled, the resulting storyboardc file remains editable by Interface Builder.
     public static func stripStoryboardcFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .stripStoryboardcFiles, value: .string(value.asText))
+        BuildSetting(key: .stripStoryboardcFiles, value: SettingValue(value))
     }
 
     /// Strip Storyboardc Files
@@ -22585,7 +22587,7 @@ extension BuildSetting {
 
     /// Assetcatalog Compiler Compress Pngs
     public static func assetcatalogCompilerCompressPngs(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .assetcatalogCompilerCompressPngs, value: .string(value.asText))
+        BuildSetting(key: .assetcatalogCompilerCompressPngs, value: SettingValue(value))
     }
 
     /// Assetcatalog Compiler Compress Pngs
@@ -22635,7 +22637,7 @@ extension BuildSetting {
 
     /// Assetcatalog Compiler Enable On Demand Resources
     public static func assetcatalogCompilerEnableOnDemandResources(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .assetcatalogCompilerEnableOnDemandResources, value: .string(value.asText))
+        BuildSetting(key: .assetcatalogCompilerEnableOnDemandResources, value: SettingValue(value))
     }
 
     /// Assetcatalog Compiler Enable On Demand Resources
@@ -22690,7 +22692,7 @@ extension BuildSetting {
     ///
     /// When enabled, includes the localization information of the selected assets in the generated partial Info.plist file under the CFBundleLocalizations key. This will allow the assets to be used at runtime in the absence of a corresponding lproj directory in the bundle.
     public static func includeAssetLocalizationsInInfoPlist(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .includeAssetLocalizationsInInfoPlist, value: .string(value.asText))
+        BuildSetting(key: .includeAssetLocalizationsInInfoPlist, value: SettingValue(value))
     }
 
     /// Include Asset Localizations in Info.plist
@@ -22719,7 +22721,7 @@ extension BuildSetting {
 
     /// Include Sticker Content
     public static func includeStickerContent(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .includeStickerContent, value: .string(value.asText))
+        BuildSetting(key: .includeStickerContent, value: SettingValue(value))
     }
 
     /// Include Sticker Content
@@ -22855,8 +22857,8 @@ extension BuildSettingsKey {
 
 public enum StandaloneIconFileBehavior: String, Hashable, Codable, CustomStringConvertible {
     case `default` = "default"
-    case none = "none"
     case all = "all"
+    case none = "none"
 
     public var description: String {
         rawValue
@@ -22935,9 +22937,9 @@ extension BuildSettingsKey {
 }
 
 public enum StickersIconRole: String, Hashable, Codable, CustomStringConvertible {
-    case hostApp = "host-app"
-    case _0 = ""
     case `extension` = "extension"
+    case _0 = ""
+    case hostApp = "host-app"
 
     public var description: String {
         rawValue
@@ -23034,7 +23036,7 @@ extension BuildSetting {
     ///
     /// Show notices encountered during the compilation of asset catalogs.
     public static func showAssetCatalogsNotices(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .showAssetCatalogsNotices, value: .string(value.asText))
+        BuildSetting(key: .showAssetCatalogsNotices, value: SettingValue(value))
     }
 
     /// Show Asset Catalogs Notices
@@ -23133,7 +23135,7 @@ extension BuildSetting {
     ///
     /// Show warnings encountered during the compilation of asset catalogs.
     public static func showAssetCatalogsWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .showAssetCatalogsWarnings, value: .string(value.asText))
+        BuildSetting(key: .showAssetCatalogsWarnings, value: SettingValue(value))
     }
 
     /// Show Asset Catalogs Warnings
@@ -23186,7 +23188,7 @@ extension BuildSetting {
     ///
     /// Enabled the incremental `distill` option in the asset catalog compiler. This feature is experimental and should only be enabled with caution.
     public static func enableIncrementalDistill(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableIncrementalDistill, value: .string(value.asText))
+        BuildSetting(key: .enableIncrementalDistill, value: SettingValue(value))
     }
 
     /// Enable Incremental Distill
@@ -23219,7 +23221,7 @@ extension BuildSetting {
     ///
     /// Omit inapplicable resources when building for a single device. For example, when building for a device with a Retina display, exclude 1x resources.
     public static func enableBuildActiveResourcesOnly(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableBuildActiveResourcesOnly, value: .string(value.asText))
+        BuildSetting(key: .enableBuildActiveResourcesOnly, value: SettingValue(value))
     }
 
     /// Enable Build Active Resources Only
@@ -23309,8 +23311,8 @@ extension BuildSettingsKey {
 }
 
 public enum EnableSkyboxWarnings: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "Yes"
     case no = "No"
+    case yes = "Yes"
 
     public var description: String {
         rawValue
@@ -23327,7 +23329,7 @@ extension BuildSetting {
 
     /// Enable USDZ Compilation
     public static func enableUsdzCompilation(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .enableUsdzCompilation, value: .string(value.asText))
+        BuildSetting(key: .enableUsdzCompilation, value: SettingValue(value))
     }
 
     /// Enable USDZ Compilation
@@ -23393,8 +23395,8 @@ extension BuildSettingsKey {
 }
 
 public enum EnableUsdzWarnings: String, Hashable, Codable, CustomStringConvertible {
-    case no = "No"
     case yes = "Yes"
+    case no = "No"
 
     public var description: String {
         rawValue
@@ -23411,7 +23413,7 @@ extension BuildSetting {
 
     /// Validate Plist Files While Copying
     public static func validatePlistFilesWhileCopying(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .validatePlistFilesWhileCopying, value: .string(value.asText))
+        BuildSetting(key: .validatePlistFilesWhileCopying, value: SettingValue(value))
     }
 
     /// Validate Plist Files While Copying
@@ -23461,7 +23463,7 @@ extension BuildSetting {
 
     /// Validate Strings Files While Copying
     public static func validateStringsFilesWhileCopying(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .validateStringsFilesWhileCopying, value: .string(value.asText))
+        BuildSetting(key: .validateStringsFilesWhileCopying, value: SettingValue(value))
     }
 
     /// Validate Strings Files While Copying
@@ -23486,7 +23488,7 @@ extension BuildSetting {
 
     /// Compress Tiff Files While Copying
     public static func compressTiffFilesWhileCopying(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .compressTiffFilesWhileCopying, value: .string(value.asText))
+        BuildSetting(key: .compressTiffFilesWhileCopying, value: SettingValue(value))
     }
 
     /// Compress Tiff Files While Copying
@@ -23515,7 +23517,7 @@ extension BuildSetting {
     ///
     /// If enabled, PNG resource files are compressed as they are copied.
     public static func compressPngFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .compressPngFiles, value: .string(value.asText))
+        BuildSetting(key: .compressPngFiles, value: SettingValue(value))
     }
 
     /// Compress PNG Files
@@ -23548,7 +23550,7 @@ extension BuildSetting {
     ///
     /// Metadata in the form of text chunks in PNG files will be removed to reduce their footprint on disk.
     public static func removeTextMetadataFromPngFiles(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .removeTextMetadataFromPngFiles, value: .string(value.asText))
+        BuildSetting(key: .removeTextMetadataFromPngFiles, value: SettingValue(value))
     }
 
     /// Remove Text Metadata From PNG Files
@@ -23631,7 +23633,7 @@ extension BuildSetting {
     ///
     /// Compile `.xcmappingmodel` files into `.cdm` without reporting warnings.
     public static func suppressAllMapcWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suppressAllMapcWarnings, value: .string(value.asText))
+        BuildSetting(key: .suppressAllMapcWarnings, value: SettingValue(value))
     }
 
     /// Suppress all mapc warnings
@@ -23689,7 +23691,7 @@ extension BuildSetting {
     ///
     /// Suppress managed object model compiler (`momc`) warnings for delete rules during the compilation of `.xcdatamodel(d)` files.
     public static func suppressMomcWarningsForDeleteRules(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suppressMomcWarningsForDeleteRules, value: .string(value.asText))
+        BuildSetting(key: .suppressMomcWarningsForDeleteRules, value: SettingValue(value))
     }
 
     /// Suppress momc warnings for delete rules
@@ -23722,7 +23724,7 @@ extension BuildSetting {
     ///
     /// Suppress managed object model compiler (`momc`) warnings from output on missing inverse relationships during the compilation of `.xcdatamodel(d)` files
     public static func suppressMomcWarningsOnMissingInverseRelationships(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suppressMomcWarningsOnMissingInverseRelationships, value: .string(value.asText))
+        BuildSetting(key: .suppressMomcWarningsOnMissingInverseRelationships, value: SettingValue(value))
     }
 
     /// Suppress momc warnings on missing inverse relationships
@@ -23755,7 +23757,7 @@ extension BuildSetting {
     ///
     /// Suppress managed object model compiler (`momc`) warnings from output on entities with more than 100 properties during the compilation of `.xcdatamodel(d)` files.
     public static func suppressMomcWarningsForEntitiesWithMoreThan100Properties(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suppressMomcWarningsForEntitiesWithMoreThan100Properties, value: .string(value.asText))
+        BuildSetting(key: .suppressMomcWarningsForEntitiesWithMoreThan100Properties, value: SettingValue(value))
     }
 
     /// Suppress momc warnings for entities with more than 100 properties
@@ -23788,7 +23790,7 @@ extension BuildSetting {
     ///
     /// Suppress managed object model compiler (`momc`) warnings from output during the compilation of `.xcdatamodel(d)` files
     public static func suppressAllMomcWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suppressAllMomcWarnings, value: .string(value.asText))
+        BuildSetting(key: .suppressAllMomcWarnings, value: SettingValue(value))
     }
 
     /// Suppress all momc warnings
@@ -23846,7 +23848,7 @@ extension BuildSetting {
     ///
     /// Suppress managed object model compiler (`momc`) warnings from output on transient inverse relationships during the compilation of `.xcdatamodel(d)` files. This is only intended to be used on 10.4.x created models that compiled properly in 10.4.x before the error was introduced in 10.5
     public static func suppressMomcErrorOnTransientInverseRelationships(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suppressMomcErrorOnTransientInverseRelationships, value: .string(value.asText))
+        BuildSetting(key: .suppressMomcErrorOnTransientInverseRelationships, value: SettingValue(value))
     }
 
     /// Suppress momc error on transient inverse relationships
@@ -23879,7 +23881,7 @@ extension BuildSetting {
     ///
     /// When enabled, Xcode will automatically derive a bundle identifier for this target from its original bundle identifier when it’s building for Mac Catalyst.
     public static func deriveMacCatalystProductBundleIdentifier(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .deriveMacCatalystProductBundleIdentifier, value: .string(value.asText))
+        BuildSetting(key: .deriveMacCatalystProductBundleIdentifier, value: SettingValue(value))
     }
 
     /// Derive Mac Catalyst Product Bundle Identifier
@@ -23905,7 +23907,7 @@ extension BuildSetting {
     ///
     /// Indicates whether the target is building for Mac Catalyst. This build setting is intended for use in shell scripts and build setting composition and should be considered read-only.
     public static func buildingForMacCatalyst(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .buildingForMacCatalyst, value: .string(value.asText))
+        BuildSetting(key: .buildingForMacCatalyst, value: SettingValue(value))
     }
 
     /// Building for Mac Catalyst
@@ -23938,7 +23940,7 @@ extension BuildSetting {
     ///
     /// Support building this target for Mac Catalyst.
     public static func supportsMacCatalyst(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .supportsMacCatalyst, value: .string(value.asText))
+        BuildSetting(key: .supportsMacCatalyst, value: SettingValue(value))
     }
 
     /// Supports Mac Catalyst
@@ -23971,7 +23973,7 @@ extension BuildSetting {
     ///
     /// Show the Mac (Designed for iPhone) and Mac (Designed for iPad) destinations.
     public static func showMacDesignedForIphoneIpadDestination(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .showMacDesignedForIphoneIpadDestination, value: .string(value.asText))
+        BuildSetting(key: .showMacDesignedForIphoneIpadDestination, value: SettingValue(value))
     }
 
     /// Show Mac (Designed for iPhone & iPad) Destination
@@ -24044,10 +24046,10 @@ extension BuildSettingsKey {
 }
 
 public enum CoremlModelClassGenerationLanguage: String, Hashable, Codable, CustomStringConvertible {
+    case automatic = "Automatic"
     case objectiveC = "Objective-C"
     case none = "None"
     case swift = "Swift"
-    case automatic = "Automatic"
 
     public var description: String {
         rawValue
@@ -24068,7 +24070,7 @@ extension BuildSetting {
     ///
     /// Generate Swift model classes that are marked with @objc and are descendants of NSObject, in order to be accessible and usable in Objective-C. This setting has no effect if “CoreML Model Class Generation Language” is set to “Objective-C”.
     public static func coremlGeneratedModelInheritsNsobject(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .coremlGeneratedModelInheritsNsobject, value: .string(value.asText))
+        BuildSetting(key: .coremlGeneratedModelInheritsNsobject, value: SettingValue(value))
     }
 
     /// CoreML Generated Model Inherits NSObject
@@ -24372,7 +24374,7 @@ extension BuildSetting {
 
     /// Disable Standard Instruments Package Search Path
     public static func disableStandardInstrumentsPackageSearchPath(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .disableStandardInstrumentsPackageSearchPath, value: .string(value.asText))
+        BuildSetting(key: .disableStandardInstrumentsPackageSearchPath, value: SettingValue(value))
     }
 
     /// Disable Standard Instruments Package Search Path
@@ -24672,7 +24674,7 @@ extension BuildSetting {
     ///
     /// Saves the output script in execute-only form; the script can be run, but cannot be opened in Script Editor or Xcode. With this option turned off, a user may see the original script source by opening the script.
     public static func saveAsExecuteOnly(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .saveAsExecuteOnly, value: .string(value.asText))
+        BuildSetting(key: .saveAsExecuteOnly, value: SettingValue(value))
     }
 
     /// Save as Execute-Only
@@ -24933,9 +24935,9 @@ extension BuildSettingsKey {
 }
 
 public enum FileForkOfBinarySources: String, Hashable, Codable, CustomStringConvertible {
-    case data = "data"
-    case resource = "resource"
     case auto = "auto"
+    case resource = "resource"
+    case data = "data"
 
     public var description: String {
         rawValue
@@ -25068,10 +25070,10 @@ extension BuildSettingsKey {
 }
 
 public enum ResolveAliases: String, Hashable, Codable, CustomStringConvertible {
-    case outputs = "Outputs"
-    case never = "Never"
     case includes = "Includes"
     case always = "Always"
+    case outputs = "Outputs"
+    case never = "Never"
 
     public var description: String {
         rawValue
@@ -25092,7 +25094,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes the resource map output to be read-only.
     public static func readOnlyResourceMap(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .readOnlyResourceMap, value: .string(value.asText))
+        BuildSetting(key: .readOnlyResourceMap, value: SettingValue(value))
     }
 
     /// Read-only Resource Map
@@ -25145,11 +25147,11 @@ extension BuildSettingsKey {
 }
 
 public enum RezScriptType: String, Hashable, Codable, CustomStringConvertible {
-    case korean = "Korean"
     case simpchinese = "SimpChinese"
+    case korean = "Korean"
+    case roman = "Roman"
     case japanese = "Japanese"
     case tradchinese = "TradChinese"
-    case roman = "Roman"
 
     public var description: String {
         rawValue
@@ -25170,7 +25172,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes version and progress information to be written when compiling resource manager resources.
     public static func showDiagnosticOutput(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .showDiagnosticOutput, value: .string(value.asText))
+        BuildSetting(key: .showDiagnosticOutput, value: SettingValue(value))
     }
 
     /// Show Diagnostic Output
@@ -25203,7 +25205,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes warnings about redeclared resource types to be suppressed.
     public static func suppressTypeRedeclarationWarnings(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suppressTypeRedeclarationWarnings, value: .string(value.asText))
+        BuildSetting(key: .suppressTypeRedeclarationWarnings, value: SettingValue(value))
     }
 
     /// Suppress Type Redeclaration Warnings
@@ -25236,7 +25238,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes `lex` to generate a case-insensitive scanner. The case of letters given in the `lex` input patterns will be ignored, and tokens in the input will be matched regardless of case. The matched text given in `yytext` will have the preserved case (for example, it will not be folded).
     public static func generateCaseInsensitiveScanner(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .generateCaseInsensitiveScanner, value: .string(value.asText))
+        BuildSetting(key: .generateCaseInsensitiveScanner, value: SettingValue(value))
     }
 
     /// Generate Case-Insensitive Scanner
@@ -25269,7 +25271,7 @@ extension BuildSetting {
     ///
     /// Enabling this option instructs `lex` to insert `#line` directives so error messages in the actions will be correctly located with respect to either the original `lex` input file (if the errors are due to code in the input file), or `lex.yy.c` (if the errors are `lex`’s fault). This option is enabled by default; disabling it passes a flag to `lex` to not insert `#line` directives.
     public static func insertLineDirectives(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .insertLineDirectives, value: .string(value.asText))
+        BuildSetting(key: .insertLineDirectives, value: SettingValue(value))
     }
 
     /// Insert #line Directives
@@ -25302,7 +25304,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes the default rule (that unmatched scanner input is echoed to `stdout`) to be suppressed. If the scanner encounters input that does not match any of its rules, it aborts with an error. This option is useful for finding holes in a scanner’s rule set.
     public static func suppressDefaultRule(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suppressDefaultRule, value: .string(value.asText))
+        BuildSetting(key: .suppressDefaultRule, value: SettingValue(value))
     }
 
     /// Suppress Default Rule
@@ -25335,7 +25337,7 @@ extension BuildSetting {
     ///
     /// Enabling this option causes `lex` to suppress its warning messages.
     public static func suppressWarningMessages(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .suppressWarningMessages, value: .string(value.asText))
+        BuildSetting(key: .suppressWarningMessages, value: SettingValue(value))
     }
 
     /// Suppress Warning Messages
@@ -25410,7 +25412,7 @@ extension BuildSetting {
     ///
     /// Enabling this option changes the preprocessor directives generated by `yacc` so that debugging statements will be incorporated in the compiled code.
     public static func generateDebuggingDirectives(_ value: Bool) -> BuildSetting { 
-        BuildSetting(key: .generateDebuggingDirectives, value: .string(value.asText))
+        BuildSetting(key: .generateDebuggingDirectives, value: SettingValue(value))
     }
 
     /// Generate Debugging Directives
