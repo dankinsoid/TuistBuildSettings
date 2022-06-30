@@ -56,7 +56,7 @@
         "class": "build_setting",
         "value": "ALWAYS_SEARCH_USER_PATHS",
         "type": "Boolean",
-        "description": "This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include &lt;header.h&gt;`-style and `#include \"header.h \"`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include &lt;header.h&gt;`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include \"header.h \"`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.",
+        "description": "This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include <header.h>`-style and `#include 'header.h '`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include <header.h>`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include 'header.h '`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.",
         "name": "Always Search User Paths (Deprecated)"
       }, {
         "defaultValue": "NO",
@@ -1368,7 +1368,7 @@
         "value": "ORDER_FILE",
         "class": "build_setting",
         "name": "Order File",
-        "description": "The path to a file that alters the order in which functions and data are laid out. For each section in the output file, any symbol in that section that are specified in the order file is moved to the start of its section and laid out in the same order as in the order file. Order files are text files with one symbol name per line. Lines starting with a `#` are comments. A symbol name may be optionally preceded with its object file leafname and a colon (for example, `foo.o:_foo`). This is useful for static functions\/data that occur in multiple files. A symbol name may also be optionally preceded with the architecture (for example, `ppc:_foo` or `ppc:foo.o:_foo`). This enables you to have one order file that works for multiple architectures. Literal C-strings may be ordered by quoting the string in the order file (for example, `\"Hello, world\"`). Generally you should not specify an order file in Debug or Development configurations, as this will make the linked binary less readable to the debugger. Use them only in Release or Deployment configurations."
+        "description": "The path to a file that alters the order in which functions and data are laid out. For each section in the output file, any symbol in that section that are specified in the order file is moved to the start of its section and laid out in the same order as in the order file. Order files are text files with one symbol name per line. Lines starting with a `#` are comments. A symbol name may be optionally preceded with its object file leafname and a colon (for example, `foo.o:_foo`). This is useful for static functions\/data that occur in multiple files. A symbol name may also be optionally preceded with the architecture (for example, `ppc:_foo` or `ppc:foo.o:_foo`). This enables you to have one order file that works for multiple architectures. Literal C-strings may be ordered by quoting the string in the order file (for example, `'Hello, world'`). Generally you should not specify an order file in Debug or Development configurations, as this will make the linked binary less readable to the debugger. Use them only in Release or Deployment configurations."
       }, {
         "type": "StringList",
         "id": "other_cflags",
@@ -4742,7 +4742,7 @@
         "class": "build_setting",
         "value": "GCC_ENABLE_PASCAL_STRINGS",
         "type": "Boolean",
-        "description": "Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `\"pstring\"` . The special escape sequence `\\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.",
+        "description": "Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `'pstring'` . The special escape sequence `\\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.",
         "name": "Recognize Pascal Strings"
       }, {
         "defaultValue": "NO",
@@ -5047,7 +5047,7 @@
         "class": "build_setting",
         "value": "GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS",
         "type": "Boolean",
-        "description": "Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b-&gt;f();` This setting only applies to C++ and Objective-C++ sources.",
+        "description": "Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b->f();` This setting only applies to C++ and Objective-C++ sources.",
         "name": "Overloaded Virtual Functions"
       }, {
         "defaultValue": "NO",
@@ -6535,7 +6535,7 @@
         "class": "build_setting",
         "value": "YACC_GENERATED_FILE_STEM",
         "type": "Enumeration",
-        "description": "The file stem to use for the files generated by `yacc`. The files will be named `&lt;stem&gt;.tab.c` and `&lt;stem&gt;.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.",
+        "description": "The file stem to use for the files generated by `yacc`. The files will be named `<stem>.tab.c` and `<stem>.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.",
         "name": "Generated File Stem"
       }, {
         "defaultValue": "NO",

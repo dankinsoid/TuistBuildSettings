@@ -196,22 +196,19 @@ extension BuildSettingsKey {
 extension BuildSetting {
 
     /// Always Search User Paths (Deprecated)
-    ///
-    /// This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include &lt;header.h&gt;`-style and `#include "header.h "`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include &lt;header.h&gt;`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include "header.h "`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.
+    @available(*, deprecated, message: "This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include <header.h>`-style and `#include 'header.h '`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include <header.h>`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include 'header.h '`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.")
     public static var alwaysSearchUserPathsDeprecated: BuildSetting { 
         BuildSetting(key: .alwaysSearchUserPathsDeprecated, value: "YES")
     }
 
     /// Always Search User Paths (Deprecated)
-    ///
-    /// This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include &lt;header.h&gt;`-style and `#include "header.h "`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include &lt;header.h&gt;`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include "header.h "`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.
+    @available(*, deprecated, message: "This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include <header.h>`-style and `#include 'header.h '`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include <header.h>`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include 'header.h '`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.")
     public static func alwaysSearchUserPathsDeprecated(_ value: Bool) -> BuildSetting { 
         BuildSetting(key: .alwaysSearchUserPathsDeprecated, value: SettingValue(value))
     }
 
     /// Always Search User Paths (Deprecated)
-    ///
-    /// This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include &lt;header.h&gt;`-style and `#include "header.h "`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include &lt;header.h&gt;`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include "header.h "`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.
+    @available(*, deprecated, message: "This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include <header.h>`-style and `#include 'header.h '`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include <header.h>`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include 'header.h '`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.")
     public static func alwaysSearchUserPathsDeprecated(inherit key: BuildSettingsKey) -> BuildSetting {
         BuildSetting(key: .alwaysSearchUserPathsDeprecated, inherit: key)
     }
@@ -220,8 +217,7 @@ extension BuildSetting {
 extension BuildSettingsKey {
 
     /// Always Search User Paths (Deprecated)
-    ///
-    /// This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include &lt;header.h&gt;`-style and `#include "header.h "`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include &lt;header.h&gt;`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include "header.h "`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.
+    @available(*, deprecated, message: "This setting is deprecated as of Xcode 8.3 and may not be supported in future versions. It is recommended that you disable the setting. If enabled, both `#include <header.h>`-style and `#include 'header.h '`-style directives search the paths in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b) before [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97). As a consequence, user headers, such as your own `String.h` header, have precedence over system headers when using `#include <header.h>`. This is done using the `-iquote` flag for the paths provided in [User Header Search Paths (USER_HEADER_SEARCH_PATHS)](itcaec37c2a6.html# deved642222b). If disabled and your compiler fully supports separate user paths, user headers are only accessible with `#include 'header.h '`-style preprocessor directives. For backwards compatibility reasons, this setting is enabled by default. Disabling it is strongly recommended.")
     public static let alwaysSearchUserPathsDeprecated: BuildSettingsKey = "ALWAYS_SEARCH_USER_PATHS"
 }
 
@@ -1069,8 +1065,8 @@ extension BuildSettingsKey {
 }
 
 public enum CodeSignLocalExecutionIdentity: String, Hashable, Codable, CustomStringConvertible {
-    case localCertificate = "Local Certificate"
     case adHoc = "Ad Hoc"
+    case localCertificate = "Local Certificate"
 
     public var description: String {
         rawValue
@@ -1171,8 +1167,8 @@ extension BuildSettingsKey {
 }
 
 public enum EnableIndexWhileBuildingFunctionality: String, Hashable, Codable, CustomStringConvertible {
-    case `default` = "Default"
     case yes = "YES"
+    case `default` = "Default"
     case no = "NO"
 
     public var description: String {
@@ -2436,8 +2432,8 @@ extension BuildSettingsKey {
 }
 
 public enum EntitlementsDestination: String, Hashable, Codable, CustomStringConvertible {
-    case Entitlements = "__entitlements"
     case signature = "Signature"
+    case Entitlements = "__entitlements"
 
     public var description: String {
         rawValue
@@ -3388,9 +3384,9 @@ extension BuildSettingsKey {
 }
 
 public enum InfoPlistOutputEncoding: String, Hashable, Codable, CustomStringConvertible {
+    case xml = "XML"
     case binary = "binary"
     case sameAsInput = "same-as-input"
-    case xml = "XML"
 
     public var description: String {
         rawValue
@@ -4851,9 +4847,9 @@ extension BuildSettingsKey {
 }
 
 public enum MachOType: String, Hashable, Codable, CustomStringConvertible {
+    case mhBundle = "mh_bundle"
     case staticlib = "staticlib"
     case mhDylib = "mh_dylib"
-    case mhBundle = "mh_bundle"
     case mhObject = "mh_object"
     case mhExecute = "mh_execute"
 
@@ -5375,14 +5371,14 @@ extension BuildSetting {
 
     /// Order File
     ///
-    /// The path to a file that alters the order in which functions and data are laid out. For each section in the output file, any symbol in that section that are specified in the order file is moved to the start of its section and laid out in the same order as in the order file. Order files are text files with one symbol name per line. Lines starting with a `#` are comments. A symbol name may be optionally preceded with its object file leafname and a colon (for example, `foo.o:_foo`). This is useful for static functions/data that occur in multiple files. A symbol name may also be optionally preceded with the architecture (for example, `ppc:_foo` or `ppc:foo.o:_foo`). This enables you to have one order file that works for multiple architectures. Literal C-strings may be ordered by quoting the string in the order file (for example, `"Hello, world"`). Generally you should not specify an order file in Debug or Development configurations, as this will make the linked binary less readable to the debugger. Use them only in Release or Deployment configurations.
+    /// The path to a file that alters the order in which functions and data are laid out. For each section in the output file, any symbol in that section that are specified in the order file is moved to the start of its section and laid out in the same order as in the order file. Order files are text files with one symbol name per line. Lines starting with a `#` are comments. A symbol name may be optionally preceded with its object file leafname and a colon (for example, `foo.o:_foo`). This is useful for static functions/data that occur in multiple files. A symbol name may also be optionally preceded with the architecture (for example, `ppc:_foo` or `ppc:foo.o:_foo`). This enables you to have one order file that works for multiple architectures. Literal C-strings may be ordered by quoting the string in the order file (for example, `'Hello, world'`). Generally you should not specify an order file in Debug or Development configurations, as this will make the linked binary less readable to the debugger. Use them only in Release or Deployment configurations.
     public static func orderFile(_ value: String) -> BuildSetting { 
         BuildSetting(key: .orderFile, value: "\(value)")
     }
 
     /// Order File
     ///
-    /// The path to a file that alters the order in which functions and data are laid out. For each section in the output file, any symbol in that section that are specified in the order file is moved to the start of its section and laid out in the same order as in the order file. Order files are text files with one symbol name per line. Lines starting with a `#` are comments. A symbol name may be optionally preceded with its object file leafname and a colon (for example, `foo.o:_foo`). This is useful for static functions/data that occur in multiple files. A symbol name may also be optionally preceded with the architecture (for example, `ppc:_foo` or `ppc:foo.o:_foo`). This enables you to have one order file that works for multiple architectures. Literal C-strings may be ordered by quoting the string in the order file (for example, `"Hello, world"`). Generally you should not specify an order file in Debug or Development configurations, as this will make the linked binary less readable to the debugger. Use them only in Release or Deployment configurations.
+    /// The path to a file that alters the order in which functions and data are laid out. For each section in the output file, any symbol in that section that are specified in the order file is moved to the start of its section and laid out in the same order as in the order file. Order files are text files with one symbol name per line. Lines starting with a `#` are comments. A symbol name may be optionally preceded with its object file leafname and a colon (for example, `foo.o:_foo`). This is useful for static functions/data that occur in multiple files. A symbol name may also be optionally preceded with the architecture (for example, `ppc:_foo` or `ppc:foo.o:_foo`). This enables you to have one order file that works for multiple architectures. Literal C-strings may be ordered by quoting the string in the order file (for example, `'Hello, world'`). Generally you should not specify an order file in Debug or Development configurations, as this will make the linked binary less readable to the debugger. Use them only in Release or Deployment configurations.
     public static func orderFile(inherit key: BuildSettingsKey) -> BuildSetting {
         BuildSetting(key: .orderFile, inherit: key)
     }
@@ -5392,7 +5388,7 @@ extension BuildSettingsKey {
 
     /// Order File
     ///
-    /// The path to a file that alters the order in which functions and data are laid out. For each section in the output file, any symbol in that section that are specified in the order file is moved to the start of its section and laid out in the same order as in the order file. Order files are text files with one symbol name per line. Lines starting with a `#` are comments. A symbol name may be optionally preceded with its object file leafname and a colon (for example, `foo.o:_foo`). This is useful for static functions/data that occur in multiple files. A symbol name may also be optionally preceded with the architecture (for example, `ppc:_foo` or `ppc:foo.o:_foo`). This enables you to have one order file that works for multiple architectures. Literal C-strings may be ordered by quoting the string in the order file (for example, `"Hello, world"`). Generally you should not specify an order file in Debug or Development configurations, as this will make the linked binary less readable to the debugger. Use them only in Release or Deployment configurations.
+    /// The path to a file that alters the order in which functions and data are laid out. For each section in the output file, any symbol in that section that are specified in the order file is moved to the start of its section and laid out in the same order as in the order file. Order files are text files with one symbol name per line. Lines starting with a `#` are comments. A symbol name may be optionally preceded with its object file leafname and a colon (for example, `foo.o:_foo`). This is useful for static functions/data that occur in multiple files. A symbol name may also be optionally preceded with the architecture (for example, `ppc:_foo` or `ppc:foo.o:_foo`). This enables you to have one order file that works for multiple architectures. Literal C-strings may be ordered by quoting the string in the order file (for example, `'Hello, world'`). Generally you should not specify an order file in Debug or Development configurations, as this will make the linked binary less readable to the debugger. Use them only in Release or Deployment configurations.
     public static let orderFile: BuildSettingsKey = "ORDER_FILE"
 }
 
@@ -5665,9 +5661,9 @@ extension BuildSettingsKey {
 }
 
 public enum PropertyListOutputEncoding: String, Hashable, Codable, CustomStringConvertible {
-    case binary = "binary"
     case sameAsInput = "same-as-input"
     case xml = "XML"
+    case binary = "binary"
 
     public var description: String {
         rawValue
@@ -6918,9 +6914,9 @@ extension BuildSettingsKey {
 }
 
 public enum StringsFileOutputEncoding: String, Hashable, Codable, CustomStringConvertible {
-    case binary = "binary"
-    case utf8 = "UTF-8"
     case utf16 = "UTF-16"
+    case utf8 = "UTF-8"
+    case binary = "binary"
 
     public var description: String {
         rawValue
@@ -7045,9 +7041,9 @@ extension BuildSettingsKey {
 }
 
 public enum StripStyle: String, Hashable, Codable, CustomStringConvertible {
+    case nonGlobal = "non-global"
     case debugging = "debugging"
     case all = "all"
-    case nonGlobal = "non-global"
 
     public var description: String {
         rawValue
@@ -7356,9 +7352,9 @@ extension BuildSettingsKey {
 }
 
 public enum TextBasedInstallapiVerificationMode: String, Hashable, Codable, CustomStringConvertible {
+    case errorsonly = "ErrorsOnly"
     case errorsandwarnings = "ErrorsAndWarnings"
     case pedantic = "Pedantic"
-    case errorsonly = "ErrorsOnly"
 
     public var description: String {
         rawValue
@@ -7711,22 +7707,19 @@ extension BuildSettingsKey {
 extension BuildSetting {
 
     /// User Header Search Paths
-    ///
-    /// This is a list of paths to folders to be searched by the compiler for included or imported user header files (those headers listed in quotes) when compiling C, Objective-C, C++, or Objective-C++. Paths are delimited by whitespace, so any paths with spaces in them need to be properly quoted. See [Always Search User Paths (Deprecated) (ALWAYS_SEARCH_USER_PATHS)](itcaec37c2a6.html# devc34d7d3e9) for more details on how this setting is used. If the compiler doesn’t support the concept of user headers, then the search paths are prepended to the any existing header search paths defined in [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97).
+    @available(*, deprecated, message: "This is a list of paths to folders to be searched by the compiler for included or imported user header files (those headers listed in quotes) when compiling C, Objective-C, C++, or Objective-C++. Paths are delimited by whitespace, so any paths with spaces in them need to be properly quoted. See [Always Search User Paths (Deprecated) (ALWAYS_SEARCH_USER_PATHS)](itcaec37c2a6.html# devc34d7d3e9) for more details on how this setting is used. If the compiler doesn’t support the concept of user headers, then the search paths are prepended to the any existing header search paths defined in [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97).")
     public static func userHeaderSearchPaths(_ value: [String]) -> BuildSetting { 
         BuildSetting(key: .userHeaderSearchPaths, value: .array(value))
     }
 
     /// User Header Search Paths
-    ///
-    /// This is a list of paths to folders to be searched by the compiler for included or imported user header files (those headers listed in quotes) when compiling C, Objective-C, C++, or Objective-C++. Paths are delimited by whitespace, so any paths with spaces in them need to be properly quoted. See [Always Search User Paths (Deprecated) (ALWAYS_SEARCH_USER_PATHS)](itcaec37c2a6.html# devc34d7d3e9) for more details on how this setting is used. If the compiler doesn’t support the concept of user headers, then the search paths are prepended to the any existing header search paths defined in [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97).
+    @available(*, deprecated, message: "This is a list of paths to folders to be searched by the compiler for included or imported user header files (those headers listed in quotes) when compiling C, Objective-C, C++, or Objective-C++. Paths are delimited by whitespace, so any paths with spaces in them need to be properly quoted. See [Always Search User Paths (Deprecated) (ALWAYS_SEARCH_USER_PATHS)](itcaec37c2a6.html# devc34d7d3e9) for more details on how this setting is used. If the compiler doesn’t support the concept of user headers, then the search paths are prepended to the any existing header search paths defined in [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97).")
     public static func userHeaderSearchPaths(inherit key: BuildSettingsKey) -> BuildSetting {
         BuildSetting(key: .userHeaderSearchPaths, inherit: key)
     }
 
     /// User Header Search Paths
-    ///
-    /// This is a list of paths to folders to be searched by the compiler for included or imported user header files (those headers listed in quotes) when compiling C, Objective-C, C++, or Objective-C++. Paths are delimited by whitespace, so any paths with spaces in them need to be properly quoted. See [Always Search User Paths (Deprecated) (ALWAYS_SEARCH_USER_PATHS)](itcaec37c2a6.html# devc34d7d3e9) for more details on how this setting is used. If the compiler doesn’t support the concept of user headers, then the search paths are prepended to the any existing header search paths defined in [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97).
+    @available(*, deprecated, message: "This is a list of paths to folders to be searched by the compiler for included or imported user header files (those headers listed in quotes) when compiling C, Objective-C, C++, or Objective-C++. Paths are delimited by whitespace, so any paths with spaces in them need to be properly quoted. See [Always Search User Paths (Deprecated) (ALWAYS_SEARCH_USER_PATHS)](itcaec37c2a6.html# devc34d7d3e9) for more details on how this setting is used. If the compiler doesn’t support the concept of user headers, then the search paths are prepended to the any existing header search paths defined in [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97).")
     public static func userHeaderSearchPaths(_ value: String...) -> BuildSetting { 
         .userHeaderSearchPaths(value)
     }
@@ -7735,8 +7728,7 @@ extension BuildSetting {
 extension BuildSettingsKey {
 
     /// User Header Search Paths
-    ///
-    /// This is a list of paths to folders to be searched by the compiler for included or imported user header files (those headers listed in quotes) when compiling C, Objective-C, C++, or Objective-C++. Paths are delimited by whitespace, so any paths with spaces in them need to be properly quoted. See [Always Search User Paths (Deprecated) (ALWAYS_SEARCH_USER_PATHS)](itcaec37c2a6.html# devc34d7d3e9) for more details on how this setting is used. If the compiler doesn’t support the concept of user headers, then the search paths are prepended to the any existing header search paths defined in [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97).
+    @available(*, deprecated, message: "This is a list of paths to folders to be searched by the compiler for included or imported user header files (those headers listed in quotes) when compiling C, Objective-C, C++, or Objective-C++. Paths are delimited by whitespace, so any paths with spaces in them need to be properly quoted. See [Always Search User Paths (Deprecated) (ALWAYS_SEARCH_USER_PATHS)](itcaec37c2a6.html# devc34d7d3e9) for more details on how this setting is used. If the compiler doesn’t support the concept of user headers, then the search paths are prepended to the any existing header search paths defined in [Header Search Paths (HEADER_SEARCH_PATHS)](itcaec37c2a6.html# dev3c9f85d97).")
     public static let userHeaderSearchPaths: BuildSettingsKey = "USER_HEADER_SEARCH_PATHS"
 }
 
@@ -7932,8 +7924,8 @@ extension BuildSettingsKey {
 }
 
 public enum ValidateWorkspace: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case yesError = "YES_ERROR"
+    case yes = "YES"
     case no = "NO"
 
     public var description: String {
@@ -10788,8 +10780,8 @@ extension BuildSettingsKey {
 }
 
 public enum ClangArcMigratePrecheck: String, Hashable, Codable, CustomStringConvertible {
-    case precheck = "precheck"
     case donothing = "donothing"
+    case precheck = "precheck"
 
     public var description: String {
         rawValue
@@ -10847,8 +10839,8 @@ extension BuildSettingsKey {
 }
 
 public enum LdBitcodeGenerationMode: String, Hashable, Codable, CustomStringConvertible {
-    case marker = "marker"
     case bitcode = "bitcode"
+    case marker = "marker"
 
     public var description: String {
         rawValue
@@ -11081,8 +11073,8 @@ extension BuildSettingsKey {
 }
 
 public enum LdObjcAbiVersion: String, Hashable, Codable, CustomStringConvertible {
-    case _2 = "2"
     case _1 = "1"
+    case _2 = "2"
 
     public var description: String {
         rawValue
@@ -11490,9 +11482,9 @@ extension BuildSettingsKey {
 }
 
 public enum PbxcpBitcodeStripMode: String, Hashable, Codable, CustomStringConvertible {
+    case all = "all"
     case replaceWithMarker = "replace-with-marker"
     case none = "none"
-    case all = "all"
 
     public var description: String {
         rawValue
@@ -12838,9 +12830,9 @@ extension BuildSettingsKey {
 }
 
 public enum SwiftStdlibToolVerbosity: String, Hashable, Codable, CustomStringConvertible {
+    case verbose = "verbose"
     case extraVerbose = "extra-verbose"
     case none = "none"
-    case verbose = "verbose"
 
     public var description: String {
         rawValue
@@ -13523,9 +13515,9 @@ extension BuildSettingsKey {
 }
 
 public enum MisuseOfNonnull: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case yesNonaggressive = "YES_NONAGGRESSIVE"
     case no = "NO"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -13599,9 +13591,9 @@ extension BuildSettingsKey {
 }
 
 public enum SuspiciousConversionsOfNsnumberAndCfnumberref: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case no = "NO"
     case yesAggressive = "YES_AGGRESSIVE"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -13989,8 +13981,8 @@ extension BuildSettingsKey {
 }
 
 public enum ClangAnalyzerOutput: String, Hashable, Codable, CustomStringConvertible {
-    case `default` = "default"
     case plistMultiFile = "plist-multi-file"
+    case `default` = "default"
 
     public var description: String {
         rawValue
@@ -14379,8 +14371,8 @@ extension BuildSettingsKey {
 
 public enum UseAfterMoveErrorsInCpp: String, Hashable, Codable, CustomStringConvertible {
     case no = "NO"
-    case yesAggressive = "YES_AGGRESSIVE"
     case yes = "YES"
+    case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
         rawValue
@@ -14466,9 +14458,9 @@ extension BuildSettingsKey {
 }
 
 public enum ClangBitcodeGenerationMode: String, Hashable, Codable, CustomStringConvertible {
-    case none = "none"
-    case bitcode = "bitcode"
     case marker = "marker"
+    case bitcode = "bitcode"
+    case none = "none"
 
     public var description: String {
         rawValue
@@ -14584,15 +14576,15 @@ extension BuildSettingsKey {
 }
 
 public enum CppLanguageDialect: String, Hashable, Codable, CustomStringConvertible {
-    case gnupp0x = "gnu++0x"
+    case cpp17 = "c++17"
     case cpp0x = "c++0x"
-    case cpp14 = "c++14"
-    case gnupp98 = "gnu++98"
     case gnupp17 = "gnu++17"
     case cpp98 = "c++98"
-    case gnupp14 = "gnu++14"
-    case cpp17 = "c++17"
+    case cpp14 = "c++14"
+    case gnupp98 = "gnu++98"
     case compilerDefault = "compiler-default"
+    case gnupp14 = "gnu++14"
+    case gnupp0x = "gnu++0x"
 
     public var description: String {
         rawValue
@@ -14625,9 +14617,9 @@ extension BuildSettingsKey {
 }
 
 public enum CppStandardLibrary: String, Hashable, Codable, CustomStringConvertible {
-    case libcpp = "libc++"
-    case libstdcpp = "libstdc++"
     case compilerDefault = "compiler-default"
+    case libstdcpp = "libstdc++"
+    case libcpp = "libc++"
 
     public var description: String {
         rawValue
@@ -15310,8 +15302,8 @@ extension BuildSettingsKey {
 
 public enum AtomicityOfInferredProperties: String, Hashable, Codable, CustomStringConvertible {
     case nsNonatomicIosonly = "NS_NONATOMIC_IOSONLY"
-    case atomic = "atomic"
     case nonatomic = "nonatomic"
+    case atomic = "atomic"
 
     public var description: String {
         rawValue
@@ -15873,8 +15865,8 @@ extension BuildSettingsKey {
 }
 
 public enum ModeOfAnalysisForAnalyze: String, Hashable, Codable, CustomStringConvertible {
-    case deep = "deep"
     case shallow = "shallow"
+    case deep = "deep"
 
     public var description: String {
         rawValue
@@ -16242,9 +16234,9 @@ extension BuildSettingsKey {
 }
 
 public enum BlockCaptureOfAutoreleasing: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yesError = "YES_ERROR"
     case yes = "YES"
+    case no = "NO"
 
     public var description: String {
         rawValue
@@ -16294,8 +16286,8 @@ extension BuildSettingsKey {
 
 public enum ImplicitBooleanConversions: String, Hashable, Codable, CustomStringConvertible {
     case yes = "YES"
-    case no = "NO"
     case yesError = "YES_ERROR"
+    case no = "NO"
 
     public var description: String {
         rawValue
@@ -16395,9 +16387,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitConstantConversions: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yesError = "YES_ERROR"
     case yes = "YES"
+    case no = "NO"
 
     public var description: String {
         rawValue
@@ -16446,9 +16438,9 @@ extension BuildSettingsKey {
 }
 
 public enum DeletingInstanceOfPolymorphicClassWithNoVirtualDestructor: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
-    case yes = "YES"
     case yesError = "YES_ERROR"
+    case yes = "YES"
+    case no = "NO"
 
     public var description: String {
         rawValue
@@ -16467,22 +16459,19 @@ extension DeletingInstanceOfPolymorphicClassWithNoVirtualDestructor: Expressible
 extension BuildSetting {
 
     /// Overriding Deprecated Objective-C Methods
-    ///
-    /// Warn if an Objective-C class either subclasses a deprecated class or overrides a method that has been marked deprecated or unavailable.
+    @available(*, deprecated, message: "Warn if an Objective-C class either subclasses a deprecated class or overrides a method that has been marked deprecated or unavailable.")
     public static var overridingDeprecatedObjectiveCMethods: BuildSetting { 
         BuildSetting(key: .overridingDeprecatedObjectiveCMethods, value: "NO")
     }
 
     /// Overriding Deprecated Objective-C Methods
-    ///
-    /// Warn if an Objective-C class either subclasses a deprecated class or overrides a method that has been marked deprecated or unavailable.
+    @available(*, deprecated, message: "Warn if an Objective-C class either subclasses a deprecated class or overrides a method that has been marked deprecated or unavailable.")
     public static func overridingDeprecatedObjectiveCMethods(_ value: Bool) -> BuildSetting { 
         BuildSetting(key: .overridingDeprecatedObjectiveCMethods, value: SettingValue(value))
     }
 
     /// Overriding Deprecated Objective-C Methods
-    ///
-    /// Warn if an Objective-C class either subclasses a deprecated class or overrides a method that has been marked deprecated or unavailable.
+    @available(*, deprecated, message: "Warn if an Objective-C class either subclasses a deprecated class or overrides a method that has been marked deprecated or unavailable.")
     public static func overridingDeprecatedObjectiveCMethods(inherit key: BuildSettingsKey) -> BuildSetting {
         BuildSetting(key: .overridingDeprecatedObjectiveCMethods, inherit: key)
     }
@@ -16491,8 +16480,7 @@ extension BuildSetting {
 extension BuildSettingsKey {
 
     /// Overriding Deprecated Objective-C Methods
-    ///
-    /// Warn if an Objective-C class either subclasses a deprecated class or overrides a method that has been marked deprecated or unavailable.
+    @available(*, deprecated, message: "Warn if an Objective-C class either subclasses a deprecated class or overrides a method that has been marked deprecated or unavailable.")
     public static let overridingDeprecatedObjectiveCMethods: BuildSettingsKey = "CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS"
 }
 
@@ -16530,8 +16518,8 @@ extension BuildSettingsKey {
 }
 
 public enum DirectUsageOfIsa: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
     case yesError = "YES_ERROR"
 
     public var description: String {
@@ -16647,9 +16635,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitEnumConversions: String, Hashable, Codable, CustomStringConvertible {
+    case yesError = "YES_ERROR"
     case no = "NO"
     case yes = "YES"
-    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -16774,9 +16762,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitSignednessConversions: String, Hashable, Codable, CustomStringConvertible {
+    case yes = "YES"
     case no = "NO"
     case yesError = "YES_ERROR"
-    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -16858,9 +16846,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitIntegerToPointerConversions: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
-    case no = "NO"
     case yesError = "YES_ERROR"
+    case no = "NO"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -16909,9 +16897,9 @@ extension BuildSettingsKey {
 }
 
 public enum MissingNoescapeAnnotation: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
     case yes = "YES"
     case no = "NO"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -16960,9 +16948,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitNonLiteralNullConversions: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
-    case yesError = "YES_ERROR"
     case no = "NO"
+    case yesError = "YES_ERROR"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -17143,9 +17131,9 @@ extension BuildSettingsKey {
 }
 
 public enum InterfaceDeclarationsOfInstanceVariables: String, Hashable, Codable, CustomStringConvertible {
+    case no = "NO"
     case yes = "YES"
     case yesError = "YES_ERROR"
-    case no = "NO"
 
     public var description: String {
         rawValue
@@ -17194,9 +17182,9 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitObjectiveCLiteralConversions: String, Hashable, Codable, CustomStringConvertible {
+    case yesError = "YES_ERROR"
     case no = "NO"
     case yes = "YES"
-    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -17278,8 +17266,8 @@ extension BuildSettingsKey {
 }
 
 public enum RepeatedlyUsingAWeakReference: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
     case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
@@ -17329,8 +17317,8 @@ extension BuildSettingsKey {
 }
 
 public enum UnintentionalRootClass: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
     case yesError = "YES_ERROR"
 
     public var description: String {
@@ -17381,8 +17369,8 @@ extension BuildSettingsKey {
 
 public enum SuspiciousPragmaPack: String, Hashable, Codable, CustomStringConvertible {
     case no = "NO"
-    case yes = "YES"
     case yesError = "YES_ERROR"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -17464,9 +17452,9 @@ extension BuildSettingsKey {
 }
 
 public enum QuotedIncludeInFrameworkHeader: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -17581,9 +17569,9 @@ extension BuildSettingsKey {
 }
 
 public enum StrictPrototypes: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
     case no = "NO"
     case yes = "YES"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
@@ -17632,9 +17620,9 @@ extension BuildSettingsKey {
 }
 
 public enum SuspiciousImplicitConversions: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yesError = "YES_ERROR"
     case yes = "YES"
+    case no = "NO"
 
     public var description: String {
         rawValue
@@ -17768,8 +17756,8 @@ extension BuildSettingsKey {
 
 public enum UnreachableCode: String, Hashable, Codable, CustomStringConvertible {
     case no = "NO"
-    case yes = "YES"
     case yesAggressive = "YES_AGGRESSIVE"
+    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -17818,9 +17806,9 @@ extension BuildSettingsKey {
 }
 
 public enum AmbiguousCppParsingSituation: String, Hashable, Codable, CustomStringConvertible {
+    case no = "NO"
     case yesError = "YES_ERROR"
     case yes = "YES"
-    case no = "NO"
 
     public var description: String {
         rawValue
@@ -18325,14 +18313,14 @@ extension BuildSettingsKey {
 }
 
 public enum GccCLanguageDialect: String, Hashable, Codable, CustomStringConvertible {
-    case gnu11 = "gnu11"
     case gnu99 = "gnu99"
-    case ansi = "ansi"
-    case compilerDefault = "compiler-default"
-    case c11 = "c11"
-    case gnu89 = "gnu89"
-    case c99 = "c99"
     case c89 = "c89"
+    case c99 = "c99"
+    case gnu89 = "gnu89"
+    case gnu11 = "gnu11"
+    case compilerDefault = "compiler-default"
+    case ansi = "ansi"
+    case c11 = "c11"
 
     public var description: String {
         rawValue
@@ -18365,8 +18353,8 @@ extension BuildSettingsKey {
 }
 
 public enum GccDebugInformationFormat: String, Hashable, Codable, CustomStringConvertible {
-    case dwarf = "dwarf"
     case dwarfWithDsym = "dwarf-with-dsym"
+    case dwarf = "dwarf"
 
     public var description: String {
         rawValue
@@ -18675,21 +18663,21 @@ extension BuildSetting {
 
     /// Recognize Pascal Strings
     ///
-    /// Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `"pstring"` . The special escape sequence `\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.
+    /// Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `'pstring'` . The special escape sequence `\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.
     public static var recognizePascalStrings: BuildSetting { 
         BuildSetting(key: .recognizePascalStrings, value: "YES")
     }
 
     /// Recognize Pascal Strings
     ///
-    /// Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `"pstring"` . The special escape sequence `\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.
+    /// Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `'pstring'` . The special escape sequence `\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.
     public static func recognizePascalStrings(_ value: Bool) -> BuildSetting { 
         BuildSetting(key: .recognizePascalStrings, value: SettingValue(value))
     }
 
     /// Recognize Pascal Strings
     ///
-    /// Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `"pstring"` . The special escape sequence `\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.
+    /// Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `'pstring'` . The special escape sequence `\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.
     public static func recognizePascalStrings(inherit key: BuildSettingsKey) -> BuildSetting {
         BuildSetting(key: .recognizePascalStrings, inherit: key)
     }
@@ -18699,7 +18687,7 @@ extension BuildSettingsKey {
 
     /// Recognize Pascal Strings
     ///
-    /// Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `"pstring"` . The special escape sequence `\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.
+    /// Recognize and construct Pascal-style string literals. Its use in new code is discouraged. Pascal string literals take the form `'pstring'` . The special escape sequence `\p` denotes the Pascal length byte for the string, and will be replaced at compile time with the number of characters that follow. The `\p` may only appear at the beginning of a string literal, and may not appear in wide string literals or as an integral constant.
     public static let recognizePascalStrings: BuildSettingsKey = "GCC_ENABLE_PASCAL_STRINGS"
 }
 
@@ -18928,11 +18916,11 @@ extension BuildSettingsKey {
 }
 
 public enum CompileSourcesAs: String, Hashable, Codable, CustomStringConvertible {
-    case sourcecodeCppObjcpp = "sourcecode.cpp.objcpp"
     case sourcecodeCC = "sourcecode.c.c"
-    case sourcecodeCppCpp = "sourcecode.cpp.cpp"
-    case sourcecodeCObjc = "sourcecode.c.objc"
     case automatic = "automatic"
+    case sourcecodeCObjc = "sourcecode.c.objc"
+    case sourcecodeCppCpp = "sourcecode.cpp.cpp"
+    case sourcecodeCppObjcpp = "sourcecode.cpp.objcpp"
 
     public var description: String {
         rawValue
@@ -19089,8 +19077,8 @@ extension BuildSettingsKey {
 }
 
 public enum GccObjcAbiVersion: String, Hashable, Codable, CustomStringConvertible {
-    case _1 = "1"
     case _2 = "2"
+    case _1 = "1"
 
     public var description: String {
         rawValue
@@ -19148,11 +19136,11 @@ extension BuildSettingsKey {
 }
 
 public enum GccOperation: String, Hashable, Codable, CustomStringConvertible {
-    case generateAssembler = "generate-assembler"
-    case separateSymbols = "separate-symbols"
-    case generatePreprocessed = "generate-preprocessed"
-    case compile = "compile"
     case precompile = "precompile"
+    case separateSymbols = "separate-symbols"
+    case generateAssembler = "generate-assembler"
+    case compile = "compile"
+    case generatePreprocessed = "generate-preprocessed"
 
     public var description: String {
         rawValue
@@ -19193,13 +19181,13 @@ extension BuildSettingsKey {
 }
 
 public enum OptimizationLevel: String, Hashable, Codable, CustomStringConvertible {
-    case _3 = "3"
-    case z = "z"
     case fast = "fast"
+    case _3 = "3"
+    case _1 = "1"
     case _0 = "0"
     case s = "s"
-    case _1 = "1"
     case _2 = "2"
+    case z = "z"
 
     public var description: String {
         rawValue
@@ -19598,22 +19586,19 @@ extension BuildSettingsKey {
 extension BuildSetting {
 
     /// Deprecated Functions
-    ///
-    /// Warn about the use of deprecated functions, variables, and types (as indicated by the `deprecated` attribute).
+    @available(*, deprecated, message: "Warn about the use of deprecated functions, variables, and types (as indicated by the `deprecated` attribute).")
     public static var deprecatedFunctions: BuildSetting { 
         BuildSetting(key: .deprecatedFunctions, value: "YES")
     }
 
     /// Deprecated Functions
-    ///
-    /// Warn about the use of deprecated functions, variables, and types (as indicated by the `deprecated` attribute).
+    @available(*, deprecated, message: "Warn about the use of deprecated functions, variables, and types (as indicated by the `deprecated` attribute).")
     public static func deprecatedFunctions(_ value: Bool) -> BuildSetting { 
         BuildSetting(key: .deprecatedFunctions, value: SettingValue(value))
     }
 
     /// Deprecated Functions
-    ///
-    /// Warn about the use of deprecated functions, variables, and types (as indicated by the `deprecated` attribute).
+    @available(*, deprecated, message: "Warn about the use of deprecated functions, variables, and types (as indicated by the `deprecated` attribute).")
     public static func deprecatedFunctions(inherit key: BuildSettingsKey) -> BuildSetting {
         BuildSetting(key: .deprecatedFunctions, inherit: key)
     }
@@ -19622,8 +19607,7 @@ extension BuildSetting {
 extension BuildSettingsKey {
 
     /// Deprecated Functions
-    ///
-    /// Warn about the use of deprecated functions, variables, and types (as indicated by the `deprecated` attribute).
+    @available(*, deprecated, message: "Warn about the use of deprecated functions, variables, and types (as indicated by the `deprecated` attribute).")
     public static let deprecatedFunctions: BuildSettingsKey = "GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS"
 }
 
@@ -19947,21 +19931,21 @@ extension BuildSetting {
 
     /// Overloaded Virtual Functions
     ///
-    /// Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b-&gt;f();` This setting only applies to C++ and Objective-C++ sources.
+    /// Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b->f();` This setting only applies to C++ and Objective-C++ sources.
     public static var overloadedVirtualFunctions: BuildSetting { 
         BuildSetting(key: .overloadedVirtualFunctions, value: "NO")
     }
 
     /// Overloaded Virtual Functions
     ///
-    /// Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b-&gt;f();` This setting only applies to C++ and Objective-C++ sources.
+    /// Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b->f();` This setting only applies to C++ and Objective-C++ sources.
     public static func overloadedVirtualFunctions(_ value: Bool) -> BuildSetting { 
         BuildSetting(key: .overloadedVirtualFunctions, value: SettingValue(value))
     }
 
     /// Overloaded Virtual Functions
     ///
-    /// Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b-&gt;f();` This setting only applies to C++ and Objective-C++ sources.
+    /// Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b->f();` This setting only applies to C++ and Objective-C++ sources.
     public static func overloadedVirtualFunctions(inherit key: BuildSettingsKey) -> BuildSetting {
         BuildSetting(key: .overloadedVirtualFunctions, inherit: key)
     }
@@ -19971,7 +19955,7 @@ extension BuildSettingsKey {
 
     /// Overloaded Virtual Functions
     ///
-    /// Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b-&gt;f();` This setting only applies to C++ and Objective-C++ sources.
+    /// Warn when a function declaration hides virtual functions from a base class. For example, in the following example, the `A` class version of `f()` is hidden in `B`. `struct A {`` virtual void f();``};``struct B: public A {`` void f(int);``};` As a result, the following code will fail to compile. `B* b;``b->f();` This setting only applies to C++ and Objective-C++ sources.
     public static let overloadedVirtualFunctions: BuildSettingsKey = "GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS"
 }
 
@@ -20364,8 +20348,8 @@ extension BuildSettingsKey {
 }
 
 public enum UninitializedVariables: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
     case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
@@ -20671,9 +20655,9 @@ extension BuildSettingsKey {
 }
 
 public enum LinkTimeOptimization: String, Hashable, Codable, CustomStringConvertible {
+    case yes = "YES"
     case yesThin = "YES_THIN"
     case no = "NO"
-    case yes = "YES"
 
     public var description: String {
         rawValue
@@ -21523,8 +21507,8 @@ extension BuildSettingsKey {
 }
 
 public enum OpenclCompilerVersion: String, Hashable, Codable, CustomStringConvertible {
-    case cl12 = "CL1.2"
     case cl11 = "CL1.1"
+    case cl12 = "CL1.2"
 
     public var description: String {
         rawValue
@@ -21689,10 +21673,10 @@ extension BuildSettingsKey {
 }
 
 public enum OpenclOptimizationLevel: String, Hashable, Codable, CustomStringConvertible {
-    case _2 = "2"
-    case _0 = "0"
     case _3 = "3"
     case s = "s"
+    case _0 = "0"
+    case _2 = "2"
     case _1 = "1"
 
     public var description: String {
@@ -22814,8 +22798,8 @@ extension BuildSettingsKey {
 }
 
 public enum Optimization: String, Hashable, Codable, CustomStringConvertible {
-    case space = "space"
     case time = "time"
+    case space = "space"
 
     public var description: String {
         rawValue
@@ -22937,8 +22921,8 @@ extension BuildSettingsKey {
 }
 
 public enum StickersIconRole: String, Hashable, Codable, CustomStringConvertible {
-    case `extension` = "extension"
     case _0 = ""
+    case `extension` = "extension"
     case hostApp = "host-app"
 
     public var description: String {
@@ -24046,10 +24030,10 @@ extension BuildSettingsKey {
 }
 
 public enum CoremlModelClassGenerationLanguage: String, Hashable, Codable, CustomStringConvertible {
-    case automatic = "Automatic"
-    case objectiveC = "Objective-C"
-    case none = "None"
     case swift = "Swift"
+    case objectiveC = "Objective-C"
+    case automatic = "Automatic"
+    case none = "None"
 
     public var description: String {
         rawValue
@@ -24935,9 +24919,9 @@ extension BuildSettingsKey {
 }
 
 public enum FileForkOfBinarySources: String, Hashable, Codable, CustomStringConvertible {
-    case auto = "auto"
     case resource = "resource"
     case data = "data"
+    case auto = "auto"
 
     public var description: String {
         rawValue
@@ -25070,10 +25054,10 @@ extension BuildSettingsKey {
 }
 
 public enum ResolveAliases: String, Hashable, Codable, CustomStringConvertible {
-    case includes = "Includes"
-    case always = "Always"
     case outputs = "Outputs"
     case never = "Never"
+    case always = "Always"
+    case includes = "Includes"
 
     public var description: String {
         rawValue
@@ -25147,10 +25131,10 @@ extension BuildSettingsKey {
 }
 
 public enum RezScriptType: String, Hashable, Codable, CustomStringConvertible {
-    case simpchinese = "SimpChinese"
     case korean = "Korean"
-    case roman = "Roman"
+    case simpchinese = "SimpChinese"
     case japanese = "Japanese"
+    case roman = "Roman"
     case tradchinese = "TradChinese"
 
     public var description: String {
@@ -25361,21 +25345,21 @@ extension BuildSetting {
 
     /// Generated File Stem
     ///
-    /// The file stem to use for the files generated by `yacc`. The files will be named `&lt;stem&gt;.tab.c` and `&lt;stem&gt;.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.
+    /// The file stem to use for the files generated by `yacc`. The files will be named `<stem>.tab.c` and `<stem>.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.
     public static var generatedFileStem: BuildSetting { 
         .generatedFileStem(.standard) 
     }
 
     /// Generated File Stem
     ///
-    /// The file stem to use for the files generated by `yacc`. The files will be named `&lt;stem&gt;.tab.c` and `&lt;stem&gt;.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.
+    /// The file stem to use for the files generated by `yacc`. The files will be named `<stem>.tab.c` and `<stem>.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.
     public static func generatedFileStem(_ value: GeneratedFileStem) -> BuildSetting { 
         BuildSetting(key: .generatedFileStem, value: "\(value)")
     }
 
     /// Generated File Stem
     ///
-    /// The file stem to use for the files generated by `yacc`. The files will be named `&lt;stem&gt;.tab.c` and `&lt;stem&gt;.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.
+    /// The file stem to use for the files generated by `yacc`. The files will be named `<stem>.tab.c` and `<stem>.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.
     public static func generatedFileStem(inherit key: BuildSettingsKey) -> BuildSetting {
         BuildSetting(key: .generatedFileStem, inherit: key)
     }
@@ -25385,7 +25369,7 @@ extension BuildSettingsKey {
 
     /// Generated File Stem
     ///
-    /// The file stem to use for the files generated by `yacc`. The files will be named `&lt;stem&gt;.tab.c` and `&lt;stem&gt;.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.
+    /// The file stem to use for the files generated by `yacc`. The files will be named `<stem>.tab.c` and `<stem>.tab.h` based on the value of this setting. The Standard (`y`) option will cause all `yacc` source files in the same target to produce the same output file, and it is not recommended for targets containing multiple `yacc` source files.
     public static let generatedFileStem: BuildSettingsKey = "YACC_GENERATED_FILE_STEM"
 }
 
