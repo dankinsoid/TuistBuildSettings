@@ -7,6 +7,10 @@ extension Dictionary: ExpressibleByArrayLiteral where Key == String, Value == Se
         self = Dictionary(values.map { ($0.fullKey, $0.value) }, uniquingKeysWith: join)
     }
 
+    public init(_ values: BuildSetting...) {
+        self.init(elements)
+    }
+
     public init(arrayLiteral elements: (BuildSetting)...) {
         self.init(elements)
     }
