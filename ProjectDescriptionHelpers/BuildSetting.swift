@@ -1,7 +1,7 @@
 import Foundation
 import ProjectDescription
 
-public struct BuildSetting: Hashable, Codable {
+public struct BuildSetting: Codable {
     
     public var key: BuildSettingsKey
     public var sdk: SDK?

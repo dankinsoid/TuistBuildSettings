@@ -24,6 +24,8 @@ private extension SettingValue {
             return [value]
         case .array(let values):
             return values
+        @unknown default:
+            return []
         }
     }
 }

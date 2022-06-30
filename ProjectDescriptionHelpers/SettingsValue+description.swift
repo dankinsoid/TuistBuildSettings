@@ -9,6 +9,8 @@ extension SettingValue: CustomStringConvertible {
             return value
         case .array(let values):
             return "(\(values.joined(separator: ",")))"
+        @unknown default:
+            return "unknown"
         }
     }
 }
