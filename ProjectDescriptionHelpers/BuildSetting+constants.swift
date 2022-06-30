@@ -1169,12 +1169,20 @@ extension BuildSettingsKey {
 }
 
 public enum EnableIndexWhileBuildingFunctionality: String, Hashable, Codable, CustomStringConvertible {
+    case yes = "YES"
     case no = "NO"
     case `default` = "Default"
-    case yes = "YES"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension EnableIndexWhileBuildingFunctionality: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -1573,8 +1581,8 @@ extension BuildSettingsKey {
 }
 
 public enum DebugInformationFormat: String, Hashable, Codable, CustomStringConvertible {
-    case dwarfWithDsym = "dwarf-with-dsym"
     case dwarf = "dwarf"
+    case dwarfWithDsym = "dwarf-with-dsym"
 
     public var description: String {
         rawValue
@@ -4841,11 +4849,11 @@ extension BuildSettingsKey {
 }
 
 public enum MachOType: String, Hashable, Codable, CustomStringConvertible {
-    case mhObject = "mh_object"
-    case staticlib = "staticlib"
-    case mhDylib = "mh_dylib"
     case mhBundle = "mh_bundle"
+    case mhDylib = "mh_dylib"
+    case mhObject = "mh_object"
     case mhExecute = "mh_execute"
+    case staticlib = "staticlib"
 
     public var description: String {
         rawValue
@@ -5655,9 +5663,9 @@ extension BuildSettingsKey {
 }
 
 public enum PropertyListOutputEncoding: String, Hashable, Codable, CustomStringConvertible {
-    case sameAsInput = "same-as-input"
-    case xml = "XML"
     case binary = "binary"
+    case xml = "XML"
+    case sameAsInput = "same-as-input"
 
     public var description: String {
         rawValue
@@ -7035,9 +7043,9 @@ extension BuildSettingsKey {
 }
 
 public enum StripStyle: String, Hashable, Codable, CustomStringConvertible {
-    case nonGlobal = "non-global"
     case debugging = "debugging"
     case all = "all"
+    case nonGlobal = "non-global"
 
     public var description: String {
         rawValue
@@ -7922,12 +7930,20 @@ extension BuildSettingsKey {
 }
 
 public enum ValidateWorkspace: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
-    case yes = "YES"
     case yesError = "YES_ERROR"
+    case yes = "YES"
+    case no = "NO"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension ValidateWorkspace: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -10770,8 +10786,8 @@ extension BuildSettingsKey {
 }
 
 public enum ClangArcMigratePrecheck: String, Hashable, Codable, CustomStringConvertible {
-    case donothing = "donothing"
     case precheck = "precheck"
+    case donothing = "donothing"
 
     public var description: String {
         rawValue
@@ -11063,8 +11079,8 @@ extension BuildSettingsKey {
 }
 
 public enum LdObjcAbiVersion: String, Hashable, Codable, CustomStringConvertible {
-    case _1 = "1"
     case _2 = "2"
+    case _1 = "1"
 
     public var description: String {
         rawValue
@@ -12821,8 +12837,8 @@ extension BuildSettingsKey {
 
 public enum SwiftStdlibToolVerbosity: String, Hashable, Codable, CustomStringConvertible {
     case none = "none"
-    case extraVerbose = "extra-verbose"
     case verbose = "verbose"
+    case extraVerbose = "extra-verbose"
 
     public var description: String {
         rawValue
@@ -13505,12 +13521,20 @@ extension BuildSettingsKey {
 }
 
 public enum MisuseOfNonnull: String, Hashable, Codable, CustomStringConvertible {
-    case yesNonaggressive = "YES_NONAGGRESSIVE"
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
+    case yesNonaggressive = "YES_NONAGGRESSIVE"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension MisuseOfNonnull: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -13573,12 +13597,20 @@ extension BuildSettingsKey {
 }
 
 public enum SuspiciousConversionsOfNsnumberAndCfnumberref: String, Hashable, Codable, CustomStringConvertible {
+    case no = "NO"
     case yes = "YES"
     case yesAggressive = "YES_AGGRESSIVE"
-    case no = "NO"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension SuspiciousConversionsOfNsnumberAndCfnumberref: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -14344,12 +14376,20 @@ extension BuildSettingsKey {
 }
 
 public enum UseAfterMoveErrorsInCpp: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
     case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension UseAfterMoveErrorsInCpp: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -14424,8 +14464,8 @@ extension BuildSettingsKey {
 }
 
 public enum ClangBitcodeGenerationMode: String, Hashable, Codable, CustomStringConvertible {
-    case bitcode = "bitcode"
     case marker = "marker"
+    case bitcode = "bitcode"
     case none = "none"
 
     public var description: String {
@@ -14542,15 +14582,15 @@ extension BuildSettingsKey {
 }
 
 public enum CppLanguageDialect: String, Hashable, Codable, CustomStringConvertible {
-    case cpp98 = "c++98"
-    case gnupp0x = "gnu++0x"
-    case gnupp98 = "gnu++98"
-    case cpp0x = "c++0x"
-    case gnupp14 = "gnu++14"
+    case cpp17 = "c++17"
     case gnupp17 = "gnu++17"
     case compilerDefault = "compiler-default"
-    case cpp17 = "c++17"
+    case cpp98 = "c++98"
+    case gnupp98 = "gnu++98"
+    case cpp0x = "c++0x"
     case cpp14 = "c++14"
+    case gnupp14 = "gnu++14"
+    case gnupp0x = "gnu++0x"
 
     public var description: String {
         rawValue
@@ -14583,9 +14623,9 @@ extension BuildSettingsKey {
 }
 
 public enum CppStandardLibrary: String, Hashable, Codable, CustomStringConvertible {
-    case compilerDefault = "compiler-default"
     case libstdcpp = "libstdc++"
     case libcpp = "libc++"
+    case compilerDefault = "compiler-default"
 
     public var description: String {
         rawValue
@@ -15268,8 +15308,8 @@ extension BuildSettingsKey {
 
 public enum AtomicityOfInferredProperties: String, Hashable, Codable, CustomStringConvertible {
     case atomic = "atomic"
-    case nsNonatomicIosonly = "NS_NONATOMIC_IOSONLY"
     case nonatomic = "nonatomic"
+    case nsNonatomicIosonly = "NS_NONATOMIC_IOSONLY"
 
     public var description: String {
         rawValue
@@ -15789,8 +15829,8 @@ extension BuildSettingsKey {
 }
 
 public enum ModeOfAnalysisForBuild: String, Hashable, Codable, CustomStringConvertible {
-    case deep = "deep"
     case shallow = "shallow"
+    case deep = "deep"
 
     public var description: String {
         rawValue
@@ -15831,8 +15871,8 @@ extension BuildSettingsKey {
 }
 
 public enum ModeOfAnalysisForAnalyze: String, Hashable, Codable, CustomStringConvertible {
-    case deep = "deep"
     case shallow = "shallow"
+    case deep = "deep"
 
     public var description: String {
         rawValue
@@ -16200,12 +16240,20 @@ extension BuildSettingsKey {
 }
 
 public enum BlockCaptureOfAutoreleasing: String, Hashable, Codable, CustomStringConvertible {
+    case no = "NO"
     case yes = "YES"
     case yesError = "YES_ERROR"
-    case no = "NO"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension BlockCaptureOfAutoreleasing: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16243,12 +16291,20 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitBooleanConversions: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
     case no = "NO"
+    case yesError = "YES_ERROR"
     case yes = "YES"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension ImplicitBooleanConversions: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16286,12 +16342,20 @@ extension BuildSettingsKey {
 }
 
 public enum SuspiciousCommas: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension SuspiciousCommas: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16338,6 +16402,14 @@ public enum ImplicitConstantConversions: String, Hashable, Codable, CustomString
     }
 }
 
+
+extension ImplicitConstantConversions: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
+    }
+}
+
 // MARK: Deleting Instance of Polymorphic Class with No Virtual Destructor
 extension BuildSetting {
 
@@ -16372,12 +16444,20 @@ extension BuildSettingsKey {
 }
 
 public enum DeletingInstanceOfPolymorphicClassWithNoVirtualDestructor: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
     case yes = "YES"
+    case yesError = "YES_ERROR"
     case no = "NO"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension DeletingInstanceOfPolymorphicClassWithNoVirtualDestructor: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16448,12 +16528,20 @@ extension BuildSettingsKey {
 }
 
 public enum DirectUsageOfIsa: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
-    case no = "NO"
     case yesError = "YES_ERROR"
+    case no = "NO"
+    case yes = "YES"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension DirectUsageOfIsa: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16557,12 +16645,20 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitEnumConversions: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
     case no = "NO"
     case yes = "YES"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension ImplicitEnumConversions: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16601,11 +16697,19 @@ extension BuildSettingsKey {
 
 public enum ImplicitFloatConversions: String, Hashable, Codable, CustomStringConvertible {
     case yesError = "YES_ERROR"
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension ImplicitFloatConversions: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16668,12 +16772,20 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitSignednessConversions: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
     case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension ImplicitSignednessConversions: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16744,12 +16856,20 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitIntegerToPointerConversions: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
-    case yes = "YES"
     case yesError = "YES_ERROR"
+    case yes = "YES"
+    case no = "NO"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension ImplicitIntegerToPointerConversions: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16788,11 +16908,19 @@ extension BuildSettingsKey {
 
 public enum MissingNoescapeAnnotation: String, Hashable, Codable, CustomStringConvertible {
     case yes = "YES"
-    case yesError = "YES_ERROR"
     case no = "NO"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension MissingNoescapeAnnotation: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -16830,12 +16958,20 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitNonLiteralNullConversions: String, Hashable, Codable, CustomStringConvertible {
+    case no = "NO"
     case yes = "YES"
     case yesError = "YES_ERROR"
-    case no = "NO"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension ImplicitNonLiteralNullConversions: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17006,11 +17142,19 @@ extension BuildSettingsKey {
 
 public enum InterfaceDeclarationsOfInstanceVariables: String, Hashable, Codable, CustomStringConvertible {
     case yesError = "YES_ERROR"
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension InterfaceDeclarationsOfInstanceVariables: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17048,12 +17192,20 @@ extension BuildSettingsKey {
 }
 
 public enum ImplicitObjectiveCLiteralConversions: String, Hashable, Codable, CustomStringConvertible {
-    case yesError = "YES_ERROR"
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension ImplicitObjectiveCLiteralConversions: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17125,11 +17277,19 @@ extension BuildSettingsKey {
 
 public enum RepeatedlyUsingAWeakReference: String, Hashable, Codable, CustomStringConvertible {
     case yes = "YES"
-    case yesAggressive = "YES_AGGRESSIVE"
     case no = "NO"
+    case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension RepeatedlyUsingAWeakReference: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17167,12 +17327,20 @@ extension BuildSettingsKey {
 }
 
 public enum UnintentionalRootClass: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
-    case no = "NO"
     case yesError = "YES_ERROR"
+    case no = "NO"
+    case yes = "YES"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension UnintentionalRootClass: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17211,11 +17379,19 @@ extension BuildSettingsKey {
 
 public enum SuspiciousPragmaPack: String, Hashable, Codable, CustomStringConvertible {
     case yesError = "YES_ERROR"
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension SuspiciousPragmaPack: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17292,6 +17468,14 @@ public enum QuotedIncludeInFrameworkHeader: String, Hashable, Codable, CustomStr
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension QuotedIncludeInFrameworkHeader: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17395,12 +17579,20 @@ extension BuildSettingsKey {
 }
 
 public enum StrictPrototypes: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
     case yes = "YES"
+    case no = "NO"
     case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension StrictPrototypes: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17438,12 +17630,20 @@ extension BuildSettingsKey {
 }
 
 public enum SuspiciousImplicitConversions: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case no = "NO"
+    case yes = "YES"
     case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension SuspiciousImplicitConversions: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17514,12 +17714,20 @@ extension BuildSettingsKey {
 }
 
 public enum UnguardedAvailability: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case yesAggressive = "YES_AGGRESSIVE"
     case no = "NO"
+    case yes = "YES"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension UnguardedAvailability: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17557,12 +17765,20 @@ extension BuildSettingsKey {
 }
 
 public enum UnreachableCode: String, Hashable, Codable, CustomStringConvertible {
-    case yesAggressive = "YES_AGGRESSIVE"
     case no = "NO"
+    case yesAggressive = "YES_AGGRESSIVE"
     case yes = "YES"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension UnreachableCode: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -17600,12 +17816,20 @@ extension BuildSettingsKey {
 }
 
 public enum AmbiguousCppParsingSituation: String, Hashable, Codable, CustomStringConvertible {
-    case no = "NO"
-    case yes = "YES"
     case yesError = "YES_ERROR"
+    case yes = "YES"
+    case no = "NO"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension AmbiguousCppParsingSituation: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -18100,11 +18324,11 @@ extension BuildSettingsKey {
 
 public enum GccCLanguageDialect: String, Hashable, Codable, CustomStringConvertible {
     case gnu89 = "gnu89"
-    case c99 = "c99"
-    case compilerDefault = "compiler-default"
     case ansi = "ansi"
-    case c89 = "c89"
+    case compilerDefault = "compiler-default"
     case gnu99 = "gnu99"
+    case c99 = "c99"
+    case c89 = "c89"
     case c11 = "c11"
     case gnu11 = "gnu11"
 
@@ -18702,11 +18926,11 @@ extension BuildSettingsKey {
 }
 
 public enum CompileSourcesAs: String, Hashable, Codable, CustomStringConvertible {
-    case sourcecodeCObjc = "sourcecode.c.objc"
-    case automatic = "automatic"
-    case sourcecodeCC = "sourcecode.c.c"
     case sourcecodeCppCpp = "sourcecode.cpp.cpp"
+    case sourcecodeCObjc = "sourcecode.c.objc"
+    case sourcecodeCC = "sourcecode.c.c"
     case sourcecodeCppObjcpp = "sourcecode.cpp.objcpp"
+    case automatic = "automatic"
 
     public var description: String {
         rawValue
@@ -18863,8 +19087,8 @@ extension BuildSettingsKey {
 }
 
 public enum GccObjcAbiVersion: String, Hashable, Codable, CustomStringConvertible {
-    case _2 = "2"
     case _1 = "1"
+    case _2 = "2"
 
     public var description: String {
         rawValue
@@ -18922,11 +19146,11 @@ extension BuildSettingsKey {
 }
 
 public enum GccOperation: String, Hashable, Codable, CustomStringConvertible {
+    case generatePreprocessed = "generate-preprocessed"
+    case generateAssembler = "generate-assembler"
     case compile = "compile"
     case separateSymbols = "separate-symbols"
-    case generateAssembler = "generate-assembler"
     case precompile = "precompile"
-    case generatePreprocessed = "generate-preprocessed"
 
     public var description: String {
         rawValue
@@ -18967,13 +19191,13 @@ extension BuildSettingsKey {
 }
 
 public enum OptimizationLevel: String, Hashable, Codable, CustomStringConvertible {
-    case z = "z"
-    case _0 = "0"
     case _1 = "1"
-    case _3 = "3"
-    case _2 = "2"
-    case s = "s"
     case fast = "fast"
+    case _3 = "3"
+    case _0 = "0"
+    case s = "s"
+    case _2 = "2"
+    case z = "z"
 
     public var description: String {
         rawValue
@@ -19601,11 +19825,19 @@ extension BuildSettingsKey {
 
 public enum MismatchedReturnType: String, Hashable, Codable, CustomStringConvertible {
     case yes = "YES"
-    case yesError = "YES_ERROR"
     case no = "NO"
+    case yesError = "YES_ERROR"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension MismatchedReturnType: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -20130,12 +20362,20 @@ extension BuildSettingsKey {
 }
 
 public enum UninitializedVariables: String, Hashable, Codable, CustomStringConvertible {
+    case yesAggressive = "YES_AGGRESSIVE"
     case no = "NO"
     case yes = "YES"
-    case yesAggressive = "YES_AGGRESSIVE"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension UninitializedVariables: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -20429,12 +20669,20 @@ extension BuildSettingsKey {
 }
 
 public enum LinkTimeOptimization: String, Hashable, Codable, CustomStringConvertible {
-    case yes = "YES"
     case no = "NO"
     case yesThin = "YES_THIN"
+    case yes = "YES"
 
     public var description: String {
         rawValue
+    }
+}
+
+
+extension LinkTimeOptimization: ExpressibleByBooleanLiteral {
+    
+    public init(booleanLiteral value: Bool) {
+        self = value ? .yes : .no
     }
 }
 
@@ -21439,11 +21687,11 @@ extension BuildSettingsKey {
 }
 
 public enum OpenclOptimizationLevel: String, Hashable, Codable, CustomStringConvertible {
-    case _0 = "0"
     case _3 = "3"
     case s = "s"
-    case _2 = "2"
     case _1 = "1"
+    case _2 = "2"
+    case _0 = "0"
 
     public var description: String {
         rawValue
@@ -22606,9 +22854,9 @@ extension BuildSettingsKey {
 }
 
 public enum StandaloneIconFileBehavior: String, Hashable, Codable, CustomStringConvertible {
-    case all = "all"
     case `default` = "default"
     case none = "none"
+    case all = "all"
 
     public var description: String {
         rawValue
@@ -22687,9 +22935,9 @@ extension BuildSettingsKey {
 }
 
 public enum StickersIconRole: String, Hashable, Codable, CustomStringConvertible {
-    case `extension` = "extension"
-    case _0 = ""
     case hostApp = "host-app"
+    case _0 = ""
+    case `extension` = "extension"
 
     public var description: String {
         rawValue
@@ -23796,9 +24044,9 @@ extension BuildSettingsKey {
 }
 
 public enum CoremlModelClassGenerationLanguage: String, Hashable, Codable, CustomStringConvertible {
-    case swift = "Swift"
-    case none = "None"
     case objectiveC = "Objective-C"
+    case none = "None"
+    case swift = "Swift"
     case automatic = "Automatic"
 
     public var description: String {
@@ -24686,8 +24934,8 @@ extension BuildSettingsKey {
 
 public enum FileForkOfBinarySources: String, Hashable, Codable, CustomStringConvertible {
     case data = "data"
-    case auto = "auto"
     case resource = "resource"
+    case auto = "auto"
 
     public var description: String {
         rawValue
@@ -24820,10 +25068,10 @@ extension BuildSettingsKey {
 }
 
 public enum ResolveAliases: String, Hashable, Codable, CustomStringConvertible {
-    case always = "Always"
+    case outputs = "Outputs"
     case never = "Never"
     case includes = "Includes"
-    case outputs = "Outputs"
+    case always = "Always"
 
     public var description: String {
         rawValue
@@ -24899,9 +25147,9 @@ extension BuildSettingsKey {
 public enum RezScriptType: String, Hashable, Codable, CustomStringConvertible {
     case korean = "Korean"
     case simpchinese = "SimpChinese"
+    case japanese = "Japanese"
     case tradchinese = "TradChinese"
     case roman = "Roman"
-    case japanese = "Japanese"
 
     public var description: String {
         rawValue
@@ -25140,8 +25388,8 @@ extension BuildSettingsKey {
 }
 
 public enum GeneratedFileStem: String, Hashable, Codable, CustomStringConvertible {
-    case standard = "Standard"
     case inputfilestem = "InputFileStem"
+    case standard = "Standard"
 
     public var description: String {
         rawValue
