@@ -8,7 +8,7 @@ extension Dictionary: ExpressibleByArrayLiteral where Key == String, Value == Se
     }
 
     public init(_ values: BuildSetting...) {
-        self.init(elements)
+        self.init(values)
     }
 
     public init(arrayLiteral elements: (BuildSetting)...) {
