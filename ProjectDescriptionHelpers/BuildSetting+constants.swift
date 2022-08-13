@@ -34524,3 +34524,20 @@ extension BuildSettingsKey {
     /// Enabling this option causes `yacc` to insert the `#line` directives in the generated code. The `#line` directives let the C compiler relate errors in the generated code to the user's original code. If this option is disabled, `#line` directives specified by the user in the source file will still be retained.
     public static let yaccInsertLineDirectives: BuildSettingsKey = "YACC_INSERT_LINE_DIRECTIVES"
 }
+
+// MARK: path of your local docc 
+extension BuildSetting {
+
+    /// path of your local docc 
+    /// DOCC_EXEC
+    public static func doccPath(_ value: String) -> BuildSetting { 
+        BuildSetting(key: .doccPath, value: "\(value)")
+    }
+}
+
+extension BuildSettingsKey {
+
+    /// path of your local docc 
+    /// DOCC_EXEC
+    public static let doccPath: BuildSettingsKey = "DOCC_EXEC"
+}
